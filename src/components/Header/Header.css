@@ -1,0 +1,95 @@
+.header {
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.header__logo {
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+  margin-left: 60px;
+}
+
+.header__button {
+  display: flex;
+  flex-direction: row;
+  margin-right: 60px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  width: 500px;
+}
+
+.header__button-register {
+  color: white;
+  border-radius: 20px;
+  border: 0 none;
+  background: linear-gradient(
+    90deg,
+    #9064da 0%,
+    #2171e0 49.37%,
+    #844eb4 101.93%
+  );
+  background-size: 300% 100%;
+  padding: 10px;
+  margin-left: 20px;
+  height: 50px;
+  width: 130px;
+  transition: all 0.15s ease-in-out;
+}
+
+.header__button-register:hover {
+  font-size: 20px;
+}
+
+.header__login {
+  color: black;
+  background-color: white;
+  border: solid 2px #844eb4;
+  border-radius: 20px;
+  transition: all 0.15s ease-in-out;
+  width: 150px;
+  height: 50px;
+}
+
+.header__login:hover {
+  font-size: 20px;
+  color: #0255e5;
+}
+
+@media screen and (max-width: 898px) {
+  .header__container {
+    width: 80%;
+  }
+
+  .header__button {
+    font-size: 15px;
+  }
+
+  .header__button-register {
+    width: 100px;
+  }
+
+  .header__login {
+    width: 130px;
+  }
+
+  .header__login:hover {
+    font-size: 18px;
+  }
+}
