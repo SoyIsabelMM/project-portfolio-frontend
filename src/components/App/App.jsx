@@ -7,6 +7,7 @@ import "./App.css";
 // componentes
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
+import Card from "../Card/Card";
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
         <Route
           path="/"
           element={
-            <Header>
-              <NavBar />
-            </Header>
+            <>
+              <Header>
+                <NavBar />
+              </Header>
+              <Card />
+            </>
           }
         />
       </Routes>
