@@ -8,6 +8,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import Card from "../Card/Card";
+import LandingPage from "../LandingPage/LandingPage";
 
 function App() {
   return (
@@ -20,7 +21,13 @@ function App() {
               <Header>
                 <NavBar />
               </Header>
-              <Card />
+              <LandingPage>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+              </LandingPage>
             </>
           }
         />
