@@ -1,0 +1,10 @@
+.register {
+  margin: 50px auto 20px;
+  width: 900;
+}
+
+.register__container {
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+}

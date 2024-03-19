@@ -9,8 +9,15 @@ import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import Card from "../Card/Card";
 import LandingPage from "../LandingPage/LandingPage";
+import Register from "../Register/Register";
 
 function App() {
+  const headerComponent = (
+    <Header>
+      <NavBar />
+    </Header>
+  );
+
   return (
     <div className="page">
       <Routes>
@@ -18,9 +25,7 @@ function App() {
           path="/"
           element={
             <>
-              <Header>
-                <NavBar />
-              </Header>
+              {headerComponent}
               <LandingPage>
                 <Card />
                 <Card />
@@ -28,6 +33,15 @@ function App() {
                 <Card />
                 <Card />
               </LandingPage>
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              {headerComponent}
+              <Register />
             </>
           }
         />
