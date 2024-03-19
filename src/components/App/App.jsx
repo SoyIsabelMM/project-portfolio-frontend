@@ -10,6 +10,7 @@ import NavBar from "../NavBar/NavBar";
 import Card from "../Card/Card";
 import LandingPage from "../LandingPage/LandingPage";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 function App() {
   const headerComponent = (
@@ -22,6 +23,24 @@ function App() {
     <div className="page">
       <Routes>
         <Route
+          path="/signup"
+          element={
+            <>
+              {headerComponent}
+              <Register />
+            </>
+          }
+        />
+
+        <Route
+          path="/signin"
+          element={
+            <>
+              {headerComponent} <Login />
+            </>
+          }
+        />
+        <Route
           path="/"
           element={
             <>
@@ -32,16 +51,17 @@ function App() {
                 <Card />
                 <Card />
                 <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </LandingPage>
-            </>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <>
-              {headerComponent}
-              <Register />
             </>
           }
         />

@@ -22,6 +22,7 @@
   width: 80px;
   height: 80px;
   margin-left: 60px;
+  cursor: pointer;
 }
 
 .header__button {
