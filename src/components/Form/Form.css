@@ -1,6 +1,6 @@
 .form {
   width: 440px;
-  height: 470px;
+  height: 450px;
   border-radius: 30px;
   background-color: white;
 }
@@ -62,17 +62,4 @@
   width: 25px;
   height: 25px;
   object-fit: cover;
-}
-
-.form_paragraph {
-  margin: 20px auto 0;
-  width: 280px;
-  font-size: 15px;
-  line-height: 28px;
-  font-weight: 400;
-}
-
-.form__link {
-  text-decoration: none;
-  color: inherit;
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import iconGoogle from "../../images/logo-google.png";
 import "./Form.css";
 
-function Form({ title, nameBtn, question, link }) {
+function Form({ title, nameBtn, children }) {
   return (
     <div className="form">
       <h3 className="form__title">{title}</h3>
@@ -38,13 +38,7 @@ function Form({ title, nameBtn, question, link }) {
           </Button>
         </div>
       </form>
-
-      <p className="form_paragraph">
-        {question}
-        <Link to="/signin" className="form__link">
-          {link}
-        </Link>
-      </p>
+      {children}
     </div>
   );
 }

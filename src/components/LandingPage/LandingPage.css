@@ -43,6 +43,12 @@
   border: solid 2px #844eb4;
   cursor: pointer;
   background-color: white;
+  transition: all 0.15s ease-in-out;
+}
+
+.landing-page__btn:hover {
+  font-size: 20px;
+  color: #0255e5;
 }
 
 .landing-page__cards {

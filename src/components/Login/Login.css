@@ -1,15 +1,15 @@
-.register {
+.login {
   margin: 50px auto 20px;
   width: 900;
 }
 
-.register__container {
+.login__container {
   background-color: inherit;
   display: flex;
   justify-content: center;
 }
 
-.register_paragraph {
+.login_paragraph {
   margin: 0 auto 0;
   width: 280px;
   font-size: 15px;
@@ -17,7 +17,7 @@
   font-weight: 400;
 }
 
-.register__link {
+.login__link {
   text-decoration: none;
   color: inherit;
 }

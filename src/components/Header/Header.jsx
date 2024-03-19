@@ -7,22 +7,38 @@ import { useNavigate } from "react-router-dom";
 function Header({ children }) {
   const navigate = useNavigate();
 
-  const onNavigate = (evt) => {
-    evt.preventDefault();
+  const handleRegister = () => {
     navigate("/signup", { state: "success" });
+  };
+
+  const handleLogin = () => {
+    navigate("/signin");
+  };
+
+  const handleInit = () => {
+    navigate("/");
   };
   return (
     <section className="header">
       <div className="header__container">
-        <img className="header__logo" src={logoPT} alt="Logo PortFolio" />
+        <img
+          className="header__logo"
+          src={logoPT}
+          alt="Logo PortFolio"
+          onClick={handleInit}
+        />
         {children}
       </div>
       <div className="header__button">
-        <Button className="header__login" nameBtn="Iniciar Sesión" />
+        <Button
+          className="header__login"
+          nameBtn="Iniciar Sesión"
+          onClick={handleLogin}
+        />
         <Button
           className="header__button-register"
           nameBtn="Registro"
-          onClick={onNavigate}
+          onClick={handleRegister}
         />
       </div>
     </section>
