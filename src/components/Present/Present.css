@@ -1,0 +1,43 @@
+.present {
+  background-color: inherit;
+  margin: 0 auto;
+}
+
+.present__content {
+  width: 880px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.present__banner {
+  object-fit: cover;
+  width: 750px;
+  height: 400px;
+  border-radius: 20px;
+  margin: 5% auto 0;
+}
+
+.present__name-user {
+  display: block;
+  font-family: monospace;
+  font-size: 30px;
+  margin: 10% auto 10px;
+  white-space: nowrap;
+  border-right: 4px solid;
+
+  animation: typing 2s steps(16), blink 0.8s infinite step-end alternate;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

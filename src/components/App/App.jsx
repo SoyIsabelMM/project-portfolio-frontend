@@ -11,6 +11,7 @@ import Card from "../Card/Card";
 import LandingPage from "../LandingPage/LandingPage";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Main from "../Main/Main";
 
 function App() {
   const headerComponent = (
@@ -45,23 +46,7 @@ function App() {
           element={
             <>
               {headerComponent}
-              <LandingPage>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-              </LandingPage>
+              <Main />
             </>
           }
         />
