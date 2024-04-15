@@ -41,12 +41,29 @@ function App() {
             </>
           }
         />
+
+        <Route
+          path="/portfolio"
+          element={
+            <>
+              {headerComponent} <Main />
+            </>
+          }
+        />
+
         <Route
           path="/"
           element={
             <>
               {headerComponent}
-              <Main />
+              <LandingPage>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+              </LandingPage>
             </>
           }
         />

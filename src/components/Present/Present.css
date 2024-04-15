@@ -19,25 +19,10 @@
 }
 
 .present__name-user {
-  display: block;
   font-family: monospace;
-  font-size: 30px;
+  font-size: 40px;
   margin: 10% auto 10px;
   white-space: nowrap;
-  border-right: 4px solid;
 
-  animation: typing 2s steps(16), blink 0.8s infinite step-end alternate;
   overflow: hidden;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
 }
