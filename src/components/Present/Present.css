@@ -1,0 +1,28 @@
+.present {
+  background-color: inherit;
+  margin: 0 auto;
+}
+
+.present__content {
+  width: 880px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.present__banner {
+  object-fit: cover;
+  width: 750px;
+  height: 400px;
+  border-radius: 20px;
+  margin: 5% auto 0;
+}
+
+.present__name-user {
+  font-family: monospace;
+  font-size: 40px;
+  margin: 10% auto 10px;
+  white-space: nowrap;
+
+  overflow: hidden;
+}
