@@ -29,6 +29,7 @@
   border-radius: 20px;
   height: 40px;
   width: 500px;
+  margin-top: 10%;
 }
 
 .landing-page__search::placeholder {
@@ -44,6 +45,7 @@
   cursor: pointer;
   background-color: white;
   transition: all 0.15s ease-in-out;
+  margin-top: 10%;
 }
 
 .landing-page__btn:hover {

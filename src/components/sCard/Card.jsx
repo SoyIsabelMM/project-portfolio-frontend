@@ -1,17 +1,16 @@
 import React from "react";
 import "./Card.css";
 import avatarDefault from "../../images/avatar-default.png";
-import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
-function Card({ image, alt, userName, description }) {
+function Card({ image, alt, userName, description, className }) {
   const navigate = useNavigate();
 
   const onNavigate = () => {
     navigate("/portfolio");
   };
   return (
-    <div className="card">
+    <div className={className}>
       <img className="card__image" src={avatarDefault} alt={alt} />
 
       <div className="card__container">
@@ -26,7 +25,9 @@ function Card({ image, alt, userName, description }) {
           </ul>
         </div>
       </div>
-      <Button nameBtn="Ver más" className="card__btn" onClick={onNavigate} />
+      <button className="card__btn" onClick={onNavigate}>
+        Ver más
+      </button>
     </div>
   );
 }

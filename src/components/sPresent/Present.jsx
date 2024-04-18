@@ -22,6 +22,7 @@ function Present() {
             />
           }
         </div>
+        <button className="present__btn"> Ver mis proyectos </button>
       </div>
     </section>
   );

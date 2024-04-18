@@ -5,13 +5,13 @@ import "../../index.css";
 import "./App.css";
 
 // componentes
-import Header from "../Header/Header";
-import NavBar from "../NavBar/NavBar";
-import Card from "../Card/Card";
-import LandingPage from "../LandingPage/LandingPage";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import Main from "../Main/Main";
+import Header from "../sHeader/Header";
+import NavBar from "../sNavBar/NavBar";
+import Card from "../sCard/Card";
+import LandingPage from "../sLandingPage/LandingPage";
+import Register from "../sRegister/Register";
+import Login from "../sLogin/Login";
+import Main from "../sMain/Main";
 
 function App() {
   const headerComponent = (
@@ -43,7 +43,7 @@ function App() {
         />
 
         <Route
-          path="/portfolio"
+          path="/home"
           element={
             <>
               {headerComponent} <Main />
@@ -57,12 +57,12 @@ function App() {
             <>
               {headerComponent}
               <LandingPage>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card className="card" />
+                <Card className="card" />
+                <Card className="card" />
+                <Card className="card" />
+                <Card className="card" />
+                <Card className="card" />
               </LandingPage>
             </>
           }
