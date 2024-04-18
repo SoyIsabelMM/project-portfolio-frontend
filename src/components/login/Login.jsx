@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../sForm/Form";
+import Form from "../form/Form";
 import "./Login.css";
 import { Link } from "react-router-dom";
 

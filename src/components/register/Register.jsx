@@ -1,6 +1,6 @@
 import React from "react";
 import "./Register.css";
-import Form from "../sForm/Form";
+import Form from "../form/Form";
 import { Link } from "react-router-dom";
 
 function Register() {

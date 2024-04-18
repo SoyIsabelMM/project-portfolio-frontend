@@ -1,6 +1,6 @@
 import React from "react";
 import "./portfolios.css";
-import Card from "../sCard/Card";
+import Card from "../card/Card";
 
 function Portfolios() {
   return (
