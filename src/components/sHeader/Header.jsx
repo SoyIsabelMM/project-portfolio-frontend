@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import logoPT from "../../images/Logo-PT.png";
-import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
 function Header({ children }) {
@@ -30,16 +29,12 @@ function Header({ children }) {
         {children}
       </div>
       <div className="header__button">
-        <Button
-          className="header__login"
-          nameBtn="Iniciar Sesión"
-          onClick={handleLogin}
-        />
-        <Button
-          className="header__button-register"
-          nameBtn="Registro"
-          onClick={handleRegister}
-        />
+        <button className="header__login" onClick={handleLogin}>
+          Iniciar Sesión
+        </button>
+        <button className="header__button-register" onClick={handleRegister}>
+          Registro
+        </button>
       </div>
     </section>
   );

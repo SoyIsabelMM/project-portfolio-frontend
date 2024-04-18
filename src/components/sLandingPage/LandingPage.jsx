@@ -1,7 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
 import icon from "../../images/logo-miniatura.png";
-import Button from "../Button/Button";
 
 function LandingPage({ children }) {
   return (
@@ -17,7 +16,7 @@ function LandingPage({ children }) {
           placeholder="Encuentrame"
           className="landing-page__search"
         />
-        <Button className="landing-page__btn" nameBtn="Buscar" />
+        <button className="landing-page__btn">Buscar</button>
       </div>
       <div className="landing-page__cards">{children}</div>
     </section>

@@ -7,7 +7,7 @@ function NavBar() {
     <div className="nav-bar">
       <ul className="nav-bar__list">
         <li className="nav-bar__options">
-          <Link className="nav-bar__ref" to="/">
+          <Link className="nav-bar__ref" to="/home">
             Inicio
           </Link>
         </li>

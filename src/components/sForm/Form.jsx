@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "../Button/Button";
-import { Link } from "react-router-dom";
 import iconGoogle from "../../images/logo-google.png";
 import "./Form.css";
 
@@ -25,17 +23,19 @@ function Form({ title, nameBtn, children }) {
           minLength={3}
         />
         <div className="form__btn-container">
-          <Button className="form__btn" nameBtn={nameBtn} />
-          <Button
+          <button className="form__btn">Regístrate</button>
+          <button
             className="form__btn form__btn_google"
             nameBtn={nameBtn + " con Google"}
           >
+            {" "}
             <img
               className="form__btn-logo"
               src={iconGoogle}
               alt={nameBtn + " con google"}
-            />
-          </Button>
+            />{" "}
+            Iniciar sesión
+          </button>
         </div>
       </form>
       {children}
