@@ -5,13 +5,13 @@ import "../../index.css";
 import "./App.css";
 
 // componentes
-import Header from "../sHeader/Header";
-import NavBar from "../sNavBar/NavBar";
-import Card from "../sCard/Card";
-import LandingPage from "../sLandingPage/LandingPage";
-import Register from "../sRegister/Register";
-import Login from "../sLogin/Login";
-import Main from "../sMain/Main";
+import Header from "../header/Header";
+import NavBar from "../navBar/NavBar";
+import Card from "../card/Card";
+import LandingPage from "../landingPage/LandingPage";
+import Register from "../register/Register";
+import Login from "../login/Login";
+import Main from "../main/Main";
 
 function App() {
   const headerComponent = (
