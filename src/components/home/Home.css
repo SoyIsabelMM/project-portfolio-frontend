@@ -1,24 +1,27 @@
-.present {
+.home {
   background-color: inherit;
   margin: 0 auto;
+  width: 900px;
 }
 
-.present__content {
+.home__content {
   width: 880px;
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.present__banner {
+.home__banner {
   object-fit: cover;
-  width: 750px;
-  height: 400px;
+  width: 900px;
+  height: 500px;
+  border: #151513 solid 2px;
   border-radius: 20px;
   margin: 20% auto 0;
 }
 
-.present__name-user {
+.home__name-user {
   font-family: monospace;
   font-size: 40px;
   margin: 10% auto 10px;
@@ -27,10 +30,9 @@
   overflow: hidden;
 }
 
-.present__btn {
-  border: solid 2px #844eb8;
+.home__btn {
+  border: solid 2px #151513;
   background-color: white;
-  font-size: 18px;
   margin: 8% auto;
   border-radius: 20px;
   width: 200px;
@@ -39,7 +41,19 @@
   transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
-.present__btn:hover {
-  color: #0255e5;
+.home__btn:hover {
+  background-color: #151513;
+  border: none;
+}
+.home__btn-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #333333;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out, 0.2s ease-in-out;
+}
+
+.home__btn-link:hover {
+  color: white;
   font-size: 20px;
 }

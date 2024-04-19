@@ -11,64 +11,38 @@ import Card from "../card/Card";
 import LandingPage from "../landingPage/LandingPage";
 import Register from "../register/Register";
 import Login from "../login/Login";
-import Main from "../main/Main";
+import Home from "../home/Home";
+import Portfolios from "../portfolios/Portfolios";
 
 function App() {
-  const headerComponent = (
-    <Header>
-      <NavBar />
-    </Header>
-  );
-
   return (
-    <div className="page">
+    <main className="page">
+      <Header>
+        <NavBar />
+      </Header>
       <Routes>
-        <Route
-          path="/signup"
-          element={
-            <>
-              {headerComponent}
-              <Register />
-            </>
-          }
-        />
+        <Route path="/signup" element={<Register />} />
 
-        <Route
-          path="/signin"
-          element={
-            <>
-              {headerComponent} <Login />
-            </>
-          }
-        />
+        <Route path="/signin" element={<Login />} />
 
-        <Route
-          path="/home"
-          element={
-            <>
-              {headerComponent} <Main />
-            </>
-          }
-        />
+        <Route path="/home" element={<Home />} />
+        <Route path="/portfolios" element={<Portfolios />} />
 
         <Route
           path="/"
           element={
-            <>
-              {headerComponent}
-              <LandingPage>
-                <Card className="card" />
-                <Card className="card" />
-                <Card className="card" />
-                <Card className="card" />
-                <Card className="card" />
-                <Card className="card" />
-              </LandingPage>
-            </>
+            <LandingPage>
+              <Card className="card" />
+              <Card className="card" />
+              <Card className="card" />
+              <Card className="card" />
+              <Card className="card" />
+              <Card className="card" />
+            </LandingPage>
           }
         />
       </Routes>
-    </div>
+    </main>
   );
 }
 

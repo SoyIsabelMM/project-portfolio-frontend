@@ -3,6 +3,8 @@
   height: 450px;
   border-radius: 30px;
   background-color: white;
+  border: #151513 solid 2px;
+  margin-top: 10%;
 }
 
 .form__title {
@@ -30,6 +32,10 @@
   border: 1px solid #cfcfcf;
 }
 
+.form__input {
+  outline: none;
+}
+
 .form__btn-container {
   display: flex;
   flex-direction: column;
@@ -38,10 +44,10 @@
 
 .form__btn {
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 28px;
   background-color: white;
-  border: solid 2px #844eb4;
+  border: solid 2px #151513;
   border-radius: 20px;
   width: 120px;
   height: 40px;
