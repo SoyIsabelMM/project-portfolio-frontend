@@ -12,8 +12,8 @@ function NavBar() {
           </Link>
         </li>
         <li className="nav-bar__options">
-          <Link className="nav-bar__ref" to="/portfolio">
-            Portafolio
+          <Link className="nav-bar__ref" to="/portfolios">
+            Portafolios
           </Link>
         </li>
         <li className="nav-bar__options">

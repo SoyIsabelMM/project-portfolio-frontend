@@ -25,11 +25,15 @@
 
 .landing-page__search {
   padding-left: 60px;
-  border: 1px solid #ccc;
+  border: 1px solid #151513;
   border-radius: 20px;
   height: 40px;
   width: 500px;
   margin-top: 10%;
+}
+
+.landing-page__search:focus {
+  outline: none;
 }
 
 .landing-page__search::placeholder {
@@ -41,7 +45,8 @@
   height: 45px;
   width: 90px;
   border-radius: 20px;
-  border: solid 2px #844eb4;
+  border: solid 2px #151513;
+  font-weight: 600;
   cursor: pointer;
   background-color: white;
   transition: all 0.15s ease-in-out;
@@ -50,7 +55,9 @@
 
 .landing-page__btn:hover {
   font-size: 20px;
-  color: #0255e5;
+  color: white;
+  background-color: #151513;
+  border: none;
 }
 
 .landing-page__cards {

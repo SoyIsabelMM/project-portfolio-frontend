@@ -5,6 +5,7 @@
   width: 300px;
   height: 400px;
   background-color: white;
+  border: #85847c solid 1px;
   border-radius: 20px;
   transition: all 0.15s ease-in-out;
 }
@@ -60,7 +61,7 @@
 .card__list-item:hover {
   color: white;
   font-weight: 600;
-  background-color: #9064da;
+  background-color: #6b6a61;
   border-radius: 10px;
   opacity: 40%;
   padding: 10px;
@@ -79,15 +80,13 @@
   height: 40px;
   width: 100px;
   transition: all 0.15s ease-in-out;
-  background: linear-gradient(
-    90deg,
-    #9064da 0%,
-    #2171e0 49.37%,
-    #844eb4 101.93%
-  );
-  background-size: 300% 100%;
+  background-color: #151513;
+  font-weight: 600;
 }
 
 .card__btn:hover {
   font-size: 18px;
+  color: #151513;
+  background-color: white;
+  border: #151513 solid 2px;
 }

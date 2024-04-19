@@ -1,14 +1,15 @@
 import React from "react";
-import "./Present.css";
+import "./Home.css";
 import banner from "../../images/avatar-default.png";
 import Typewriter from "typewriter-effect";
+import { Link } from "react-router-dom";
 
-function Present() {
+function Home() {
   return (
-    <section className="present">
-      <div className="present__content">
-        <img className="present__banner" src={banner} alt="banner portada" />
-        <div className="present__name-user">
+    <section className="home">
+      <div className="home__content">
+        <img className="home__banner" src={banner} alt="banner portada" />
+        <div className="home__name-user">
           {
             <Typewriter
               onInit={(typewriter) => {
@@ -22,10 +23,16 @@ function Present() {
             />
           }
         </div>
-        <button className="present__btn"> Ver mis proyectos </button>
+
+        <button className="home__btn">
+          {" "}
+          <Link className="home__btn-link" to={"/portfolios"}>
+            Ver mis proyectos
+          </Link>{" "}
+        </button>
       </div>
     </section>
   );
 }
 
-export default Present;
+export default Home;

@@ -1,6 +1,6 @@
 .nav-bar {
   text-decoration: none;
-  width: 620px;
+  width: 650px;
 }
 
 .nav-bar__list {
@@ -33,7 +33,7 @@
 
 .nav-bar__ref:hover {
   color: white;
-  background-color: #0255e5;
+  background-color: #a8a7a0;
   opacity: 50%;
 }
 
