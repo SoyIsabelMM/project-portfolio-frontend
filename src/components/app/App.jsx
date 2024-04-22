@@ -7,12 +7,12 @@ import "./App.css";
 // componentes
 import Header from "../header/Header";
 import NavBar from "../navBar/NavBar";
-import Card from "../card/Card";
 import LandingPage from "../landingPage/LandingPage";
 import Register from "../register/Register";
 import Login from "../login/Login";
 import Home from "../home/Home";
 import Portfolios from "../portfolios/Portfolios";
+import ProfileCard from "../profileCard/ProfileCard";
 
 function App() {
   return (
@@ -32,12 +32,12 @@ function App() {
           path="/"
           element={
             <LandingPage>
-              <Card className="card" />
-              <Card className="card" />
-              <Card className="card" />
-              <Card className="card" />
-              <Card className="card" />
-              <Card className="card" />
+              <ProfileCard className="profile-card" />
+              <ProfileCard className="profile-card" />
+              <ProfileCard className="profile-card" />
+              <ProfileCard className="profile-card" />
+              <ProfileCard className="profile-card" />
+              <ProfileCard className="profile-card" />
             </LandingPage>
           }
         />
