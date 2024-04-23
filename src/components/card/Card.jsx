@@ -15,16 +15,25 @@ function Card({
   numberLike,
 }) {
   const [islike, setIsLike] = useState(false);
-
-  const menu = (
-    <FontAwesomeIcon className="card__menu" icon={faEllipsisVertical} />
-  );
+  const [showShare, setShowShare] = useState(false);
 
   const likeIcon = islike ? faHeart : farHeart;
 
   const toggleLike = () => {
     setIsLike(!islike);
   };
+
+  const toggleShare = () => {
+    setShowShare(!showShare);
+  };
+
+  const menu = (
+    <FontAwesomeIcon
+      className="card__menu"
+      onClick={toggleShare}
+      icon={faEllipsisVertical}
+    />
+  );
 
   return (
     <div className={className} key={key}>
@@ -34,8 +43,12 @@ function Card({
         <div className="card__content-menu">
           <h2 className="card__name">{userName}</h2>
           {menu}
-          <div className="card__modal-menu">
-            <p className="card__modal-share">Compartir</p>
+          <div
+            className={`card__btn-share ${
+              showShare ? "" : "card__btn-share_close"
+            }`}
+          >
+            <p className="card__share-title">Compartir</p>
           </div>
         </div>
 
