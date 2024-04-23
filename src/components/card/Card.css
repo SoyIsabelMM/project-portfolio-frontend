@@ -25,6 +25,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  position: relative;
 }
 
 .card__name {
@@ -41,14 +42,32 @@
   opacity: 50%;
 }
 
-.card__modal-menu {
+.card__btn-share {
   width: 100px;
-  height: 40px;
+  height: 35px;
+  border-radius: 10px;
   background-color: #85847c;
+  position: absolute;
+  left: 190px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
 }
 
-.card__modal-menu_close {
+.card__btn-share:hover {
+  background-color: black;
+}
+
+.card__btn-share_close {
   display: none;
+}
+
+.card__share-title {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 10px;
 }
 
 .card__title {
