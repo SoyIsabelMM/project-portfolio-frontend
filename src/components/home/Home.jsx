@@ -24,6 +24,21 @@ function Home() {
           }
         </div>
 
+        <div className="home__history">
+          <p className="home__history-description">
+            El arte es un lenguaje universal que trasciende barreras culturales
+            y lingüísticas, y tiene el poder de emocionar, inspirar y
+            transformar a quienes lo experimentan. Siglos y siglos de historia
+            demuestran que las obras de arte son parte de la crónica de la
+            evolución de la humanidad. Transmite reflexiones, momentos
+            históricos, así como sentimientos y sensaciones. El arte es
+            comunicación y permite que personas de diferentes culturas y épocas
+            confluyan entre sí a través de imágenes, sonidos e historias. El
+            arte es también un catalizador de emociones y un activador del
+            pensamiento.
+          </p>
+        </div>
+
         <button className="home__btn">
           {" "}
           <Link className="home__btn-link" to={"/portfolios"}>

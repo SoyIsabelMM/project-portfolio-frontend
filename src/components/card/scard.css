@@ -24,6 +24,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .card__name {
@@ -38,6 +39,16 @@
 
 .card__menu:hover {
   opacity: 50%;
+}
+
+.card__modal-menu {
+  width: 100px;
+  height: 40px;
+  background-color: #85847c;
+}
+
+.card__modal-menu_close {
+  display: none;
 }
 
 .card__title {
