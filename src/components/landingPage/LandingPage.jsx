@@ -2,7 +2,7 @@ import React from "react";
 import "./LandingPage.css";
 import icon from "../../images/logo-miniatura.png";
 
-function LandingPage({ children }) {
+function LandingPage({ children, onClick }) {
   return (
     <section className="landing-page">
       <div className="landing-page__search-box">
@@ -19,6 +19,9 @@ function LandingPage({ children }) {
         <button className="landing-page__btn">Buscar</button>
       </div>
       <div className="landing-page__cards">{children}</div>
+      <button className="landing-page__btn-see" onClick={onClick}>
+        Ver más perfiles
+      </button>
     </section>
   );
 }
