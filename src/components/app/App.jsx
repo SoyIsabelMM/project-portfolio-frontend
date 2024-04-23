@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import data from "../../utils/data.json";
 //archivo css con normalizer y el fonts
 import "../../index.css";
 import "./App.css";
@@ -15,6 +16,24 @@ import Portfolios from "../portfolios/Portfolios";
 import ProfileCard from "../profileCard/ProfileCard";
 
 function App() {
+  const [limit, setLimit] = useState(3);
+
+  const renderData = data
+    .slice(0, limit)
+    .map((data, key) => (
+      <ProfileCard
+        key={key}
+        userName={data.userName}
+        image={data.image}
+        alt={data.alt}
+        className="profile-card"
+      />
+    ));
+
+  const handleSeeMore = () => {
+    setLimit(limit + 3);
+  };
+
   return (
     <main className="page">
       <Header>
@@ -31,14 +50,7 @@ function App() {
         <Route
           path="/"
           element={
-            <LandingPage>
-              <ProfileCard className="profile-card" />
-              <ProfileCard className="profile-card" />
-              <ProfileCard className="profile-card" />
-              <ProfileCard className="profile-card" />
-              <ProfileCard className="profile-card" />
-              <ProfileCard className="profile-card" />
-            </LandingPage>
+            <LandingPage onClick={handleSeeMore}>{renderData}</LandingPage>
           }
         />
       </Routes>

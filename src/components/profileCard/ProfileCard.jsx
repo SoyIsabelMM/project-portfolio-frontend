@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProfileCard.css";
-import avatarDefault from "../../images/avatar-default.png";
 import { useNavigate } from "react-router-dom";
 
 function ProfileCard({ image, alt, userName, description, className }) {
@@ -9,13 +8,13 @@ function ProfileCard({ image, alt, userName, description, className }) {
   const onNavigate = () => {
     navigate("/home");
   };
+
   return (
     <div className={className}>
-      <img className="profile-card__image" src={avatarDefault} alt={alt} />
+      <img className="profile-card__image" src={image} alt={alt} />
 
       <div className="profile-card__container">
-        <h3 className="card__title">{userName}</h3>
-
+        <h3 className="profile-card__title">{userName}</h3>
         <div className="profile-card__description">
           <ul className="profile-card__list">
             <li className="profile-card__list-item">Youtuber</li>
