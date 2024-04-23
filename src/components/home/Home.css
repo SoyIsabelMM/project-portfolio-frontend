@@ -30,6 +30,25 @@
   overflow: hidden;
 }
 
+.home__history {
+  background-color: black;
+  opacity: 50%;
+  width: 880px;
+  border-radius: 20px;
+  margin-top: 5%;
+}
+
+.home__history-description {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: justify;
+  color: white;
+  width: 750px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
 .home__btn {
   border: solid 2px #151513;
   background-color: white;

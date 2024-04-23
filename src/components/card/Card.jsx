@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./card.css";
+import "./scard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
@@ -34,6 +34,9 @@ function Card({
         <div className="card__content-menu">
           <h2 className="card__name">{userName}</h2>
           {menu}
+          <div className="card__modal-menu">
+            <p className="card__modal-share">Compartir</p>
+          </div>
         </div>
 
         <h3 className="card__title">{title}</h3>
