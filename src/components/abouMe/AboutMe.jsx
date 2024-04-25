@@ -33,7 +33,7 @@ function AboutMe({ alt }) {
         return (
           <React.Fragment key={image.id}>
             <img
-              className="about-me__image-phrases"
+              className="about-me__phrases-image"
               src={image.src.medium}
               alt={image.photographer}
             />
@@ -45,7 +45,7 @@ function AboutMe({ alt }) {
           <React.Fragment key={image.id}>
             {paragraph}
             <img
-              className="about-me__image-phrases"
+              className="about-me__phrases-image"
               src={image.src.medium}
               alt={image.photographer}
             />
