@@ -1,11 +1,12 @@
 .home {
   background-color: inherit;
   margin: 0 auto;
-  width: 900px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .home__content {
-  width: 880px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -14,17 +15,16 @@
 
 .home__banner {
   object-fit: cover;
-  width: 900px;
-  height: 500px;
-  border: #151513 solid 2px;
+  width: 80vw;
+  height: 600px;
   border-radius: 20px;
-  margin: 20% auto 0;
+  margin: 10% auto 0;
 }
 
 .home__name-user {
   font-family: monospace;
   font-size: 40px;
-  margin: 10% auto 10px;
+  margin: 8% auto 10px;
   white-space: nowrap;
 
   overflow: hidden;
@@ -32,19 +32,20 @@
 
 .home__history {
   background-color: black;
-  opacity: 50%;
-  width: 880px;
-  border-radius: 20px;
+  width: 100vw;
+  height: 40vh;
   margin-top: 5%;
+  display: flex;
+  align-items: center;
 }
 
 .home__history-description {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5rem;
   text-align: justify;
   color: white;
-  width: 750px;
+  width: 80%;
   margin: 0 auto;
   padding: 25px;
 }
@@ -55,7 +56,7 @@
   margin: 8% auto;
   border-radius: 20px;
   width: 200px;
-  height: 60px;
+  height: 70px;
   cursor: pointer;
   transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
