@@ -7,8 +7,8 @@ function NavBar() {
     <div className="nav-bar">
       <ul className="nav-bar__list">
         <li className="nav-bar__options">
-          <Link className="nav-bar__ref" to="/home">
-            Inicio
+          <Link className="nav-bar__ref" to="/profile">
+            Perfil
           </Link>
         </li>
         <li className="nav-bar__options">

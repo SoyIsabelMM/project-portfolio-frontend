@@ -1,4 +1,4 @@
-.home {
+.profile {
   background-color: inherit;
   margin: 0 auto;
   display: flex;
@@ -6,14 +6,14 @@
   flex-direction: column;
 }
 
-.home__content {
+.profile__content {
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.home__banner {
+.profile__banner {
   object-fit: cover;
   width: 80vw;
   height: 600px;
@@ -21,7 +21,7 @@
   margin: 10% auto 0;
 }
 
-.home__name-user {
+.profile__name-user {
   font-family: monospace;
   font-size: 40px;
   margin: 8% auto 10px;
@@ -30,7 +30,7 @@
   overflow: hidden;
 }
 
-.home__history {
+.profile__history {
   background-color: black;
   width: 100vw;
   height: 40vh;
@@ -39,7 +39,7 @@
   align-items: center;
 }
 
-.home__history-description {
+.profile__history-description {
   font-size: 20px;
   font-weight: 300;
   line-height: 1.5rem;
@@ -50,7 +50,7 @@
   padding: 25px;
 }
 
-.home__btn {
+.profile__btn {
   border: solid 2px #151513;
   background-color: white;
   margin: 8% auto;
@@ -61,11 +61,11 @@
   transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
-.home__btn:hover {
+.profile__btn:hover {
   background-color: #151513;
   border: none;
 }
-.home__btn-link {
+.profile__btn-link {
   text-decoration: none;
   font-weight: 600;
   color: #333333;
@@ -73,7 +73,7 @@
   transition: color 0.3s ease-in-out, 0.2s ease-in-out;
 }
 
-.home__btn-link:hover {
+.profile__btn-link:hover {
   color: white;
   font-size: 20px;
 }

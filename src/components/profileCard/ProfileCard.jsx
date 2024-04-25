@@ -6,7 +6,7 @@ function ProfileCard({ image, alt, userName, description, className }) {
   const navigate = useNavigate();
 
   const onNavigate = () => {
-    navigate("/home");
+    navigate("/profile");
   };
 
   return (
