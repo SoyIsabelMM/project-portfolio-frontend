@@ -17,7 +17,7 @@ function NavBar() {
           </Link>
         </li>
         <li className="nav-bar__options">
-          <Link className="nav-bar__ref" to="/about-us">
+          <Link className="nav-bar__ref" to="/about-me">
             Acerca de
           </Link>
         </li>

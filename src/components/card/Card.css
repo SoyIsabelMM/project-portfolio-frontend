@@ -29,8 +29,8 @@
 }
 
 .card__name {
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 200;
 }
 
 .card__menu {
@@ -46,7 +46,7 @@
   width: 100px;
   height: 35px;
   border-radius: 10px;
-  background-color: #85847c;
+  background-color: black;
   position: absolute;
   left: 190px;
   transition: all 0.15s ease-in-out;
@@ -54,7 +54,7 @@
 }
 
 .card__btn-share:hover {
-  background-color: black;
+  background-color: #85847c;
 }
 
 .card__btn-share_close {
@@ -85,7 +85,7 @@
 
 .card__description {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 200;
   margin-bottom: 0;
 }
 
@@ -111,8 +111,8 @@
 }
 
 .card__item {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 200;
   margin-left: 20px;
 }
 
@@ -121,8 +121,8 @@
 }
 
 .card__like-number {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 200;
   margin-left: 20px;
 }
 

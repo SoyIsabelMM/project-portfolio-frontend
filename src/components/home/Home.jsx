@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import banner from "../../images/avatar-default.png";
 import Typewriter from "typewriter-effect";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,11 @@ function Home() {
   return (
     <section className="home">
       <div className="home__content">
-        <img className="home__banner" src={banner} alt="banner portada" />
+        <img
+          className="home__banner"
+          src="https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg"
+          alt="banner portada"
+        />
         <div className="home__name-user">
           {
             <Typewriter

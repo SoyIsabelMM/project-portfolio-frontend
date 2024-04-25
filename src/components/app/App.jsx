@@ -14,6 +14,7 @@ import Login from "../login/Login";
 import Home from "../home/Home";
 import Portfolios from "../portfolios/Portfolios";
 import ProfileCard from "../profileCard/ProfileCard";
+import AboutMe from "../abouMe/AboutMe";
 
 function App() {
   const [limit, setLimit] = useState(3);
@@ -35,26 +36,29 @@ function App() {
   };
 
   return (
-    <main className="page">
+    <>
       <Header>
         <NavBar />
       </Header>
-      <Routes>
-        <Route path="/signup" element={<Register />} />
+      <main className="page">
+        <Routes>
+          <Route path="/signup" element={<Register />} />
 
-        <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Login />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/portfolios" element={<Portfolios />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/portfolios" element={<Portfolios />} />
+          <Route path="/about-me" element={<AboutMe />} />
 
-        <Route
-          path="/"
-          element={
-            <LandingPage onClick={handleSeeMore}>{renderData}</LandingPage>
-          }
-        />
-      </Routes>
-    </main>
+          <Route
+            path="/"
+            element={
+              <LandingPage onClick={handleSeeMore}>{renderData}</LandingPage>
+            }
+          />
+        </Routes>
+      </main>
+    </>
   );
 }
 
