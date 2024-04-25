@@ -11,10 +11,10 @@ import NavBar from "../navBar/NavBar";
 import LandingPage from "../landingPage/LandingPage";
 import Register from "../register/Register";
 import Login from "../login/Login";
-import Home from "../home/Home";
 import Portfolios from "../portfolios/Portfolios";
 import ProfileCard from "../profileCard/ProfileCard";
 import AboutMe from "../abouMe/AboutMe";
+import Profile from "../profile/Profile";
 
 function App() {
   const [limit, setLimit] = useState(3);
@@ -46,7 +46,7 @@ function App() {
 
           <Route path="/signin" element={<Login />} />
 
-          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/portfolios" element={<Portfolios />} />
           <Route path="/about-me" element={<AboutMe />} />
 
