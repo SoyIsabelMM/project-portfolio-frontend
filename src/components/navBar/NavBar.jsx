@@ -1,0 +1,39 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.css";
+
+function NavBar() {
+  return (
+    <div className="nav-bar">
+      <ul className="nav-bar__list">
+        <li className="nav-bar__options">
+          <Link className="nav-bar__ref" to="/profile">
+            Perfil
+          </Link>
+        </li>
+        <li className="nav-bar__options">
+          <Link className="nav-bar__ref" to="/portfolios">
+            Portafolios
+          </Link>
+        </li>
+        <li className="nav-bar__options">
+          <Link className="nav-bar__ref" to="/about-me">
+            Acerca de
+          </Link>
+        </li>
+        <li className="nav-bar__options">
+          <Link className="nav-bar__ref" to="/services">
+            Servicios
+          </Link>
+        </li>
+        <li className="nav-bar__options">
+          <Link className="nav-bar__ref" to="/contact">
+            Contacto
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+export default NavBar;

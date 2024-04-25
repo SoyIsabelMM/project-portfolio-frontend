@@ -1,0 +1,42 @@
+.portfolios {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.portfolios__title {
+  margin-top: 10%;
+  font-size: 70px;
+  font-weight: 600;
+  color: black;
+}
+
+.portfolios__content {
+  display: flex;
+  width: 1200px;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+  grid-gap: 30px;
+  justify-items: center;
+}
+
+.portfolios__btn {
+  border-radius: 20px;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: black;
+  border: solid black 2px;
+  color: white;
+  margin: 5% auto 20px;
+}
+
+.portfolios__btn:hover {
+  background-color: white;
+  color: black;
+}

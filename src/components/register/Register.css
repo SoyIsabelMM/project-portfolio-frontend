@@ -1,0 +1,23 @@
+.register {
+  margin: 50px auto 20px;
+  width: 900;
+}
+
+.register__container {
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.register_paragraph {
+  margin: 0 auto 0;
+  width: 280px;
+  font-size: 15px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.register__link {
+  text-decoration: none;
+  color: inherit;
+}
