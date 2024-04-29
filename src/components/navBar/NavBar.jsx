@@ -22,11 +22,6 @@ function NavBar() {
           </Link>
         </li>
         <li className="nav-bar__options">
-          <Link className="nav-bar__ref" to="/services">
-            Servicios
-          </Link>
-        </li>
-        <li className="nav-bar__options">
           <Link className="nav-bar__ref" to="/contact">
             Contacto
           </Link>
