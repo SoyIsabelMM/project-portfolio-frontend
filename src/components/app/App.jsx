@@ -15,6 +15,7 @@ import Portfolios from "../portfolios/Portfolios";
 import ProfileCard from "../profileCard/ProfileCard";
 import AboutMe from "../abouMe/AboutMe";
 import Profile from "../profile/Profile";
+import Services from "../contact/Contact";
 
 function App() {
   const [limit, setLimit] = useState(3);
@@ -49,6 +50,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/portfolios" element={<Portfolios />} />
           <Route path="/about-me" element={<AboutMe />} />
+          <Route path="/contact" element={<Services />} />
 
           <Route
             path="/"

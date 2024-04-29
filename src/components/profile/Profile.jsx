@@ -41,13 +41,12 @@ function Profile() {
             pensamiento.
           </p>
         </div>
-
-        <button className="profile__btn">
-          {" "}
-          <Link className="profile__btn-link" to={"/portfolios"}>
-            Ver mis proyectos
-          </Link>{" "}
-        </button>
+        <Link to={"/portfolios"}>
+          <button className="profile__btn">
+            {" "}
+            <p className="profile__btn-link">Ver mis proyectos</p>{" "}
+          </button>
+        </Link>
       </div>
     </section>
   );
