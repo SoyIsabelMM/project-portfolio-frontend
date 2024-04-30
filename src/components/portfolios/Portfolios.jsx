@@ -8,9 +8,9 @@ function Portfolios() {
 
   const renderPortfolios = data
     .slice(0, limit)
-    .map((data, index) => (
+    .map((data) => (
       <Card
-        key={index}
+        key={data.id}
         userName={data.userName}
         image={data.image}
         alt={data.alt}
