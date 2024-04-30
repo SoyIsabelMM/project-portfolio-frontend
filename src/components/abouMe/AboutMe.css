@@ -3,7 +3,6 @@
   align-items: center;
   flex-direction: column;
   background-color: inherit;
-  width: 100vw;
 }
 
 .about-me__banner-container {
@@ -11,14 +10,14 @@
   display: flex;
   justify-content: center;
   position: relative;
-  width: 100vw;
+  width: 100%;
 }
 
 .about-me__banner {
   object-fit: cover;
   margin: 0 auto;
   width: 100%;
-  height: 900px;
+  height: 850px;
   padding: 0;
   filter: sepia(50%);
 }
@@ -54,14 +53,13 @@
 }
 
 .about-me__render-images {
-  width: 90%;
+  width: 70%;
   margin: 5% 0;
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .about-me__wrapper {
@@ -117,6 +115,7 @@
 .about-me__container-phrases {
   width: 950px;
   margin-top: 5%;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;

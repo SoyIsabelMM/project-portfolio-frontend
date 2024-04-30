@@ -1,6 +1,6 @@
 [
   {
-    "key": "1",
+    "id": "1",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 1",
@@ -10,7 +10,7 @@
     "like": "3"
   },
   {
-    "key": "2",
+    "id": "2",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 2",
@@ -20,7 +20,7 @@
     "like": "2"
   },
   {
-    "key": "3",
+    "id": "3",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 3",
@@ -30,7 +30,7 @@
     "like": "0"
   },
   {
-    "key": "4",
+    "id": "4",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 4 ",
@@ -40,7 +40,7 @@
     "like": "10"
   },
   {
-    "key": "5",
+    "id": "5",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 5 ",
@@ -50,7 +50,7 @@
     "like": "20"
   },
   {
-    "key": "6",
+    "id": "6",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 6 ",
@@ -60,7 +60,7 @@
     "like": "1"
   },
   {
-    "key": "7",
+    "id": "7",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 7 ",
@@ -70,7 +70,7 @@
     "like": "6"
   },
   {
-    "key": "8",
+    "id": "8",
     "image": "https://s1.elespanol.com/2023/03/10/curiosidades/mascotas/747436034_231551832_1706x1280.jpg",
     "alt": "alt",
     "userName": "Test 8",

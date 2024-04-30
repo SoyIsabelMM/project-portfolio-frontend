@@ -32,7 +32,6 @@
 
 .profile__history {
   background-color: black;
-  width: 100vw;
   height: 40vh;
   margin-top: 5%;
   display: flex;
@@ -53,7 +52,7 @@
 .profile__btn {
   border: solid 2px #151513;
   background-color: white;
-  margin: 8% auto;
+  margin: 30% 0;
   border-radius: 20px;
   width: 200px;
   height: 70px;
