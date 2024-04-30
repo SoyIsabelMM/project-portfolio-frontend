@@ -5,7 +5,7 @@ import { faEllipsisVertical, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 function Card({
-  key,
+  id,
   image,
   alt,
   description,
@@ -36,7 +36,7 @@ function Card({
   );
 
   return (
-    <div className={className} key={key}>
+    <div className={className} key={id}>
       <img className="card__image" src={image} alt={alt} />
 
       <div className="card__container">

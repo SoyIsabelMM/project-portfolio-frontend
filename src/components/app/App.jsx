@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import data from "../../utils/data.json";
 //archivo css con normalizer y el fonts
 import "../../index.css";
@@ -15,11 +15,12 @@ import Portfolios from "../portfolios/Portfolios";
 import ProfileCard from "../profileCard/ProfileCard";
 import AboutMe from "../abouMe/AboutMe";
 import Profile from "../profile/Profile";
-import Services from "../contact/Contact";
 import Footer from "../footer/Footer";
+import Contact from "../contact/Contact";
 
 function App() {
   const [limit, setLimit] = useState(3);
+  const location = useLocation();
 
   const renderData = data
     .slice(0, limit)
@@ -37,6 +38,8 @@ function App() {
     setLimit(limit + 3);
   };
 
+  const shouldRenderFooter = location.pathname !== "/contact";
+
   return (
     <>
       <Header>
@@ -51,7 +54,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/portfolios" element={<Portfolios />} />
           <Route path="/about-me" element={<AboutMe />} />
-          <Route path="/contact" element={<Services />} />
+
+          <Route path="/contact" element={<Contact />} />
 
           <Route
             path="/"
@@ -61,7 +65,7 @@ function App() {
           />
         </Routes>
       </main>
-      <Footer />
+      {shouldRenderFooter && <Footer />}
     </>
   );
 }
