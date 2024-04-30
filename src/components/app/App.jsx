@@ -16,6 +16,7 @@ import ProfileCard from "../profileCard/ProfileCard";
 import AboutMe from "../abouMe/AboutMe";
 import Profile from "../profile/Profile";
 import Services from "../contact/Contact";
+import Footer from "../footer/Footer";
 
 function App() {
   const [limit, setLimit] = useState(3);
@@ -60,6 +61,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer />
     </>
   );
 }

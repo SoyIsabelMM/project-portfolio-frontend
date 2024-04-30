@@ -1,12 +1,8 @@
 .register {
-  margin: 50px auto 20px;
-  width: 900;
-}
-
-.register__container {
-  background-color: inherit;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .register_paragraph {
