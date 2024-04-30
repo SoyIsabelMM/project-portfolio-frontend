@@ -1,0 +1,108 @@
+.contact {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+  width: 100vw;
+}
+
+.contact_position {
+  transform-style: preserve-3d;
+  position: relative;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__no-parallax {
+  background-color: black;
+  z-index: 999;
+}
+
+.contact__no-parallax_height {
+  height: 70%;
+}
+
+.contact__text {
+  color: white;
+  text-align: center;
+  font-size: 6rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.contact__parallax .contact__text {
+  width: 60%;
+  font-size: 3rem;
+}
+
+.contact__parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+  width: 100vw;
+}
+
+.contact__parallax_bg::after {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg");
+  background-size: cover;
+}
+
+.contact__social-container {
+  width: 880px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact__social-text {
+  color: white;
+  width: 60%;
+  margin: 0;
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 8%;
+}
+
+.contact__social-networks {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: #c13584;
+}
+
+.contact__social-icon {
+  color: #f5f5f5;
+  width: 150px;
+  height: 150px;
+  padding: 25px;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
+}
+
+.contact__social-icon:hover {
+  width: 190px;
+  height: 190px;
+  padding: 5px;
+}
+
+/* @media screen and (min-width: 768px) {
+  .contact__position .contact__text {
+    font-size: 8rem;
+  }
+
+  .contact__parallax .contact__text {
+    font-size: 4rem;
+  }
+} */

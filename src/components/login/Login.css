@@ -1,0 +1,19 @@
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_paragraph {
+  margin: 0 auto 0;
+  width: 280px;
+  font-size: 15px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.login__link {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,146 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 550px;
+  border: solid 1px #85847c;
+}
+
+.card__container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.card__image {
+  border-bottom: solid 1px #85847c;
+  width: 350px;
+  height: 290px;
+}
+
+.card__content-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+}
+
+.card__name {
+  font-size: 13px;
+  font-weight: 200;
+}
+
+.card__menu {
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.card__menu:hover {
+  opacity: 50%;
+}
+
+.card__btn-share {
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: black;
+  position: absolute;
+  left: 190px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.card__btn-share:hover {
+  background-color: #85847c;
+}
+
+.card__btn-share_close {
+  display: none;
+}
+
+.card__share-title {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 10px;
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5rem;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  margin: 0;
+}
+
+.card__title:hover {
+  opacity: 50%;
+}
+
+.card__description {
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+.card__divider {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+
+.card__emotion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card__list {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.card__item {
+  font-size: 13px;
+  font-weight: 200;
+  margin-left: 20px;
+}
+
+.card__item:first-child {
+  margin-left: 0;
+}
+
+.card__like-number {
+  font-size: 13px;
+  font-weight: 200;
+  margin-left: 20px;
+}
+
+.card__like {
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.card__like:hover {
+  opacity: 50%;
+}
+
+.card__like_active {
+  color: #f25a5a;
+}
+
+.card__like_active:hover {
+  opacity: 100%;
+}
