@@ -2,7 +2,7 @@ import React from "react";
 import "./ProfileCard.css";
 import { useNavigate } from "react-router-dom";
 
-function ProfileCard({ photo, onClick }) {
+function ProfileCard({ photo }) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
