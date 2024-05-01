@@ -2,30 +2,27 @@ import React from "react";
 import "./ProfileCard.css";
 import { useNavigate } from "react-router-dom";
 
-function ProfileCard({ image, alt, userName, description, className }) {
+function ProfileCard({ photo }) {
   const navigate = useNavigate();
 
-  const onNavigate = () => {
-    navigate("/profile");
+  const handleNavigate = () => {
+    navigate(`/profile/${photo.photographer_id}`);
   };
 
   return (
-    <div className={className}>
-      <img className="profile-card__image" src={image} alt={alt} />
+    <div className="profile-card">
+      <img
+        className="profile-card__image"
+        src={photo.src.medium}
+        alt={photo.alt}
+      />
 
       <div className="profile-card__container">
-        <h3 className="profile-card__title">{userName}</h3>
-        <div className="profile-card__description">
-          <ul className="profile-card__list">
-            <li className="profile-card__list-item">Youtuber</li>
-            <li className="profile-card__list-item">Fotografo</li>
-            <li className="profile-card__list-item">Analista</li>
-            <li className="profile-card__list-item">Modelo</li>
-          </ul>
-        </div>
+        <h3 className="profile-card__title">{photo.photographer}</h3>
+        <p className="profile-card__list-item">{photo.alt}</p>
       </div>
-      <button className="profile-card__btn" onClick={onNavigate}>
-        Ver más
+      <button className="profile-card__btn" onClick={handleNavigate}>
+        Ver perfil
       </button>
     </div>
   );

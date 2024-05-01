@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
-import data from "../../utils/data.json";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { getPhotos, searchPhotos } from "../../utils/pexelData";
 //archivo css con normalizer y el fonts
 import "../../index.css";
 import "./App.css";
@@ -19,26 +19,43 @@ import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
 
 function App() {
+  const [photos, setPhotos] = useState([]);
   const [limit, setLimit] = useState(3);
   const location = useLocation();
 
-  const renderData = data
-    .slice(0, limit)
-    .map((data, key) => (
-      <ProfileCard
-        key={key}
-        userName={data.userName}
-        image={data.image}
-        alt={data.alt}
-        className="profile-card"
-      />
-    ));
+  useEffect(() => {
+    getPhotos()
+      .then((data) => {
+        setPhotos(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching photos:", error);
+      });
+  }, []);
+
+  const handleSearch = async (query) => {
+    try {
+      const searchResult = await searchPhotos(query);
+      setPhotos(searchResult);
+    } catch (error) {
+      console.error("Error al buscar fotos:", error);
+    }
+  };
 
   const handleSeeMore = () => {
     setLimit(limit + 3);
   };
 
   const shouldRenderFooter = location.pathname !== "/contact";
+
+  const uniqueAuthors = {};
+  const filteredPhotos = photos.filter((photo) => {
+    if (!uniqueAuthors[photo.photographer]) {
+      uniqueAuthors[photo.photographer] = true;
+      return true;
+    }
+    return false;
+  });
 
   return (
     <>
@@ -60,7 +77,15 @@ function App() {
           <Route
             path="/"
             element={
-              <LandingPage onClick={handleSeeMore}>{renderData}</LandingPage>
+              <LandingPage onClick={handleSeeMore} onSearch={handleSearch}>
+                {filteredPhotos.slice(0, limit).map((photo, index) => (
+                  <ProfileCard
+                    key={index}
+                    photo={photo}
+                    onClick={handleSeeMore}
+                  />
+                ))}
+              </LandingPage>
             }
           />
         </Routes>
