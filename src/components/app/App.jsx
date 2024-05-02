@@ -48,6 +48,15 @@ function App() {
 
   const shouldRenderFooter = location.pathname !== "/contact";
 
+  const uniqueAuthors = {};
+  const filteredPhotos = photos.filter((photo) => {
+    if (!uniqueAuthors[photo.photographer]) {
+      uniqueAuthors[photo.photographer] = true;
+      return true;
+    }
+    return false;
+  });
+
   return (
     <>
       <Header>
@@ -69,7 +78,7 @@ function App() {
             path="/"
             element={
               <LandingPage onClick={handleSeeMore} onSearch={handleSearch}>
-                {photos.slice(0, limit).map((photo, index) => (
+                {filteredPhotos.slice(0, limit).map((photo, index) => (
                   <ProfileCard
                     key={index}
                     photo={photo}
