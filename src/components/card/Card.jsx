@@ -13,6 +13,7 @@ function Card({
   className,
   userName,
   numberLike,
+  onClick,
 }) {
   const [islike, setIsLike] = useState(false);
   const [showShare, setShowShare] = useState(false);
@@ -52,7 +53,9 @@ function Card({
           </div>
         </div>
 
-        <h3 className="card__title">{title}</h3>
+        <h3 onClick={onClick} className="card__title">
+          {title}
+        </h3>
         <p className="card__description">{description}</p>
         <div className="card__divider"></div>
         <div className="card__emotion">

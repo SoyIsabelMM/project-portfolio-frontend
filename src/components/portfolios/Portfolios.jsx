@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "./portfolios.css";
 import data from "../../utils/data.json";
 import Card from "../card/Card";
+import { useNavigate } from "react-router-dom";
 
 function Portfolios() {
   const [limit, setLimit] = useState(3);
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (evt) => {
+    navigate("/portfolio/:card");
+  };
 
   const renderPortfolios = data
     .slice(0, limit)
@@ -18,6 +25,7 @@ function Portfolios() {
         title={data.title}
         description={data.description}
         numberLike={data.like}
+        onClick={handleNavigate}
       />
     ));
 
