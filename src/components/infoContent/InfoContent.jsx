@@ -9,6 +9,7 @@ function InfoContent({
   fieldTwo,
   fieldThree,
   fieldFour,
+  placeholder,
 }) {
   return (
     <div className="info-content">
@@ -18,16 +19,28 @@ function InfoContent({
       </label>
       <label className="info-content__label">
         {fieldTwo}
-        <input className="info-content__input" type={type} />
+        <input
+          className="info-content__input"
+          placeholder={placeholder}
+          type={type}
+        />
       </label>
 
       <label className="info-content__label">
         {fieldThree}
-        <input className="info-content__input" type={type} />
+        <input
+          className="info-content__input"
+          placeholder={placeholder}
+          type={type}
+        />
       </label>
       <label className="info-content__label">
         {fieldFour}
-        <input className="info-content__input" type={typeTwo} />
+        <input
+          className="info-content__input"
+          placeholder={placeholder}
+          type={typeTwo}
+        />
       </label>
       {children}
     </div>

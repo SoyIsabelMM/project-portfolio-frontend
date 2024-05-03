@@ -30,11 +30,12 @@ function FormInfo() {
 
           <InfoContent
             type={"email"}
-            typeDate={"url"}
+            typeTwo={"url"}
             fieldOne={"Email"}
             fieldTwo={"Instagram"}
             fieldThree={"Facebook"}
             fieldFour={"Linkedin"}
+            placeholder={"url"}
           >
             <button className="form-info__btn">Guardar</button>
           </InfoContent>
