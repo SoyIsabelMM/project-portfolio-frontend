@@ -26,6 +26,11 @@ function NavBar() {
             Contacto
           </NavLink>
         </li>
+        <li className="nav-bar__options">
+          <NavLink className="nav-bar__ref" to="/edit-info">
+            Editar Perfil
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
