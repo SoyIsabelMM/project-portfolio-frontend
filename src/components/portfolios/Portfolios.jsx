@@ -9,8 +9,8 @@ function Portfolios() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = (evt) => {
-    navigate("/portfolio/:card");
+  const handleNavigate = () => {
+    navigate("/galery");
   };
 
   const renderPortfolios = data
@@ -37,9 +37,13 @@ function Portfolios() {
     <section className="portfolios">
       <h2 className="portfolios__title">Portafolios</h2>
       <div className="portfolios__content">{renderPortfolios}</div>
-      <button className="portfolios__btn" onClick={handleSeeMore}>
-        Ver más portafolios
-      </button>
+
+      <div className="portfolios__container-btn">
+        <button className="portfolios__btn" onClick={handleSeeMore}>
+          Ver más portafolios
+        </button>
+        <button className="portfolios__btn">Crear Portafolio</button>
+      </div>
     </section>
   );
 }
