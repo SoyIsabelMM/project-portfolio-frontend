@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./Gallery.css";
 
 function Gallery() {
@@ -24,6 +26,16 @@ function Gallery() {
     "https://picsum.photos/1500/1500",
   ];
 
+  const imgAction = (action) => {
+    let i = data.i;
+    if (action === "next-img" && i < images.length - 1) {
+      setData({ img: images[i + 1], i: i + 1 });
+    }
+    if (action === "previous-img") {
+      setData({ img: images[i - 1], i: i - 1 });
+    }
+  };
+
   useEffect(() => {
     return () => {
       setData({ img: "", i: 0 });
@@ -34,7 +46,21 @@ function Gallery() {
     <>
       {data.img && (
         <div className="gallery__modal" onClick={closeImage}>
-          <img className="gallery__modal-img" src={data.img} />
+          <div className="gallery__modal-box">
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className="gallery__arrow-icon"
+              onClick={() => imgAction("previous-img")}
+            />
+            <img className="gallery__modal-img" src={data.img} />
+            <FontAwesomeIcon
+              id="right"
+              icon={faArrowRight}
+              className="gallery__arrow-icon"
+              onClick={() => imgAction("next-img")}
+            />
+          </div>
+
           <button className="gallery__modal-close" onClick={closeImage}>
             Cerrar
           </button>

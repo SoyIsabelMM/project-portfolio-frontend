@@ -17,10 +17,31 @@
   overflow: hidden;
 }
 
+.gallery__modal-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
 .gallery__modal-img {
   width: auto;
   max-width: 50%;
   max-height: 60%;
+  object-fit: cover;
+}
+
+.gallery__arrow-icon {
+  color: #f5f0f0;
+  margin: 3%;
+  font-size: 40px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
+}
+
+.gallery__arrow-icon:hover {
+  opacity: 50%;
 }
 
 .gallery__modal-close {
@@ -31,7 +52,7 @@
   font-weight: 600;
   width: 130px;
   height: 40px;
-  margin: 4%;
+  margin-top: 0;
   cursor: pointer;
   transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
