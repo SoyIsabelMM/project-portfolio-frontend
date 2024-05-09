@@ -21,6 +21,14 @@
   justify-items: center;
 }
 
+.portfolios__container-btn {
+  margin: 5%;
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-evenly;
+}
+
 .portfolios__btn {
   border-radius: 20px;
   width: 200px;
@@ -38,4 +46,5 @@
 .portfolios__btn:hover {
   background-color: white;
   color: black;
+  font-size: 19px;
 }
