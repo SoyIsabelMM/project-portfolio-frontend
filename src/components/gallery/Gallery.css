@@ -1,0 +1,131 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery__modal {
+  width: 100%;
+  height: 100vh;
+  background: black;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.gallery__modal-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.gallery__modal-img {
+  width: auto;
+  max-width: 50%;
+  max-height: 60%;
+  object-fit: cover;
+}
+
+.gallery__arrow-icon {
+  color: #f5f0f0;
+  margin: 3%;
+  font-size: 40px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
+}
+
+.gallery__arrow-icon:hover {
+  opacity: 50%;
+}
+
+.gallery__modal-close {
+  background-color: white;
+  border: 0;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  width: 130px;
+  height: 40px;
+  margin-top: 0;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
+}
+
+.gallery__modal-close:hover {
+  font-size: 20px;
+}
+
+.gallery__title {
+  margin: 10% auto 3%;
+  font-size: 3rem;
+}
+
+.gallery__container {
+  width: 890px;
+  color: black;
+  margin-bottom: 4%;
+}
+
+.gallery__paragraph {
+  margin: 0 auto;
+  width: 80%;
+  font-size: 1rem;
+  font-weight: 200;
+  text-align: justify;
+}
+
+.gallery__content-preloader {
+  width: 400px;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.gallery__preloader {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  -webkit-animation: spin 0.7s linear infinite;
+  -moz-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.gallery__preloader-img {
+  width: 100%;
+}
+
+.gallery__content-image {
+  margin-top: 20px;
+  padding: 0 50px;
+}
+
+.gallery__image {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}

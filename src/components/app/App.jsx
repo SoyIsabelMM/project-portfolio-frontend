@@ -17,6 +17,8 @@ import AboutMe from "../abouMe/AboutMe";
 import Profile from "../profile/Profile";
 import Footer from "../footer/Footer";
 import Contact from "../contact/Contact";
+import FormInfo from "../formInfo/FormInfo";
+import Gallery from "../gallery/Gallery";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -73,6 +75,8 @@ function App() {
           <Route path="/about-me" element={<AboutMe />} />
 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/edit-info" element={<FormInfo />} />
+          <Route path="/galery" element={<Gallery />} />
 
           <Route
             path="/"

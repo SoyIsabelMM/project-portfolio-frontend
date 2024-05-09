@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "./portfolios.css";
 import data from "../../utils/data.json";
 import Card from "../card/Card";
+import { useNavigate } from "react-router-dom";
 
 function Portfolios() {
   const [limit, setLimit] = useState(3);
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/galery");
+  };
 
   const renderPortfolios = data
     .slice(0, limit)
@@ -18,6 +25,7 @@ function Portfolios() {
         title={data.title}
         description={data.description}
         numberLike={data.like}
+        onClick={handleNavigate}
       />
     ));
 
@@ -29,9 +37,13 @@ function Portfolios() {
     <section className="portfolios">
       <h2 className="portfolios__title">Portafolios</h2>
       <div className="portfolios__content">{renderPortfolios}</div>
-      <button className="portfolios__btn" onClick={handleSeeMore}>
-        Ver más portafolios
-      </button>
+
+      <div className="portfolios__container-btn">
+        <button className="portfolios__btn" onClick={handleSeeMore}>
+          Ver más portafolios
+        </button>
+        <button className="portfolios__btn">Crear Portafolio</button>
+      </div>
     </section>
   );
 }
