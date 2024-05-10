@@ -18,7 +18,7 @@ function Header({ children }) {
     navigate("/");
   };
   return (
-    <section className="header">
+    <header className="header">
       <div className="header__container">
         <img
           className="header__logo"
@@ -36,7 +36,7 @@ function Header({ children }) {
           Registro
         </button>
       </div>
-    </section>
+    </header>
   );
 }
 

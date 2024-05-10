@@ -44,7 +44,7 @@ function Profile() {
         <Link to={"/portfolios"}>
           <button className="profile__btn">
             {" "}
-            <p className="profile__btn-link">Ver mis proyectos</p>{" "}
+            <p className="profile__btn-link">Ver mis portafolios</p>{" "}
           </button>
         </Link>
       </div>

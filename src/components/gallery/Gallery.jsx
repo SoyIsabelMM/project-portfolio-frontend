@@ -7,14 +7,17 @@ import "./Gallery.css";
 function Gallery() {
   const [data, setData] = useState({ img: " ", i: 0 });
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const viewImage = (img, i) => {
     setData({ img, i });
+    setOpen(true);
   };
 
   const closeImage = (evt) => {
     if (evt.target === evt.currentTarget) {
       setData({ img: "", i: 0 });
+      setOpen(false);
     }
   };
 
@@ -35,19 +38,13 @@ function Gallery() {
 
   const imgAction = (action) => {
     let i = data.i;
-    if (action === "next-img" && i < images.length - 1) {
+    if (action === "next-img") {
       setData({ img: images[i + 1], i: i + 1 });
     }
     if (action === "previous-img") {
       setData({ img: images[i - 1], i: i - 1 });
     }
   };
-
-  useEffect(() => {
-    return () => {
-      setData({ img: "", i: 0 });
-    };
-  }, []);
 
   useEffect(() => {
     const loadImage = () => {
@@ -60,12 +57,13 @@ function Gallery() {
 
     return () => {
       setData({ img: "", i: 0 });
+      setOpen(false);
     };
-  }, [data.i]);
+  }, []);
 
   return (
     <>
-      {data.img && (
+      {open && (
         <div className="gallery__modal" onClick={closeImage}>
           <div className="gallery__modal-box">
             <FontAwesomeIcon
