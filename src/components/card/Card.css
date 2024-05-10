@@ -146,3 +146,121 @@
 .card__like_active:hover {
   opacity: 100%;
 }
+
+@media (max-width: 750px) {
+  .card {
+    width: 250px;
+    height: auto;
+  }
+
+  .card__image {
+    width: 250px;
+    height: 190px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .card__container {
+    width: 200px;
+  }
+
+  .card__name {
+    font-size: 10px;
+  }
+
+  .card__btn-share {
+    width: 80px;
+    height: 25px;
+    left: 100px;
+  }
+
+  .card__share-title {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .card__title {
+    font-size: 15px;
+  }
+
+  .card__description {
+    font-size: 12px;
+  }
+
+  .card__divider {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .card__emotion {
+    width: 200px;
+    margin: 0 auto 10px;
+  }
+
+  .card__item,
+  .card__like-number {
+    font-size: 13px;
+  }
+
+  .card__like {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card {
+    width: 250px;
+    height: auto;
+  }
+
+  .card__image {
+    width: 250px;
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .card__container {
+    width: 200px;
+    justify-content: space-evenly;
+  }
+
+  .card__name {
+    font-size: 8px;
+  }
+
+  .card__btn-share {
+    width: 70px;
+    height: 25px;
+    left: 110px;
+  }
+
+  .card__share-title {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  .card__title {
+    font-size: 15px;
+  }
+
+  .card__description {
+    font-size: 12px;
+  }
+
+  .card__divider {
+    margin: 10px 0;
+  }
+
+  .card__emotion {
+    width: 190px;
+    margin: 0 auto 10px;
+  }
+
+  .card__item,
+  .card__like-number {
+    font-size: 12px;
+  }
+
+  .card__like {
+    font-size: 16px;
+  }
+}
