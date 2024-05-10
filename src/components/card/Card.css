@@ -4,6 +4,7 @@
   width: 350px;
   height: 550px;
   border: solid 1px #85847c;
+  border-radius: 20px;
 }
 
 .card__container {
@@ -17,6 +18,7 @@
   border-bottom: solid 1px #85847c;
   width: 350px;
   height: 290px;
+  border-radius: 20px 20px 0 0;
 }
 
 .card__content-menu {
