@@ -118,7 +118,7 @@ function Gallery() {
                       src={image}
                       className="gallery__image"
                       alt=""
-                      onClick={(evt) => viewImage(image, i)}
+                      onClick={() => viewImage(image, i)}
                     />
                   ))}
                 </Masonry>

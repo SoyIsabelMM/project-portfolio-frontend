@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getPhotos, searchPhotos } from "../../utils/pexelData";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 //archivo css con normalizer y el fonts
 import "../../index.css";
 import "./App.css";
@@ -24,6 +25,9 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [limit, setLimit] = useState(3);
   const location = useLocation();
+
+  //Manejo de estado del usuario
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     getPhotos()
@@ -61,40 +65,42 @@ function App() {
 
   return (
     <>
-      <Header>
-        <NavBar />
-      </Header>
-      <main className="page">
-        <Routes>
-          <Route path="/signup" element={<Register />} />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header>
+          <NavBar />
+        </Header>
+        <main className="page">
+          <Routes>
+            <Route path="/signup" element={<Register />} />
 
-          <Route path="/signin" element={<Login />} />
+            <Route path="/signin" element={<Login />} />
 
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/portfolios" element={<Portfolios />} />
-          <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/portfolios" element={<Portfolios />} />
+            <Route path="/about-me" element={<AboutMe />} />
 
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/edit-info" element={<FormInfo />} />
-          <Route path="/galery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/edit-info" element={<FormInfo />} />
+            <Route path="/galery" element={<Gallery />} />
 
-          <Route
-            path="/"
-            element={
-              <LandingPage onClick={handleSeeMore} onSearch={handleSearch}>
-                {filteredPhotos.slice(0, limit).map((photo, index) => (
-                  <ProfileCard
-                    key={index}
-                    photo={photo}
-                    onClick={handleSeeMore}
-                  />
-                ))}
-              </LandingPage>
-            }
-          />
-        </Routes>
-      </main>
-      {shouldRenderFooter && <Footer />}
+            <Route
+              path="/"
+              element={
+                <LandingPage onClick={handleSeeMore} onSearch={handleSearch}>
+                  {filteredPhotos.slice(0, limit).map((photo, index) => (
+                    <ProfileCard
+                      key={index}
+                      photo={photo}
+                      onClick={handleSeeMore}
+                    />
+                  ))}
+                </LandingPage>
+              }
+            />
+          </Routes>
+        </main>
+        {shouldRenderFooter && <Footer />}
+      </CurrentUserContext.Provider>
     </>
   );
 }

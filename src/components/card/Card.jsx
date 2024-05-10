@@ -1,27 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Card({
   id,
+  likes,
   image,
   alt,
   description,
   title,
   className,
   userName,
-  numberLike,
+  onCardLike,
   onClick,
 }) {
   const [islike, setIsLike] = useState(false);
   const [showShare, setShowShare] = useState(false);
 
+  const currentUser = useContext(CurrentUserContext);
+
+  const handleCardLike = () => {
+    onCardLike();
+  };
+
   const likeIcon = islike ? faHeart : farHeart;
 
   const toggleLike = () => {
     setIsLike(!islike);
+    handleCardLike();
   };
 
   const toggleShare = () => {
@@ -64,15 +73,15 @@ function Card({
               <li className="card__item">
                 <span>0</span> vistas
               </li>
-              <li className="card__item">
-                <span>0</span> comentarios
-              </li>
             </ul>
           </div>
 
           <div>
-            {" "}
-            <span className="card__like-number">{numberLike}</span>
+            {likes?.length !== 0 && (
+              <>
+                <span className="card__like-number">{likes?.length}</span>
+              </>
+            )}
             <FontAwesomeIcon
               className={`card__like ${islike ? "card__like_active" : ""}`}
               icon={likeIcon}
