@@ -1,23 +1,27 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Form.css';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 function Form({ title, children }) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleLogin = async (evt) => {
+    evt.preventDefault();
+    setErrorMsg('');
+
     if (!email || !password) {
-      alert('email y pass son requeridos');
+      setErrorMsg('Email y Contraseña son requeridos');
     }
 
-    evt.preventDefault();
-    const url = `${baseUrl}/users/login`;
-
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`${baseUrl}/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,14 +35,14 @@ function Form({ title, children }) {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        alert(`Hola ${data.name}`);
 
-        return;
+        return navigate(`/profile/${data._id}`);
       }
 
-      console.log('no se ha podido iniciar sesión');
+      setErrorMsg('Email o Contraseña incorrectos');
     } catch (error) {
       console.log('error iniciando sesión', error);
+      setErrorMsg('Se ha producido un error');
     }
   };
 
@@ -66,11 +70,12 @@ function Form({ title, children }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form__btn-container">
-          <button className="form__btn">Regístrate</button>
           <button className="form__btn form__btn_google" onClick={handleLogin}>
             {' '}
             Iniciar sesión
           </button>
+          <div className="form__error-message">{errorMsg}</div>
+          <br></br>
         </div>
       </form>
       {children}
