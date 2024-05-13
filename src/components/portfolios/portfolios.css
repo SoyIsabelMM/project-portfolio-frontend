@@ -6,7 +6,7 @@
 
 .portfolios__title {
   margin-top: 10%;
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: 600;
   color: black;
 }
@@ -34,13 +34,13 @@
   width: 200px;
   height: 50px;
   cursor: pointer;
-  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
   font-size: 18px;
   font-weight: 600;
   background-color: black;
   border: solid black 2px;
   color: white;
   margin: 5% 0;
+  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
 .portfolios__btn:hover {

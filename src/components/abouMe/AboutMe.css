@@ -22,17 +22,17 @@
   filter: sepia(50%);
 }
 
-.about-me__text {
+.about-me__title {
   position: absolute;
   top: 400px;
   left: 200px;
   color: white;
   font-weight: 600;
-  font-size: 70px;
+  font-size: 4rem;
   transition: transform 1s ease-in-out;
 }
 
-.about-me__text:hover {
+.about-me__title:hover {
   transform: translateX(50px);
 }
 

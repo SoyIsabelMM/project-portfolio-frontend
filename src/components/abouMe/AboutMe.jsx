@@ -63,7 +63,7 @@ function AboutMe({ alt }) {
           alt="paisaje"
           className="about-me__banner"
         />
-        <h2 className="about-me__text">R A C H E L M I L A N O</h2>
+        <h2 className="about-me__title">R A C H E L M I L A N O</h2>
       </div>
 
       <div className="about-me__render-images">
