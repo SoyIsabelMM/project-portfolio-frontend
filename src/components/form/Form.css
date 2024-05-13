@@ -55,6 +55,10 @@
   margin-bottom: 20px;
 }
 
+.form__btn:active {
+  background-color: rgb(226, 226, 226);
+}
+
 .form__btn_google {
   font-size: 15px;
   position: relative;
