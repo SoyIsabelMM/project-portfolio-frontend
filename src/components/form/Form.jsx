@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import './Form.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import "./Form.css";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 function Form({ title, children }) {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleLogin = async (evt) => {
     evt.preventDefault();
-    setErrorMsg('');
+    setErrorMsg("");
 
     if (!email || !password) {
-      setErrorMsg('Email y Contraseña son requeridos');
+      setErrorMsg("Email y Contraseña son requeridos");
     }
 
     try {
       const response = await fetch(`${baseUrl}/users/login`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email,
@@ -39,10 +39,10 @@ function Form({ title, children }) {
         return navigate(`/profile/${data._id}`);
       }
 
-      setErrorMsg('Email o Contraseña incorrectos');
+      setErrorMsg("Email o Contraseña incorrectos");
     } catch (error) {
-      console.log('error iniciando sesión', error);
-      setErrorMsg('Se ha producido un error');
+      console.log("error iniciando sesión", error);
+      setErrorMsg("Se ha producido un error");
     }
   };
 
@@ -70,8 +70,8 @@ function Form({ title, children }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form__btn-container">
-          <button className="form__btn form__btn_google" onClick={handleLogin}>
-            {' '}
+          <button className="form__btn" onClick={handleLogin}>
+            {" "}
             Iniciar sesión
           </button>
           <div className="form__error-message">{errorMsg}</div>

@@ -9,8 +9,12 @@ function Portfolios() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/galery");
+  const handleGallery = () => {
+    navigate("/gallery");
+  };
+
+  const handleCreatePortfolio = () => {
+    navigate("/create-portfolio");
   };
 
   const renderPortfolios = data
@@ -25,7 +29,7 @@ function Portfolios() {
         title={data.title}
         description={data.description}
         numberLike={data.like}
-        onClick={handleNavigate}
+        onClick={handleGallery}
       />
     ));
 
@@ -42,7 +46,9 @@ function Portfolios() {
         <button className="portfolios__btn" onClick={handleSeeMore}>
           Ver más portafolios
         </button>
-        <button className="portfolios__btn">Crear Portafolio</button>
+        <button className="portfolios__btn" onClick={handleCreatePortfolio}>
+          Crear Portafolio
+        </button>
       </div>
     </section>
   );

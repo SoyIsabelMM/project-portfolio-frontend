@@ -12,7 +12,7 @@ function Contact() {
   return (
     <section className="contact">
       <div className="contact__no-parallax contact_position">
-        <h2 className="contact__text">Contacto</h2>
+        <h2 className="contact__text contact__text_margin">Contacto</h2>
         <FormContact />
       </div>
 
