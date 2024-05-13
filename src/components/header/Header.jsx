@@ -1,22 +1,32 @@
-import React from "react";
-import "./Header.css";
-import logoPT from "../../images/Logo-PT.png";
-import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import './Header.css';
+import logoPT from '../../images/Logo-PT.png';
 
 function Header({ children }) {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    navigate("/signup", { state: "success" });
+    navigate('/signup', { state: 'success' });
   };
 
   const handleLogin = () => {
-    navigate("/signin");
+    navigate('/signin');
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    navigate('/');
   };
 
   const handleInit = () => {
-    navigate("/");
+    navigate('/');
   };
+
   return (
     <header className="header">
       <div className="header__container">
@@ -28,16 +38,29 @@ function Header({ children }) {
         />
         {children}
       </div>
-      <div className="header__button">
-        <button className="header__login" onClick={handleLogin}>
-          Iniciar Sesión
-        </button>
-        <button className="header__button-register" onClick={handleRegister}>
-          Registro
-        </button>
-      </div>
+
+      {currentUser ? (
+        <div className="header__button">
+          <button className="header__login" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        </div>
+      ) : (
+        <div className="header__button">
+          <button className="header__login" onClick={handleLogin}>
+            Iniciar Sesión
+          </button>
+          <button className="header__button-register" onClick={handleRegister}>
+            Registro
+          </button>
+        </div>
+      )}
     </header>
   );
 }
+
+Header.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Header;

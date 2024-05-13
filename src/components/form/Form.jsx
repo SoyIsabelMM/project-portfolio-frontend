@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./Form.css";
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import './Form.css';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
 function Form({ title, children }) {
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -33,10 +36,10 @@ function Form({ title, children }) {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
+        const currentUser = await response.json();
+        setCurrentUser(currentUser);
 
-        return navigate(`/profile/${data._id}`);
+        return navigate(`/profile/${currentUser._id}`);
       }
 
       setErrorMsg("Email o Contraseña incorrectos");
