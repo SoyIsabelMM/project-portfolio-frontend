@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { getPhotos, searchPhotos } from "../../utils/pexelData";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-//archivo css con normalizer y el fonts
-import "../../index.css";
-import "./App.css";
+import { useState, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { getPhotos, searchPhotos } from '../../utils/pexelData';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import '../../index.css';
+import './App.css';
 
 // componentes
-import Header from "../header/Header";
-import NavBar from "../navBar/NavBar";
-import LandingPage from "../landingPage/LandingPage";
-import Register from "../register/Register";
-import Login from "../login/Login";
-import Portfolios from "../portfolios/Portfolios";
-import ProfileCard from "../profileCard/ProfileCard";
-import AboutMe from "../abouMe/AboutMe";
-import Profile from "../profile/Profile";
-import Footer from "../footer/Footer";
-import Contact from "../contact/Contact";
-import FormInfo from "../formInfo/FormInfo";
-import Gallery from "../gallery/Gallery";
+import Header from '../header/Header';
+import NavBar from '../navBar/NavBar';
+import LandingPage from '../landingPage/LandingPage';
+import Register from '../register/Register';
+import Login from '../login/Login';
+import Portfolios from '../portfolios/Portfolios';
+import ProfileCard from '../profileCard/ProfileCard';
+import AboutMe from '../abouMe/AboutMe';
+import Profile from '../profile/Profile';
+import Footer from '../footer/Footer';
+import Contact from '../contact/Contact';
+import FormInfo from '../formInfo/FormInfo';
+import Gallery from '../gallery/Gallery';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -35,7 +35,7 @@ function App() {
         setPhotos(data);
       })
       .catch((error) => {
-        console.error("Error fetching photos:", error);
+        console.error('Error fetching photos:', error);
       });
   }, []);
 
@@ -44,7 +44,7 @@ function App() {
       const searchResult = await searchPhotos(query);
       setPhotos(searchResult);
     } catch (error) {
-      console.error("Error al buscar fotos:", error);
+      console.error('Error al buscar fotos:', error);
     }
   };
 
@@ -52,7 +52,7 @@ function App() {
     setLimit(limit + 3);
   };
 
-  const shouldRenderFooter = location.pathname !== "/contact";
+  const shouldRenderFooter = location.pathname !== '/contact';
 
   const uniqueAuthors = {};
   const filteredPhotos = photos.filter((photo) => {
@@ -75,7 +75,7 @@ function App() {
 
             <Route path="/signin" element={<Login />} />
 
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/portfolios" element={<Portfolios />} />
             <Route path="/about-me" element={<AboutMe />} />
 
