@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { getPhotos, searchPhotos } from '../../utils/pexelData';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { CurrentUserProvider } from '../../contexts/CurrentUserContext';
 
 import '../../index.css';
 import './App.css';
@@ -25,9 +25,6 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [limit, setLimit] = useState(3);
   const location = useLocation();
-
-  //Manejo de estado del usuario
-  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     getPhotos()
@@ -65,7 +62,7 @@ function App() {
 
   return (
     <>
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserProvider>
         <Header>
           <NavBar />
         </Header>
@@ -100,7 +97,7 @@ function App() {
           </Routes>
         </main>
         {shouldRenderFooter && <Footer />}
-      </CurrentUserContext.Provider>
+      </CurrentUserProvider>
     </>
   );
 }
