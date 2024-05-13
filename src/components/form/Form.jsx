@@ -1,8 +1,51 @@
-import React from "react";
-import iconGoogle from "../../images/logo-google.png";
-import "./Form.css";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './Form.css';
 
-function Form({ title, nameBtn, children }) {
+const baseUrl = import.meta.env.VITE_API_URL;
+
+function Form({ title, children }) {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleLogin = async (evt) => {
+    evt.preventDefault();
+    setErrorMsg('');
+
+    if (!email || !password) {
+      setErrorMsg('Email y Contraseña son requeridos');
+    }
+
+    try {
+      const response = await fetch(`${baseUrl}/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        return navigate(`/profile/${data._id}`);
+      }
+
+      setErrorMsg('Email o Contraseña incorrectos');
+    } catch (error) {
+      console.log('error iniciando sesión', error);
+      setErrorMsg('Se ha producido un error');
+    }
+  };
+
   return (
     <div className="form">
       <h3 className="form__title">{title}</h3>
@@ -14,6 +57,8 @@ function Form({ title, nameBtn, children }) {
           id="userName"
           minLength={3}
           maxLength={40}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="form__input"
@@ -21,26 +66,26 @@ function Form({ title, nameBtn, children }) {
           placeholder="Contraseña"
           id="password"
           minLength={3}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form__btn-container">
-          <button className="form__btn">Regístrate</button>
-          <button
-            className="form__btn form__btn_google"
-            nameBtn={nameBtn + " con Google"}
-          >
-            {" "}
-            <img
-              className="form__btn-logo"
-              src={iconGoogle}
-              alt={nameBtn + " con google"}
-            />{" "}
+          <button className="form__btn form__btn_google" onClick={handleLogin}>
+            {' '}
             Iniciar sesión
           </button>
+          <div className="form__error-message">{errorMsg}</div>
+          <br></br>
         </div>
       </form>
       {children}
     </div>
   );
 }
+
+Form.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
 
 export default Form;
