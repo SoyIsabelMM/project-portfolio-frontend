@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import "./Gallery.css";
+import React, { useEffect, useState } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import './Gallery.css';
 
 function Gallery() {
-  const [data, setData] = useState({ img: " ", i: 0 });
+  const [data, setData] = useState({ img: ' ', i: 0 });
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
 
@@ -16,32 +16,32 @@ function Gallery() {
 
   const closeImage = (evt) => {
     if (evt.target === evt.currentTarget) {
-      setData({ img: "", i: 0 });
+      setData({ img: '', i: 0 });
       setOpen(false);
     }
   };
 
   const images = [
-    "https://picsum.photos/2000/2500",
-    "https://picsum.photos/3000/2000",
-    "https://picsum.photos/4000/3000",
-    "https://picsum.photos/3000/1500",
-    "https://picsum.photos/2000/2165",
-    "https://picsum.photos/1500/1500",
-    "https://picsum.photos/2000/2500",
-    "https://picsum.photos/3000/2000",
-    "https://picsum.photos/4000/3000",
-    "https://picsum.photos/3000/1500",
-    "https://picsum.photos/2000/2165",
-    "https://picsum.photos/1500/1500",
+    'https://picsum.photos/2000/2500',
+    'https://picsum.photos/3000/2000',
+    'https://picsum.photos/4000/3000',
+    'https://picsum.photos/3000/1500',
+    'https://picsum.photos/2000/2165',
+    'https://picsum.photos/1500/1500',
+    'https://picsum.photos/2000/2500',
+    'https://picsum.photos/3000/2000',
+    'https://picsum.photos/4000/3000',
+    'https://picsum.photos/3000/1500',
+    'https://picsum.photos/2000/2165',
+    'https://picsum.photos/1500/1500',
   ];
 
   const imgAction = (action) => {
     let i = data.i;
-    if (action === "next-img") {
+    if (action === 'next-img') {
       setData({ img: images[i + 1], i: i + 1 });
     }
-    if (action === "previous-img") {
+    if (action === 'previous-img') {
       setData({ img: images[i - 1], i: i - 1 });
     }
   };
@@ -56,7 +56,7 @@ function Gallery() {
     loadImage();
 
     return () => {
-      setData({ img: "", i: 0 });
+      setData({ img: '', i: 0 });
       setOpen(false);
     };
   }, []);
@@ -69,14 +69,14 @@ function Gallery() {
             <FontAwesomeIcon
               icon={faArrowLeft}
               className="gallery__arrow-icon"
-              onClick={() => imgAction("previous-img")}
+              onClick={() => imgAction('previous-img')}
             />
             <img className="gallery__modal-img" src={data.img} />
             <FontAwesomeIcon
               id="right"
               icon={faArrowRight}
               className="gallery__arrow-icon"
-              onClick={() => imgAction("next-img")}
+              onClick={() => imgAction('next-img')}
             />
           </div>
 

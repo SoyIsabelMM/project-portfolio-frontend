@@ -1,13 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./NavBar.css";
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import './NavBar.css';
 
 function NavBar() {
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
     <div className="nav-bar">
       <ul className="nav-bar__list">
         <li className="nav-bar__options">
-          <NavLink end className="nav-bar__ref" to="/profile">
+          <NavLink
+            className="nav-bar__ref"
+            to={`/profile/${currentUser ? currentUser._id : ''}`}
+          >
             Perfil
           </NavLink>
         </li>
