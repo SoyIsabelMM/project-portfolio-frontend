@@ -52,6 +52,10 @@
   transition: color 0.2s ease-in-out, 0.2s ease-in-out;
 }
 
+.form__btn:active {
+  background-color: rgb(226, 226, 226);
+}
+
 .form__btn:hover {
   color: white;
   background-color: black;
@@ -61,6 +65,7 @@
 
 .form__error-message {
   color: red;
+
 }
 
 @media screen and (max-width: 551px) {

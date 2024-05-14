@@ -7,25 +7,28 @@ import './Form.css';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
-function Form({ title, children }) {
+function Form({ action, title, children }) {
   const { setCurrentUser } = useContext(CurrentUserContext);
+  const isSignupEvent = action === 'signup';
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleLogin = async (evt) => {
+  const handleAction = async (evt) => {
     evt.preventDefault();
     setErrorMsg("");
 
     if (!email || !password) {
-      setErrorMsg("Email y Contraseña son requeridos");
-    }
+      return setErrorMsg('Email y Contraseña son requeridos');
 
+
+    const servicePath = isSignupEvent ? 'users' : 'users/login';
     try {
-      const response = await fetch(`${baseUrl}/users/login`, {
-        method: "POST",
+      const response = await fetch(`${baseUrl}/${servicePath}`, {
+        method: 'POST',
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -39,13 +42,17 @@ function Form({ title, children }) {
         const currentUser = await response.json();
         setCurrentUser(currentUser);
 
-        return navigate(`/profile/${currentUser._id}`);
+        return isSignupEvent
+          ? navigate(`/edit-info`)
+          : navigate(`/profile/${currentUser._id}`);
       }
 
       setErrorMsg("Email o Contraseña incorrectos");
     } catch (error) {
-      console.log("error iniciando sesión", error);
-      setErrorMsg("Se ha producido un error");
+      
+      console.log('se ha producido un error', error);
+      setErrorMsg('Se ha producido un error');
+
     }
   };
 
@@ -73,9 +80,10 @@ function Form({ title, children }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form__btn-container">
-          <button className="form__btn" onClick={handleLogin}>
-            {" "}
-            Iniciar sesión
+
+          <button className="form__btn" onClick={handleAction}>
+            {isSignupEvent ? 'Crear cuenta' : 'Iniciar sesión'}
+
           </button>
           <div className="form__error-message">{errorMsg}</div>
           <br></br>
@@ -85,8 +93,10 @@ function Form({ title, children }) {
     </div>
   );
 }
+}
 
 Form.propTypes = {
+  action: PropTypes.oneOf(['signin', 'signup']).isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
