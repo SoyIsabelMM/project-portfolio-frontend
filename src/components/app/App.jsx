@@ -20,6 +20,7 @@ import Footer from '../footer/Footer';
 import Contact from '../contact/Contact';
 import FormInfo from '../formInfo/FormInfo';
 import Gallery from '../gallery/Gallery';
+import CreatePortfolio from "../createPortfolio/CreatePortfolio";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -78,7 +79,8 @@ function App() {
 
             <Route path="/contact" element={<Contact />} />
             <Route path="/edit-info" element={<FormInfo />} />
-            <Route path="/galery" element={<Gallery />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/create-portfolio" element={<CreatePortfolio />} />
 
             <Route
               path="/"

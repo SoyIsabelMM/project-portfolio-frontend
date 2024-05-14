@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 function Register() {
   return (
     <section className="register">
-      <Form action="signup" title="Inscribirse">
-        <p className="register_paragraph">
+      <Form action="signup" title="Registro">
+
+    <p className="register_paragraph">
           ¿Ya eres miembro? Inicia{' '}
           <Link to="/signin" className="register__link">
             sesión aquí
