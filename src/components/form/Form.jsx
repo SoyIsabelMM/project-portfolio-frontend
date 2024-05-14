@@ -93,6 +93,7 @@ function Form({ action, title, children }) {
     </div>
   );
 }
+}
 
 Form.propTypes = {
   action: PropTypes.oneOf(['signin', 'signup']).isRequired,
