@@ -12,17 +12,17 @@ function Form({ action, title, children }) {
   const isSignupEvent = action === 'signup';
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleAction = async (evt) => {
     evt.preventDefault();
-    setErrorMsg("");
+    setErrorMsg('');
 
     if (!email || !password) {
       return setErrorMsg('Email y Contraseña son requeridos');
-
+    }
 
     const servicePath = isSignupEvent ? 'users' : 'users/login';
     try {
@@ -30,7 +30,7 @@ function Form({ action, title, children }) {
         method: 'POST',
 
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
@@ -47,12 +47,10 @@ function Form({ action, title, children }) {
           : navigate(`/profile/${currentUser._id}`);
       }
 
-      setErrorMsg("Email o Contraseña incorrectos");
+      setErrorMsg('Email o Contraseña incorrectos');
     } catch (error) {
-      
       console.log('se ha producido un error', error);
       setErrorMsg('Se ha producido un error');
-
     }
   };
 
@@ -80,10 +78,8 @@ function Form({ action, title, children }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form__btn-container">
-
           <button className="form__btn" onClick={handleAction}>
             {isSignupEvent ? 'Crear cuenta' : 'Iniciar sesión'}
-
           </button>
           <div className="form__error-message">{errorMsg}</div>
           <br></br>
@@ -92,7 +88,6 @@ function Form({ action, title, children }) {
       {children}
     </div>
   );
-}
 }
 
 Form.propTypes = {
