@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_API_URL;
+import { baseUrl } from './constant';
 
 export const fetchProfile = async (userId) => {
   try {
@@ -14,8 +14,8 @@ export const fetchProfile = async (userId) => {
     } else {
       throw new Error('Error fetching profile data');
     }
-  } catch (error) {
-    console.error('Error', error);
-    throw error;
+  } catch (err) {
+    console.error('Error', err);
+    throw err;
   }
 };
