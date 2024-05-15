@@ -1,27 +1,17 @@
-import { useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Header.css';
 import logoPT from '../../images/Logo-PT.png';
 
 function Header({ children }) {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
-  const handleRegister = () => {
-    navigate('/signup', { state: 'success' });
-  };
-
-  const handleLogin = () => {
-    navigate('/signin');
-  };
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-    navigate('/');
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log('hago open', isMenuOpen);
 
   const handleInit = () => {
     navigate('/');
@@ -30,31 +20,24 @@ function Header({ children }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img
-          className="header__logo"
-          src={logoPT}
-          alt="Logo PortFolio"
-          onClick={handleInit}
-        />
-        {children}
-      </div>
+        <div className="header__content-item">
+          <img
+            className="header__logo"
+            src={logoPT}
+            alt="Logo PortFolio"
+            onClick={handleInit}
+          />
 
-      {currentUser ? (
-        <div className="header__button">
-          <button className="header__login" onClick={handleLogout}>
-            Cerrar Sesión
-          </button>
+          <FontAwesomeIcon
+            className="header__menu-bars"
+            icon={faBars}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          />
         </div>
-      ) : (
-        <div className="header__button">
-          <button className="header__login" onClick={handleLogin}>
-            Iniciar Sesión
-          </button>
-          <button className="header__button-register" onClick={handleRegister}>
-            Registro
-          </button>
-        </div>
-      )}
+        {children && (
+          <div className={` ${isMenuOpen ? 'open' : ''}`}>{children}</div>
+        )}{' '}
+      </div>
     </header>
   );
 }
