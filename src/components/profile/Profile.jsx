@@ -42,7 +42,7 @@ function Profile() {
           </div>
         </div>
       ) : (
-        profile && ( // Verifica que profile no sea nulo antes de renderizar
+        profile && (
           <div className="profile__content">
             <img
               className="profile__banner"
