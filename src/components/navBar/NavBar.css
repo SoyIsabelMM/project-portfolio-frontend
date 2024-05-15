@@ -97,11 +97,7 @@
     opacity: 1;
     overflow: hidden;
     height: 42vh;
-    transition: all 0.15s ease-in-out;
-  }
-
-  .nav-bar:hover {
-    opacity: 0;
+    justify-content: center;
   }
 
   .nav-bar_height {
