@@ -1,103 +1,57 @@
 .header {
-  height: 80px;
+  width: 100%;
   background-color: #ffffff;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   position: fixed;
-  justify-content: center;
   top: 0;
-  width: 100vw;
   z-index: 10;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
 .header__container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-flow: row nowrap;
   justify-content: space-between;
-  width: 90%;
+  align-items: center;
+  margin: 0 60px;
+}
+
+.header__content-item {
+  display: flex;
+  width: 0;
+  align-items: center;
 }
 
 .header__logo {
   object-fit: cover;
   width: 80px;
   height: 80px;
-  margin-left: 60px;
   cursor: pointer;
 }
 
-.header__button {
-  display: flex;
-  flex-direction: row;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: center;
-  width: 500px;
+.header__menu-bars {
+  display: none;
 }
 
-.header__button-register {
-  color: white;
-  border-radius: 20px;
-  border: 0 none;
-  background-color: #151513;
-  font-weight: 600;
-  padding: 10px;
-  margin-left: 20px;
-  height: 50px;
-  width: 130px;
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
-}
-
-.header__button-register:hover {
-  font-size: 20px;
-  color: #151513;
-  border: #151513 solid 2px;
-  background-color: white;
-}
-
-.header__login {
-  color: black;
-  background-color: white;
-  border: solid 2px #151513;
-  font-weight: 600;
-  border-radius: 20px;
-  transition: all 0.15s ease-in-out;
-  width: 150px;
-  height: 50px;
-  cursor: pointer;
-}
-
-.header__login:hover {
-  font-size: 20px;
-  color: white;
-  background-color: #151513;
-  border: none;
-}
-
-@media screen and (max-width: 898px) {
+@media screen and (max-width: 980px) {
   .header__container {
-    width: 80%;
+    justify-content: space-between;
+    flex-direction: column;
   }
 
-  .header__button {
-    font-size: 15px;
+  .header__content-item {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .header__button-register {
-    width: 100px;
-  }
-
-  .header__login {
-    width: 130px;
-  }
-
-  .header__login:hover {
-    font-size: 18px;
+  .header__menu-bars {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 60px;
   }
 }
