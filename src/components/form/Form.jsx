@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUser, registerUser } from '../../utils/auth';
 import PropTypes from 'prop-types';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -24,27 +25,19 @@ function Form({ action, title, children }) {
       return setErrorMsg('Email y Contraseña son requeridos');
     }
 
-    const servicePath = isSignupEvent ? 'users' : 'users/login';
     try {
-      const response = await fetch(`${baseUrl}/${servicePath}`, {
-        method: 'POST',
+      const userData = isSignupEvent
+        ? await registerUser(email, password)
+        : await loginUser(email, password);
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      if (userData && userData._id) {
+        setCurrentUser(userData);
 
-      if (response.ok) {
-        const currentUser = await response.json();
-        setCurrentUser(currentUser);
+        console.log('holaaa', userData._id);
 
         return isSignupEvent
           ? navigate(`/edit-info`)
-          : navigate(`/profile/${currentUser._id}`);
+          : navigate(`/profile/${userData._id}`);
       }
 
       setErrorMsg('Email o Contraseña incorrectos');
@@ -70,6 +63,7 @@ function Form({ action, title, children }) {
         />
         <input
           className="form__input"
+          autoComplete="current-password"
           type="password"
           placeholder="Contraseña"
           id="password"
