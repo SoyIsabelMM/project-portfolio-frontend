@@ -20,7 +20,7 @@ import Footer from '../footer/Footer';
 import Contact from '../contact/Contact';
 import FormInfo from '../formInfo/FormInfo';
 import Gallery from '../gallery/Gallery';
-import CreatePortfolio from "../createPortfolio/CreatePortfolio";
+import CreatePortfolio from '../createPortfolio/CreatePortfolio';
 
 function App() {
   const [photos, setPhotos] = useState([]);

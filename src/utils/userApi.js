@@ -20,19 +20,22 @@ export const fetchProfile = async (userId) => {
   }
 };
 
-export const updateUser = async (userDataToUpdate, token) => {
+export const updateUser = async (
+  firstName,
+  lastName,
+  country,
+  resume,
+  token
+) => {
   const url = `${baseUrl}/users`;
 
   try {
-    const {
-      _id,
-      firstName,
-      lastName,
-      country,
-      birthDate,
-      token,
-      ...userDataToSend
-    } = userDataToUpdate;
+    const userDataToUpdate = {
+      firstName: firstName,
+      lastName: lastName,
+      country: country,
+      resume: resume,
+    };
 
     const response = await fetch(url, {
       method: 'PUT',
@@ -40,10 +43,8 @@ export const updateUser = async (userDataToUpdate, token) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(userDataToSend),
+      body: JSON.stringify(userDataToUpdate),
     });
-
-    console.log(response, 'Hola soy api');
 
     if (!response.ok) {
       throw new Error('Error al actualizar la información del usuario');

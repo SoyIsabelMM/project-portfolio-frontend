@@ -8,6 +8,7 @@ function InputContent({
   required,
   className,
   classNameInput,
+  value,
 }) {
   return (
     <>
@@ -19,6 +20,7 @@ function InputContent({
           placeholder={placeholder}
           onChange={onChange}
           required={required}
+          value={value}
         />
       </label>
     </>
