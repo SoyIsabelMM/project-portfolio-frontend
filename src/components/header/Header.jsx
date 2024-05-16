@@ -11,7 +11,6 @@ function Header({ children }) {
   const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log('hago open', isMenuOpen);
 
   const handleInit = () => {
     navigate('/');

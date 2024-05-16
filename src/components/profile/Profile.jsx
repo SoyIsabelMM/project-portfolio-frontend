@@ -11,6 +11,10 @@ function Profile() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const formatText = (text) => {
+    return text?.split('').join(' ').toUpperCase() || '';
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,7 +46,7 @@ function Profile() {
           </div>
         </div>
       ) : (
-        profile && ( // Verifica que profile no sea nulo antes de renderizar
+        profile && (
           <div className="profile__content">
             <img
               className="profile__banner"
@@ -58,11 +62,9 @@ function Profile() {
                       .pauseFor(2000)
                       .deleteAll()
                       .typeString(
-                        profile.name
-                          ?.replace(' ', '*')
-                          .split('')
-                          .join(' ')
-                          .toUpperCase()
+                        `${formatText(profile.firstName)} * ${formatText(
+                          profile.lastName
+                        )}`
                       )
                       .start();
                   }}
