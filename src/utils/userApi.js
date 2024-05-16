@@ -20,9 +20,14 @@ export const fetchProfile = async (userId) => {
   }
 };
 
-export const fetchProfiles = async () => {
+export const fetchProfiles = async (search) => {
+  const url = new URL(`${baseUrl}/users/profiles`);
+  if (search) {
+    url.search = new URLSearchParams({ search }).toString();
+  }
+
   try {
-    const response = await fetch(`${baseUrl}/users/profiles`, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
