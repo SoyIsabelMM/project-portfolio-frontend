@@ -19,3 +19,23 @@ export const fetchProfile = async (userId) => {
     throw err;
   }
 };
+
+export const fetchProfiles = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/users/profiles`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Error fetching users profiles');
+    }
+  } catch (err) {
+    console.error('Error', err);
+    throw err;
+  }
+};
