@@ -10,7 +10,7 @@ import logoPT from '../../images/Logo-PT.png';
 function Header({ children }) {
   const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleInit = () => {
     navigate('/');

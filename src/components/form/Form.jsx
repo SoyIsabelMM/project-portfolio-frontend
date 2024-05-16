@@ -31,8 +31,6 @@ function Form({ action, title, children }) {
       if (userData && userData._id) {
         setCurrentUser(userData);
 
-        console.log('holaaa', userData._id);
-
         return isSignupEvent
           ? navigate(`/edit-info`)
           : navigate(`/profile/${userData._id}`);

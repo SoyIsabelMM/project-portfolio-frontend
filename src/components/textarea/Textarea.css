@@ -1,0 +1,9 @@
+.textarea {
+  background-color: inherit;
+  height: 100px;
+  width: 500px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 3%;
+  resize: none;
+}
