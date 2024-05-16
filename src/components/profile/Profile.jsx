@@ -11,6 +11,10 @@ function Profile() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const formatText = (text) => {
+    return text?.split('').join(' ').toUpperCase() || '';
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,11 +64,9 @@ function Profile() {
                       .pauseFor(2000)
                       .deleteAll()
                       .typeString(
-                        fullName
-                          ?.replace(' ', '*')
-                          .split('')
-                          .join(' ')
-                          .toUpperCase()
+                        `${formatText(profile.firstName)} * ${formatText(
+                          profile.lastName
+                        )}`
                       )
                       .start();
                   }}
