@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Form.css';
 
-const baseUrl = import.meta.env.VITE_API_URL;
-
 function Form({ action, title, children }) {
   const { setCurrentUser } = useContext(CurrentUserContext);
   const isSignupEvent = action === 'signup';
@@ -32,8 +30,6 @@ function Form({ action, title, children }) {
 
       if (userData && userData._id) {
         setCurrentUser(userData);
-
-        console.log('holaaa', userData._id);
 
         return isSignupEvent
           ? navigate(`/edit-info`)
