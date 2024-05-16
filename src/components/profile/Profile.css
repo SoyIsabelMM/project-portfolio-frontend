@@ -71,7 +71,7 @@
 .profile__history {
   background-color: black;
   height: 40vh;
-  width: 100%;
+  width: 100vw;
   margin-top: 5%;
   display: flex;
   align-items: center;
