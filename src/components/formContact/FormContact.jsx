@@ -1,25 +1,30 @@
-import React, { useState } from "react";
-import "./FormContact.css";
+import React, { useState } from 'react';
+import './FormContact.css';
 
 function FormContact() {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [subtmitted, setSubmitted] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("datos del formulario", { name, lastName, email, message });
-    setName("");
-    setLastName("");
-    setEmail("");
-    setMessage("");
+    console.log('datos del formulario', {
+      firstName,
+      lastName,
+      email,
+      message,
+    });
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setMessage('');
     setSubmitted(true);
   };
 
-  const onChangeName = (evt) => {
-    setName(evt.target.value);
+  const onChangeFirstName = (evt) => {
+    setFirstName(evt.target.value);
   };
 
   const onChangeLastName = (evt) => {
@@ -45,8 +50,8 @@ function FormContact() {
             <input
               className="form-contact__input"
               type="text"
-              value={name}
-              onChange={onChangeName}
+              value={firstName}
+              onChange={onChangeFirstName}
             />
           </label>
           <label className="form-contact__label">
@@ -57,7 +62,7 @@ function FormContact() {
               value={lastName}
               onChange={onChangeLastName}
             />
-          </label>{" "}
+          </label>{' '}
         </div>
 
         <div className="form-contact__box form-contact__box_direction">
