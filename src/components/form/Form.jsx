@@ -1,12 +1,10 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, registerUser } from '../../utils/auth';
 import PropTypes from 'prop-types';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { loginUser, registerUser } from '../../utils/auth';
 import './Form.css';
-
-const baseUrl = import.meta.env.VITE_API_URL;
 
 function Form({ action, title, children }) {
   const { setCurrentUser } = useContext(CurrentUserContext);
