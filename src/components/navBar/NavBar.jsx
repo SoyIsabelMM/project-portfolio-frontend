@@ -52,7 +52,7 @@ function NavBar() {
         {isLoggedIn && hasSelectedProfile && (
           <li className="nav-bar__options">
             <NavLink className="nav-bar__ref" to="/about-me">
-              Acerca de
+              Sobre mí
             </NavLink>
           </li>
         )}

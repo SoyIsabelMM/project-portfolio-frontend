@@ -118,13 +118,13 @@
 }
 
 .about-me__container-phrases {
-  width: 70%;
+  width: 90%;
   margin: 8% 0;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .about-me__phrases {
@@ -138,7 +138,7 @@
 }
 
 .about-me__phrases-image {
-  width: 400px;
+  width: 350px;
   height: 300px;
   object-fit: cover;
   border-radius: 20px;
@@ -200,12 +200,8 @@
     font-size: 2.2rem;
   }
 
-  .about-me__container-phrases {
-    width: 90%;
-  }
-
   .about-me__phrases-image {
-    width: 155px;
+    width: 165px;
     height: 220px;
   }
 }
