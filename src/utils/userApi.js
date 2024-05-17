@@ -25,6 +25,13 @@ export const updateUser = async (
   lastName,
   country,
   resume,
+  instagram,
+  facebook,
+  linkedin,
+  about,
+  hobbies,
+  activities,
+  happyPlaces,
   token
 ) => {
   const url = `${baseUrl}/users`;
@@ -35,6 +42,13 @@ export const updateUser = async (
       lastName: lastName,
       country: country,
       resume: resume,
+      instagram: instagram,
+      facebook: facebook,
+      linkedin: linkedin,
+      about: about,
+      hobbies: hobbies,
+      activities: activities,
+      happyPlaces: happyPlaces,
     };
 
     const response = await fetch(url, {

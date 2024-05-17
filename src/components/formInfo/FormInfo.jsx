@@ -12,6 +12,14 @@ function FormInfo() {
   const [country, setCountry] = useState('');
   const [email, setEmail] = useState('');
   const [resume, setResume] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [facebook, setFacebook] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+
+  const [about, setAbout] = useState('');
+  const [hobbies, setHobbies] = useState('');
+  const [activities, setActivities] = useState('');
+  const [happyPlaces, setHappyPlaces] = useState('');
 
   useEffect(() => {
     if (currentUser) {
@@ -20,6 +28,14 @@ function FormInfo() {
       setCountry(currentUser.country || '');
       setEmail(currentUser.email || '');
       setResume(currentUser.resume || '');
+      setInstagram(currentUser.instagram || '');
+      setFacebook(currentUser.facebook || '');
+      setLinkedin(currentUser.linkedin || '');
+
+      setAbout(currentUser.about || '');
+      setHobbies(currentUser.hobbies || '');
+      setActivities(currentUser.activities || '');
+      setHappyPlaces(currentUser.happyPlaces || '');
     }
   }, [currentUser]);
 
@@ -39,6 +55,34 @@ function FormInfo() {
     setResume(evt.target.value);
   };
 
+  const onChangeInstagram = (evt) => {
+    setInstagram(evt.target.value);
+  };
+
+  const onChangeFacebook = (evt) => {
+    setFacebook(evt.target.value);
+  };
+
+  const onChangeLinkedin = (evt) => {
+    setLinkedin(evt.target.value);
+  };
+
+  const onChangeAbout = (evt) => {
+    setAbout(evt.target.value);
+  };
+
+  const onChangeHobbies = (evt) => {
+    setHobbies(evt.target.value);
+  };
+
+  const onChangeActivities = (evt) => {
+    setActivities(evt.target.value);
+  };
+
+  const onChangeHappyPlaces = (evt) => {
+    setHappyPlaces(evt.target.value);
+  };
+
   const handleUpdateUserInfo = async (evt) => {
     evt.preventDefault();
 
@@ -48,6 +92,13 @@ function FormInfo() {
       lastName: lastName,
       country: country,
       resume: resume,
+      instagram: instagram,
+      facebook: facebook,
+      linkedin: linkedin,
+      about: about,
+      hobbies: hobbies,
+      activities: activities,
+      happyPlaces: happyPlaces,
     };
 
     try {
@@ -56,8 +107,17 @@ function FormInfo() {
         updateUserData.lastName,
         updateUserData.country,
         updateUserData.resume,
+        updateUserData.instagram,
+        updateUserData.facebook,
+        updateUserData.linkedin,
+        updateUserData.about,
+        updateUserData.hobbies,
+        updateUserData.activities,
+        updateUserData.happyPlaces,
         currentUser.token
       );
+
+      console.log('tengo todo', updateUserData);
     } catch (err) {
       console.error('Error al guardar la información del usuario:', err);
     }
@@ -101,10 +161,28 @@ function FormInfo() {
           <div className="form-info__content-input">
             <InputContent labelName="Email" type={'email'} value={email} />
 
-            <InputContent labelName="Instagram" type="url" placeholder="url" />
+            <InputContent
+              labelName="Instagram"
+              type="url"
+              placeholder="url"
+              onChange={onChangeInstagram}
+              value={instagram}
+            />
 
-            <InputContent labelName="Facebook" type="url" placeholder="url" />
-            <InputContent labelName="Linkedin" type="url" placeholder="url" />
+            <InputContent
+              labelName="Facebook"
+              type="url"
+              placeholder="url"
+              onChange={onChangeFacebook}
+              value={facebook}
+            />
+            <InputContent
+              labelName="Linkedin"
+              type="url"
+              placeholder="url"
+              onChange={onChangeLinkedin}
+              value={linkedin}
+            />
           </div>
 
           <div className="form-info__divider"></div>
@@ -145,6 +223,8 @@ function FormInfo() {
               id="about"
               type="text"
               placeholder="Cuéntanos sobre ti en general"
+              value={about}
+              onChange={onChangeAbout}
             />
 
             <InputContent
@@ -159,6 +239,8 @@ function FormInfo() {
               id="hobbies"
               type="text"
               placeholder="¿Qué te gusta hacer?"
+              value={hobbies}
+              onChange={onChangeHobbies}
             />
 
             <InputContent
@@ -173,6 +255,8 @@ function FormInfo() {
               id="activities"
               type="text"
               placeholder="¿Practicas algún deporte o actividad extra?"
+              value={activities}
+              onChange={onChangeActivities}
             />
 
             <InputContent
@@ -187,6 +271,8 @@ function FormInfo() {
               id="happyPlaces"
               type="text"
               placeholder="¿Cuál es tu lugar feliz?"
+              value={happyPlaces}
+              onChange={onChangeHappyPlaces}
             />
 
             <InputContent
