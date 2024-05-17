@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getPhotos } from "../../utils/pexelData";
-import Typewriter from "typewriter-effect";
-import "./AboutMe.css";
+import React, { useEffect, useState } from 'react';
+import { getPhotos } from '../../utils/pexelData';
+import Typewriter from 'typewriter-effect';
+import './AboutMe.css';
 
 function AboutMe({ alt }) {
   const [images, setImages] = useState([]);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(6);
   const [historyLimit, setHistoryLimit] = useState(4);
 
   const paragraph = (
@@ -23,7 +23,7 @@ function AboutMe({ alt }) {
         setImages(data);
       })
       .catch((err) => {
-        console.error("Error fetching popular photos:", err);
+        console.error('Error fetching popular photos:', err);
       });
   }, []);
 
@@ -82,21 +82,23 @@ function AboutMe({ alt }) {
       </div>
 
       <div className="about-me__color">
-        {
-          <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("Vivo como me lo indica el destino")
-                .pauseFor(2000)
-                .deleteAll()
-                .typeString("Aprendo cada día más")
-                .pauseFor(2000)
-                .deleteAll()
-                .typeString("Comienzo con una taza de café")
-                .start();
-            }}
-          />
-        }
+        <div className="about-me__typewriter">
+          {
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString('Vivo como me lo indica el destino')
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString('Aprendo cada día más')
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString('Comienzo con una taza de café')
+                  .start();
+              }}
+            />
+          }
+        </div>
       </div>
 
       <div className="about-me__container-phrases">{renderImageElements()}</div>
