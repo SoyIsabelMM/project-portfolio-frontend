@@ -73,7 +73,6 @@ function FormContact() {
               type="text"
               value={email}
               onChange={onChangeEmail}
-              required
             />
           </label>
           <label className="form-contact__label">
@@ -86,12 +85,14 @@ function FormContact() {
             />
           </label>
         </div>
-        <button className="form-contact__contact-btn">Enviar</button>
-        {subtmitted && (
-          <span className="form-contact__message">
-            ¡Gracias por enviar tu mensaje!
-          </span>
-        )}
+        <div className="form-contact__content-btn">
+          <button className="form-contact__contact-btn">Enviar</button>
+          {subtmitted && (
+            <span className="form-contact__message">
+              ¡Gracias por enviar tu mensaje!
+            </span>
+          )}
+        </div>
       </form>
     </div>
   );
