@@ -45,44 +45,17 @@ export const fetchProfiles = async (search) => {
   }
 };
 
-export const updateUser = async (
-  firstName,
-  lastName,
-  country,
-  resume,
-  instagram,
-  facebook,
-  linkedin,
-  about,
-  hobbies,
-  activities,
-  happyPlaces,
-  token
-) => {
+export const updateUser = async (userData, token) => {
   const url = `${baseUrl}/users`;
 
   try {
-    const userDataToUpdate = {
-      firstName: firstName,
-      lastName: lastName,
-      country: country,
-      resume: resume,
-      instagram: instagram,
-      facebook: facebook,
-      linkedin: linkedin,
-      about: about,
-      hobbies: hobbies,
-      activities: activities,
-      happyPlaces: happyPlaces,
-    };
-
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(userDataToUpdate),
+      body: JSON.stringify(userData),
     });
 
     if (!response.ok) {
@@ -96,8 +69,8 @@ export const updateUser = async (
   }
 };
 
-export const updateUserBanner = async (banner, token) => {
-  const url = `${baseUrl}/users/banner`;
+export const updateUserImage = async (formData, token, target) => {
+  const url = `${baseUrl}/users/${target}`;
 
   try {
     const response = await fetch(url, {
@@ -105,16 +78,16 @@ export const updateUserBanner = async (banner, token) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: banner,
+      body: formData,
     });
 
     if (!response.ok) {
-      throw new Error('Error updating user banner');
+      throw new Error('Error updating user image');
     }
 
     return await response.json();
   } catch (err) {
-    console.error('Error updating user banner:', err);
+    console.error('Error updating user image:', err);
     throw err;
   }
 };
