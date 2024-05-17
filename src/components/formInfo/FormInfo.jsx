@@ -20,7 +20,7 @@ function FormInfo() {
   const [activities, setActivities] = useState('');
   const [happyPlaces, setHappyPlaces] = useState('');
 
-  const [banner, setBanner] = useState({});
+  const [banner, setBanner] = useState(null);
   const [bannerUrl, setBannerUrl] = useState('');
 
   useEffect(() => {
@@ -92,9 +92,10 @@ function FormInfo() {
   const handleUpdateBanner = async () => {
     try {
       const formData = new FormData();
-      formData.append('banner', banner);
+      formData.append('image', banner);
 
       await updateUserBanner(formData, currentUser.token);
+
       console.log('Banner updated successfully', currentUser);
     } catch (error) {
       console.error('Error updating banner:', error);
@@ -103,6 +104,11 @@ function FormInfo() {
 
   const handleUpdateUserInfo = async (evt) => {
     evt.preventDefault();
+
+    if (banner) {
+      handleUpdateBanner();
+    }
+
     handleUpdateBanner();
 
     const updateUserData = {
