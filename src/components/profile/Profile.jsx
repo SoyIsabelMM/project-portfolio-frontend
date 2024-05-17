@@ -5,6 +5,7 @@ import { fetchProfile } from '../../utils/userApi';
 import { defaultBanner } from '../../utils/constant';
 
 import './Profile.css';
+import Preloader from '../preloader/Preloader';
 
 function Profile() {
   const { userId } = useParams();
@@ -36,15 +37,7 @@ function Profile() {
   return (
     <section className="profile">
       {loading ? (
-        <div className="profile__content-preloader">
-          <div className="profile__preloader">
-            <img
-              className="profile__preloader-img"
-              src="https://i.imgur.com/cWGLRFJ.png"
-              alt="preloader"
-            />
-          </div>
-        </div>
+        <Preloader />
       ) : (
         profile && (
           <div className="profile__content">
@@ -57,8 +50,6 @@ function Profile() {
               {
                 <Typewriter
                   onInit={(typewriter) => {
-                    const fullName = `${profile.firstName} ${profile.lastName}`;
-
                     typewriter
                       .typeString('Bienvenido a mi Portafolio')
                       .pauseFor(2000)

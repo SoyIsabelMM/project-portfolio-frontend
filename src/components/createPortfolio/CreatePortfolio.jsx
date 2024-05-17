@@ -1,5 +1,7 @@
 import React from 'react';
+import Textarea from '../textarea/Textarea';
 import './CreatePortfolio.css';
+import InputContent from '../inputContent/InputContent';
 
 function CreatePortfolio() {
   return (
@@ -10,32 +12,56 @@ function CreatePortfolio() {
           <h3 className="create-portfolio__subtitle">
             Formulario de Creación de Portafolio
           </h3>
-          <input
-            className="create-portfolio__input"
+
+          <InputContent
             type="text"
-            placeholder="Elige el titulo del portafolio"
-            id="title"
-            required
+            classNameInput="create-portfolio__input"
+            labelName="Título del portafolio"
+            placeholder="ej: Sentada en una pradera"
           />
-          <textarea
+
+          <Textarea
             className="create-portfolio__textarea"
             name="summary"
             id="summary"
-            placeholder="Cuentanos de que trata tu portafolio"
-            required
-          ></textarea>
-          <label className="create-portfolio__label">
-            Sube tus imágenes
-            <input
-              className="create-portfolio__input "
-              type="file"
-              id="photos"
-              name="photos"
-              accept="image/*"
-              multiple
-              required
-            />
-          </label>
+            placeholder="Cuéntanos de que trata tu portafolio"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 1"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 2"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 3"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 4"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 5"
+          />
+
+          <InputContent
+            type="file"
+            classNameInput="create-portfolio__input"
+            labelName="Foto 6"
+          />
         </div>
       </form>
       <button className="create-portfolio__btn">Crear</button>
