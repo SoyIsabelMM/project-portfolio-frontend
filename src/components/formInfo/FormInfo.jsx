@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import InputContent from '../inputContent/InputContect';
+import InputContent from '../inputContent/InputContent';
 import Textarea from '../textarea/Textarea';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './FormInfo.css';
@@ -20,6 +20,7 @@ function FormInfo() {
   const [activities, setActivities] = useState('');
   const [happyPlaces, setHappyPlaces] = useState('');
 
+  //set de input imágenes
   const [banner, setBanner] = useState(null);
   const [bannerUrl, setBannerUrl] = useState('');
 
@@ -135,8 +136,6 @@ function FormInfo() {
       formData.append('image', file);
 
       await updateUserImage(formData, currentUser.token, target);
-
-      console.log(`${target} updated successfully`, currentUser);
     } catch (error) {
       console.error(`Error updating ${target}:`, error);
     }
@@ -302,7 +301,7 @@ function FormInfo() {
             <InputContent
               className="form-info__label"
               classNameInput="form-info__input"
-              labelName="Foto"
+              labelName="Foto sobre mí"
               type="file"
               value={avatarUrl}
               onChange={onChangeAvatar}
@@ -320,7 +319,7 @@ function FormInfo() {
             <InputContent
               className="form-info__label"
               classNameInput="form-info__input"
-              labelName="Foto"
+              labelName="Foto hobbie"
               type="file"
               value={hobbiesImageUrl}
               onChange={onChangeHobbiesImage}
@@ -338,7 +337,7 @@ function FormInfo() {
             <InputContent
               className="form-info__label"
               classNameInput="form-info__input"
-              labelName="Foto"
+              labelName="Foto actividad física"
               type="file"
               value={activitiesImageUrl}
               onChange={onChangeActivitiesImage}
@@ -356,7 +355,7 @@ function FormInfo() {
             <InputContent
               className="form-info__label"
               classNameInput="form-info__input"
-              labelName="Foto"
+              labelName="Foto de tu lugar feliz"
               type="file"
               value={happyPlacesImageUrl}
               onChange={onChangeHappyPlacesImage}
