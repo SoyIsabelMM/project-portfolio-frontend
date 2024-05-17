@@ -20,6 +20,31 @@ export const fetchProfile = async (userId) => {
   }
 };
 
+export const fetchProfiles = async (search) => {
+  const url = new URL(`${baseUrl}/users/profiles`);
+  if (search) {
+    url.search = new URLSearchParams({ search }).toString();
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Error fetching users profiles');
+    }
+  } catch (err) {
+    console.error('Error', err);
+    throw err;
+  }
+};
+
 export const updateUser = async (
   firstName,
   lastName,
@@ -71,27 +96,29 @@ export const updateUser = async (
   }
 };
 
-export const fetchProfiles = async (search) => {
-  const url = new URL(`${baseUrl}/users/profiles`);
-  if (search) {
-    url.search = new URLSearchParams({ search }).toString();
-  }
+export const updateUserBanner = async (userId, banner, token) => {
+  const url = `${baseUrl}/users/banner`;
 
   try {
     const response = await fetch(url, {
-      method: 'GET',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({
+        userId: userId,
+        banner: banner,
+      }),
     });
 
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Error fetching users profiles');
+    if (!response.ok) {
+      throw new Error('Error updating user banner');
     }
+
+    return await response.json();
   } catch (err) {
-    console.error('Error', err);
+    console.error('Error updating user banner:', err);
     throw err;
   }
 };

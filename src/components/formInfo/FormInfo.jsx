@@ -3,7 +3,7 @@ import InputContent from '../inputContent/InputContect';
 import Textarea from '../textarea/Textarea';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './FormInfo.css';
-import { updateUser } from '../../utils/userApi';
+import { updateUser, updateUserBanner } from '../../utils/userApi';
 
 function FormInfo() {
   const { currentUser } = useContext(CurrentUserContext);
@@ -15,11 +15,12 @@ function FormInfo() {
   const [instagram, setInstagram] = useState('');
   const [facebook, setFacebook] = useState('');
   const [linkedin, setLinkedin] = useState('');
-
   const [about, setAbout] = useState('');
   const [hobbies, setHobbies] = useState('');
   const [activities, setActivities] = useState('');
   const [happyPlaces, setHappyPlaces] = useState('');
+
+  const [banner, setBanner] = useState('');
 
   useEffect(() => {
     if (currentUser) {
@@ -31,7 +32,6 @@ function FormInfo() {
       setInstagram(currentUser.instagram || '');
       setFacebook(currentUser.facebook || '');
       setLinkedin(currentUser.linkedin || '');
-
       setAbout(currentUser.about || '');
       setHobbies(currentUser.hobbies || '');
       setActivities(currentUser.activities || '');
@@ -83,8 +83,24 @@ function FormInfo() {
     setHappyPlaces(evt.target.value);
   };
 
+  const onChangeBanner = (evt) => {
+    setBanner(evt.target.files);
+  };
+
+  const handleUpdateBanner = async () => {
+    try {
+      const formData = new FormData();
+
+      await updateUserBanner(currentUser._id, formData, currentUser.token);
+      console.log('Banner updated successfully', currentUser);
+    } catch (error) {
+      console.error('Error updating banner:', error);
+    }
+  };
+
   const handleUpdateUserInfo = async (evt) => {
     evt.preventDefault();
+    handleUpdateBanner();
 
     const updateUserData = {
       ...currentUser,
@@ -210,6 +226,8 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Banner"
               type="file"
+              value={banner}
+              onChange={onChangeBanner}
             />
           </div>
 

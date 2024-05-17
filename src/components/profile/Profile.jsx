@@ -57,8 +57,6 @@ function Profile() {
               {
                 <Typewriter
                   onInit={(typewriter) => {
-                    const fullName = `${profile.firstName} ${profile.lastName}`;
-
                     typewriter
                       .typeString('Bienvenido a mi Portafolio')
                       .pauseFor(2000)
