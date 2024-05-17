@@ -5,7 +5,6 @@ function InputContent({
   labelName,
   placeholder,
   onChange,
-  required,
   className,
   classNameInput,
   value,
@@ -19,7 +18,6 @@ function InputContent({
           type={type}
           placeholder={placeholder}
           onChange={onChange}
-          required={required}
           value={value}
         />
       </label>

@@ -9,10 +9,11 @@ function ReviewContect({
   required,
   value,
   onChange,
+  className,
 }) {
   return (
     <textarea
-      className="textarea"
+      className={`textarea ${className}`}
       name={name}
       type={type}
       value={value}

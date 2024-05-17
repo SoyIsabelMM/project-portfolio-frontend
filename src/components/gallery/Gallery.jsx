@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Preloader from '../preloader/Preloader';
 import './Gallery.css';
 
 function Gallery() {
@@ -97,15 +98,7 @@ function Gallery() {
           </p>
 
           {loading ? (
-            <div className="gallery__content-preloader">
-              <div className="gallery__preloader">
-                <img
-                  className="gallery__preloader-img"
-                  src="https://i.imgur.com/cWGLRFJ.png"
-                  alt="preloader"
-                />
-              </div>
-            </div>
+            <Preloader />
           ) : (
             <div className="gallery__content-image">
               <ResponsiveMasonry
