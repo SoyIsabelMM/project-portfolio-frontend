@@ -19,10 +19,13 @@
 .contact__no-parallax {
   background-color: black;
   z-index: 999;
+  display: flex;
+  justify-content: start;
 }
 
-.contact__no-parallax_height {
+.contact__no-parallax_flex {
   height: 90%;
+  justify-content: center;
 }
 
 .contact__text {
@@ -34,7 +37,7 @@
 }
 
 .contact__text_margin {
-  margin-top: 5%;
+  margin-top: 20%;
 }
 
 .contact__parallax .contact__text {
@@ -43,7 +46,7 @@
 }
 
 .contact__parallax::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 0;
   right: 0;
@@ -57,26 +60,27 @@
 
 .contact__parallax_bg::after {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg");
+    url('https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg');
   background-size: cover;
+  object-fit: cover;
+}
+
+.contact__social-text {
+  color: white;
+  width: 80%;
+  margin: 0;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .contact__social-container {
-  width: 880px;
+  width: 70%;
   height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.contact__social-text {
-  color: white;
-  width: 60%;
-  margin: 0;
-  text-align: center;
-  font-size: 3rem;
-  margin-top: 8%;
+  gap: 20px;
 }
 
 .contact__social-networks {
@@ -97,15 +101,105 @@
 .contact__social-icon:hover {
   width: 150px;
   height: 150px;
-  padding: 20px;
 }
-/* 
-@media screen and (min-width: 768px) {
+
+@media screen and (max-width: 800px) {
+  .contact__social-container {
+    width: 90%;
+  }
+
+  .contact__social-networks {
+    width: 170px;
+    height: 170px;
+  }
+
+  .contact__social-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .contact__social-icon:hover {
+    width: 120px;
+    height: 120px;
+    padding: 20%;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .contact__position .contact__text {
-    font-size: 8rem;
+    font-size: 3.5rem;
   }
 
   .contact__parallax .contact__text {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
-} */
+
+  .contact__text_margin {
+    margin-top: 25%;
+  }
+
+  .contact__social-text {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact__parallax .contact__text {
+    font-size: 3rem;
+    width: 80%;
+  }
+
+  .contact__social-container {
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .contact__social-networks {
+    width: 130px;
+    height: 130px;
+  }
+
+  .contact__social-icon {
+    width: 90px;
+    height: 90px;
+    padding: 15%;
+  }
+
+  .contact__social-icon:hover {
+    width: 100px;
+    height: 100px;
+    padding: 10%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .contact__text {
+    font-size: 3rem;
+  }
+
+  .contact__text_margin {
+    margin-top: 40%;
+  }
+  .contact__social-text {
+    font-size: 2rem;
+    width: 85%;
+    margin-bottom: 50px;
+  }
+
+  .contact__social-networks {
+    width: 100px;
+    height: 100px;
+  }
+
+  .contact__social-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .contact__social-icon:hover {
+    width: 80px;
+    height: 80px;
+  }
+}

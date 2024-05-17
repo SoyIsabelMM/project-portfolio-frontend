@@ -1,12 +1,12 @@
-import React from "react";
-import "./Contact.css";
-import FormContact from "../formContact/FormContact";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import './Contact.css';
+import FormContact from '../formContact/FormContact';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faInstagram,
   faLinkedinIn,
   faFacebookF,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
 function Contact() {
   return (
@@ -22,7 +22,7 @@ function Contact() {
         </h3>
       </div>
 
-      <div className="contact__no-parallax contact__no-parallax_height contact_position ">
+      <div className="contact__no-parallax contact__no-parallax_flex contact_position ">
         <h3 className="contact__social-text">
           Visítanos en nuestras redes sociales
         </h3>

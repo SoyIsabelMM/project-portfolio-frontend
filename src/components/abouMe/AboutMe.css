@@ -4,6 +4,7 @@
   flex-direction: column;
   background-color: inherit;
   margin-top: 4.5%;
+  overflow: hidden;
 }
 
 .about-me__banner-container {
@@ -24,8 +25,8 @@
 
 .about-me__title {
   position: absolute;
-  top: 400px;
-  left: 200px;
+  top: 45%;
+  left: 20%;
   color: white;
   font-weight: 600;
   font-size: 4rem;
@@ -102,25 +103,28 @@
 }
 
 .about-me__color {
-  width: 100%;
+  width: 100vw;
   background-color: black;
   height: 40vh;
-  color: white;
-  font-size: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.about-me__typewriter {
+  text-align: center;
+  font-size: 4rem;
+  color: white;
+}
+
 .about-me__container-phrases {
-  width: 950px;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  width: 70%;
+  margin: 8% 0;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 }
 
 .about-me__phrases {
@@ -138,4 +142,89 @@
   height: 300px;
   object-fit: cover;
   border-radius: 20px;
+}
+
+@media screen and (max-width: 880px) {
+  .about-me__title {
+    top: 46%;
+    font-size: 2.5rem;
+  }
+
+  .about-me__color {
+    height: 35vh;
+  }
+
+  .about-me__typewriter {
+    font-size: 2.5rem;
+  }
+
+  .about-me__container-phrases {
+    gap: 30px;
+  }
+
+  .about-me__phrases {
+    font-size: 0.8rem;
+  }
+
+  .about-me__phrases-image {
+    width: 250px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .about-me__container-phrases {
+    gap: 20px;
+  }
+
+  .about-me__phrases {
+    font-size: 0.6rem;
+    padding: 10px;
+  }
+
+  .about-me__phrases-image {
+    width: 210px;
+    height: 170px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .about-me__title {
+    top: 50%;
+    left: 15%;
+    font-size: 2rem;
+    white-space: wrap;
+  }
+
+  .about-me__typewriter {
+    font-size: 2.2rem;
+  }
+
+  .about-me__container-phrases {
+    width: 90%;
+  }
+
+  .about-me__phrases-image {
+    width: 155px;
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-me__title {
+    font-size: 1.5rem;
+  }
+
+  .about-me__typewriter {
+    font-size: 1.5rem;
+  }
+
+  .about-me__container-phrases {
+    width: 90%;
+  }
+
+  .about-me__phrases-image {
+    width: 130px;
+    height: 220px;
+  }
 }
