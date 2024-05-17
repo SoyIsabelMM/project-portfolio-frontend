@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import InputContent from '../inputContent/InputContect';
 import Textarea from '../textarea/Textarea';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './FormInfo.css';
-import { updateUser, updateUserBanner } from '../../utils/userApi';
+import { updateUser, updateUserImage } from '../../utils/userApi';
 
 function FormInfo() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -22,6 +22,21 @@ function FormInfo() {
 
   const [banner, setBanner] = useState(null);
   const [bannerUrl, setBannerUrl] = useState('');
+
+  const [avatar, setAvatar] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState('');
+
+  const [resumeImage, setResumeImage] = useState(null);
+  const [resumeImageUrl, setResumeImageUrl] = useState('');
+
+  const [hobbiesImage, setHobbiesImage] = useState(null);
+  const [hobbiesImageUrl, setHobbiesImageUrl] = useState('');
+
+  const [activitiesImage, setActivitiesImage] = useState(null);
+  const [activitiesImageUrl, setActivitiesImageUrl] = useState('');
+
+  const [happyPlacesImage, setHappyPlacesImage] = useState(null);
+  const [happyPlacesImageUrl, setHappyPlacesImageUrl] = useState('');
 
   useEffect(() => {
     if (currentUser) {
@@ -89,60 +104,86 @@ function FormInfo() {
     setBannerUrl(evt.target.value);
   };
 
-  const handleUpdateBanner = async () => {
+  const onChangeAvatar = (evt) => {
+    setAvatar(evt.target.files[0]);
+    setAvatarUrl(evt.target.value);
+  };
+
+  const onChangeResumeImage = (evt) => {
+    setResumeImage(evt.target.files[0]);
+    setResumeImageUrl(evt.target.value);
+  };
+
+  const onChangeHobbiesImage = (evt) => {
+    setHobbiesImage(evt.target.files[0]);
+    setHobbiesImageUrl(evt.target.value);
+  };
+
+  const onChangeHappyPlacesImage = (evt) => {
+    setHappyPlacesImage(evt.target.files[0]);
+    setHappyPlacesImageUrl(evt.target.value);
+  };
+
+  const onChangeActivitiesImage = (evt) => {
+    setActivitiesImage(evt.target.files[0]);
+    setActivitiesImageUrl(evt.target.value);
+  };
+
+  const handleUpdateImage = async (target, file) => {
     try {
       const formData = new FormData();
-      formData.append('image', banner);
+      formData.append('image', file);
 
-      await updateUserBanner(formData, currentUser.token);
+      await updateUserImage(formData, currentUser.token, target);
 
-      console.log('Banner updated successfully', currentUser);
+      console.log(`${target} updated successfully`, currentUser);
     } catch (error) {
-      console.error('Error updating banner:', error);
+      console.error(`Error updating ${target}:`, error);
     }
   };
 
   const handleUpdateUserInfo = async (evt) => {
     evt.preventDefault();
-
+    const imagesUploads = [];
     if (banner) {
-      handleUpdateBanner();
+      imagesUploads.push(handleUpdateImage('banner', banner));
     }
-
-    handleUpdateBanner();
+    if (avatar) {
+      imagesUploads.push(handleUpdateImage('avatar', avatar));
+    }
+    if (resumeImage) {
+      imagesUploads.push(handleUpdateImage('resumeImage', resumeImage));
+    }
+    if (hobbiesImage) {
+      imagesUploads.push(handleUpdateImage('hobbiesImage', hobbiesImage));
+    }
+    if (activitiesImage) {
+      imagesUploads.push(handleUpdateImage('activitiesImage', activitiesImage));
+    }
+    if (happyPlacesImage) {
+      imagesUploads.push(
+        handleUpdateImage('happyPlacesImage', happyPlacesImage)
+      );
+    }
 
     const updateUserData = {
       ...currentUser,
-      firstName: firstName,
-      lastName: lastName,
-      country: country,
-      resume: resume,
-      instagram: instagram,
-      facebook: facebook,
-      linkedin: linkedin,
-      about: about,
-      hobbies: hobbies,
-      activities: activities,
-      happyPlaces: happyPlaces,
+      firstName,
+      lastName,
+      country,
+      resume,
+      instagram,
+      facebook,
+      linkedin,
+      about,
+      hobbies,
+      activities,
+      happyPlaces,
     };
 
     try {
-      await updateUser(
-        updateUserData.firstName,
-        updateUserData.lastName,
-        updateUserData.country,
-        updateUserData.resume,
-        updateUserData.instagram,
-        updateUserData.facebook,
-        updateUserData.linkedin,
-        updateUserData.about,
-        updateUserData.hobbies,
-        updateUserData.activities,
-        updateUserData.happyPlaces,
-        currentUser.token
-      );
-
-      console.log('tengo todo', updateUserData);
+      await Promise.all(imagesUploads);
+      await updateUser(updateUserData, currentUser.token);
       setCurrentUser(updateUserData);
     } catch (err) {
       console.error('Error al guardar la información del usuario:', err);
@@ -230,7 +271,10 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Foto de Perfil"
               type="file"
+              value={resumeImageUrl}
+              onChange={onChangeResumeImage}
             />
+
             <InputContent
               className="form-info__label"
               classNameInput="form-info__input"
@@ -260,6 +304,8 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Foto"
               type="file"
+              value={avatarUrl}
+              onChange={onChangeAvatar}
             />
 
             <Textarea
@@ -276,6 +322,8 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Foto"
               type="file"
+              value={hobbiesImageUrl}
+              onChange={onChangeHobbiesImage}
             />
 
             <Textarea
@@ -292,6 +340,8 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Foto"
               type="file"
+              value={activitiesImageUrl}
+              onChange={onChangeActivitiesImage}
             />
 
             <Textarea
@@ -308,6 +358,8 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Foto"
               type="file"
+              value={happyPlacesImageUrl}
+              onChange={onChangeHappyPlacesImage}
             />
           </div>
 
