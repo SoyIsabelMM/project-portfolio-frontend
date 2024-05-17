@@ -143,6 +143,7 @@ function FormInfo() {
 
   const handleUpdateUserInfo = async (evt) => {
     evt.preventDefault();
+
     const imagesUploads = [];
     if (banner) {
       imagesUploads.push(handleUpdateImage('banner', banner));
@@ -225,7 +226,12 @@ function FormInfo() {
           <h3 className="form-info__subtitle">Contacto</h3>
 
           <div className="form-info__content-input">
-            <InputContent labelName="Email" type={'email'} value={email} />
+            <InputContent
+              labelName="Email"
+              type={'email'}
+              value={email}
+              onChange={() => {}}
+            />
 
             <InputContent
               labelName="Instagram"
@@ -242,6 +248,7 @@ function FormInfo() {
               onChange={onChangeFacebook}
               value={facebook}
             />
+
             <InputContent
               labelName="Linkedin"
               type="url"

@@ -67,9 +67,6 @@ function LandingPage() {
   );
 }
 
-LandingPage.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
-};
+LandingPage.propTypes = {};
 
 export default LandingPage;
