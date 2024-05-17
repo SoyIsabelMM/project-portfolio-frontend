@@ -96,20 +96,16 @@ export const updateUser = async (
   }
 };
 
-export const updateUserBanner = async (userId, banner, token) => {
+export const updateUserBanner = async (banner, token) => {
   const url = `${baseUrl}/users/banner`;
 
   try {
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        userId: userId,
-        banner: banner,
-      }),
+      body: banner,
     });
 
     if (!response.ok) {

@@ -6,7 +6,7 @@ import './FormInfo.css';
 import { updateUser, updateUserBanner } from '../../utils/userApi';
 
 function FormInfo() {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [country, setCountry] = useState('');
@@ -20,7 +20,8 @@ function FormInfo() {
   const [activities, setActivities] = useState('');
   const [happyPlaces, setHappyPlaces] = useState('');
 
-  const [banner, setBanner] = useState('');
+  const [banner, setBanner] = useState({});
+  const [bannerUrl, setBannerUrl] = useState('');
 
   useEffect(() => {
     if (currentUser) {
@@ -84,14 +85,16 @@ function FormInfo() {
   };
 
   const onChangeBanner = (evt) => {
-    setBanner(evt.target.files);
+    setBanner(evt.target.files[0]);
+    setBannerUrl(evt.target.value);
   };
 
   const handleUpdateBanner = async () => {
     try {
       const formData = new FormData();
+      formData.append('banner', banner);
 
-      await updateUserBanner(currentUser._id, formData, currentUser.token);
+      await updateUserBanner(formData, currentUser.token);
       console.log('Banner updated successfully', currentUser);
     } catch (error) {
       console.error('Error updating banner:', error);
@@ -134,6 +137,7 @@ function FormInfo() {
       );
 
       console.log('tengo todo', updateUserData);
+      setCurrentUser(updateUserData);
     } catch (err) {
       console.error('Error al guardar la información del usuario:', err);
     }
@@ -226,7 +230,7 @@ function FormInfo() {
               classNameInput="form-info__input"
               labelName="Banner"
               type="file"
-              value={banner}
+              value={bannerUrl}
               onChange={onChangeBanner}
             />
           </div>
