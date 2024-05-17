@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './InputContent.css';
 
 function InputContent({
@@ -17,12 +19,22 @@ function InputContent({
           className={`input-content__input ${classNameInput}`}
           type={type}
           placeholder={placeholder}
-          onChange={onChange}
           value={value}
+          onChange={onChange}
         />
       </label>
     </>
   );
 }
+
+InputContent.propTypes = {
+  type: PropTypes.string,
+  labelName: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  classNameInput: PropTypes.string,
+  value: PropTypes.string,
+};
 
 export default InputContent;
