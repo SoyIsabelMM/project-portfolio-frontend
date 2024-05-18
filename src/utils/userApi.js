@@ -91,3 +91,25 @@ export const updateUserImage = async (formData, token, target) => {
     throw err;
   }
 };
+
+export const fetchPortfolios = async (userId) => {
+  const url = new URL(`${baseUrl}/portfolios/${userId}`);
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Error fetching porfolios');
+    }
+  } catch (err) {
+    console.error('Error', err);
+    throw err;
+  }
+};

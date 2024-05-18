@@ -1,9 +1,11 @@
-import React, { useContext, useState } from "react";
-import "./Card.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faEllipsisVertical, faHeart } from '@fortawesome/free-solid-svg-icons';
+
+import emptyState from '../../images/empty-state.png';
+import './Card.css';
 
 function Card({
   id,
@@ -19,8 +21,6 @@ function Card({
 }) {
   const [islike, setIsLike] = useState(false);
   const [showShare, setShowShare] = useState(false);
-
-  const currentUser = useContext(CurrentUserContext);
 
   const handleCardLike = () => {
     onCardLike();
@@ -47,7 +47,7 @@ function Card({
 
   return (
     <div className={className} key={id}>
-      <img className="card__image" src={image} alt={alt} />
+      <img className="card__image" src={image || emptyState} alt={alt} />
 
       <div className="card__container">
         <div className="card__content-menu">
@@ -55,7 +55,7 @@ function Card({
           {menu}
           <div
             className={`card__btn-share ${
-              showShare ? "" : "card__btn-share_close"
+              showShare ? '' : 'card__btn-share_close'
             }`}
           >
             <p className="card__share-title">Compartir</p>
@@ -83,7 +83,7 @@ function Card({
               </>
             )}
             <FontAwesomeIcon
-              className={`card__like ${islike ? "card__like_active" : ""}`}
+              className={`card__like ${islike ? 'card__like_active' : ''}`}
               icon={likeIcon}
               onClick={toggleLike}
             />
@@ -93,5 +93,18 @@ function Card({
     </div>
   );
 }
+
+Card.propTypes = {
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.string,
+  image: PropTypes.string,
+  alt: PropTypes.string,
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  userName: PropTypes.string,
+  onCardLike: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Card;
