@@ -6,6 +6,7 @@ import './portfolios.css';
 import Card from '../card/Card';
 import { fetchPortfolios } from '../../utils/userApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Preloader from '../preloader/Preloader';
 
 function Portfolios() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Portfolios() {
 
   const [limit, setLimit] = useState(3);
   const [portfolios, setPortfolios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleCreatePortfolio = () => {
     navigate('/create-portfolio');
@@ -32,7 +34,6 @@ function Portfolios() {
       className="card"
       title={portfolio.title}
       description={portfolio.description}
-      likes={0}
       views={portfolio.views}
     />
   ));
@@ -44,12 +45,14 @@ function Portfolios() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(_userId);
+        setLoading(true);
         const portfolios = await fetchPortfolios(_userId);
 
         setPortfolios(portfolios);
       } catch (err) {
         console.error('Error fetching portfolios', err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -59,7 +62,12 @@ function Portfolios() {
   return (
     <section className="portfolios">
       <h2 className="portfolios__title">Portafolios</h2>
-      <div className="portfolios__content">{renderPortfolios}</div>
+
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div className="portfolios__content-portfolio">{renderPortfolios}</div>
+      )}
 
       <div className="portfolios__container-btn">
         <button className="portfolios__btn" onClick={handleSeeMore}>

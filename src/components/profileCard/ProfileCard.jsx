@@ -14,7 +14,7 @@ function ProfileCard({ profile }) {
     <div className="profile-card">
       <img
         className="profile-card__image"
-        src={profile.happyPlacesImage}
+        src={profile.avatar}
         alt={`${profile.firstName} Happy Place`}
       />
 

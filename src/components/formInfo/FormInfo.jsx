@@ -274,6 +274,7 @@ function FormInfo() {
               onChange={onChangeResume}
               type="text"
               placeholder="Cuéntanos sobre tu vida como profesional"
+              className="form-info__textarea "
             />
 
             <InputContent
@@ -307,6 +308,7 @@ function FormInfo() {
               placeholder="Cuéntanos sobre ti en general"
               value={about}
               onChange={onChangeAbout}
+              className="form-info__textarea"
             />
 
             <InputContent
@@ -325,6 +327,7 @@ function FormInfo() {
               placeholder="¿Qué te gusta hacer?"
               value={hobbies}
               onChange={onChangeHobbies}
+              className="form-info__textarea "
             />
 
             <InputContent
@@ -343,6 +346,7 @@ function FormInfo() {
               placeholder="¿Practicas algún deporte o actividad extra?"
               value={activities}
               onChange={onChangeActivities}
+              className="form-info__textarea "
             />
 
             <InputContent
@@ -361,6 +365,7 @@ function FormInfo() {
               placeholder="¿Cuál es tu lugar feliz?"
               value={happyPlaces}
               onChange={onChangeHappyPlaces}
+              className="form-info__textarea "
             />
 
             <InputContent

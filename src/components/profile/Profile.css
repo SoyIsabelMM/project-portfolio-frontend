@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+
   overflow: hidden;
 }
 
@@ -31,7 +33,7 @@
 
 .profile__history {
   background-color: black;
-  height: 40vh;
+  height: 35vh;
   width: 100vw;
   margin-top: 5%;
   display: flex;
