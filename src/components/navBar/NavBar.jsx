@@ -9,7 +9,7 @@ function NavBar() {
   const isLoggedIn = currentUser !== null;
   const hasSelectedProfile = isLoggedIn && currentUser._id;
 
-  const [isOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 

@@ -39,7 +39,7 @@ function CreatePortfolio() {
         description,
         currentUser.token
       );
-      console.log('Te cree un lindo portafolio', response);
+      console.log('Te cree un lindo portafolio', response._i);
 
       await handleImagesUpload(response._id);
       setCreationResponse(response);
@@ -74,6 +74,7 @@ function CreatePortfolio() {
       );
     } catch (error) {
       console.error(`Error uuploading image ${index}:`, error);
+      setCreationResponse(null);
     }
   };
 
@@ -85,102 +86,105 @@ function CreatePortfolio() {
           <h3 className="create-portfolio__subtitle">
             Formulario de Creación de Portafolio
           </h3>
+          <div className="create-portfolio__content-input">
+            <InputContent
+              type="text"
+              classNameInput="create-portfolio__input"
+              labelName="Título del portafolio"
+              placeholder="ej: Sentada en una pradera"
+              value={title}
+              onChange={(evt) => setTitle(evt.target.value)}
+            />
 
-          <InputContent
-            type="text"
-            classNameInput="create-portfolio__input"
-            labelName="Título del portafolio"
-            placeholder="ej: Sentada en una pradera"
-            value={title}
-            onChange={(evt) => setTitle(evt.target.value)}
-          />
+            <Textarea
+              className="create-portfolio__textarea"
+              name="description"
+              id="description"
+              placeholder="Cuéntanos de que trata tu portafolio"
+              value={description}
+              onChange={(evt) => setDescription(evt.target.value)}
+            />
 
-          <Textarea
-            className="create-portfolio__textarea"
-            name="description"
-            id="description"
-            placeholder="Cuéntanos de que trata tu portafolio"
-            value={description}
-            onChange={(evt) => setDescription(evt.target.value)}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 1"
+              value={image1Url}
+              onChange={(evt) => {
+                setImage1(evt.target.files[0]);
+                setImage1Url(evt.target.value);
+              }}
+            />
 
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 1"
-            value={image1Url}
-            onChange={(evt) => {
-              setImage1(evt.target.files[0]);
-              setImage1Url(evt.target.value);
-            }}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 2"
+              value={image2Url}
+              onChange={(evt) => {
+                setImage2(evt.target.files[0]);
+                setImage2Url(evt.target.value);
+              }}
+            />
 
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 2"
-            value={image2Url}
-            onChange={(evt) => {
-              setImage2(evt.target.files[0]);
-              setImage2Url(evt.target.value);
-            }}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 3"
+              value={image3Url}
+              onChange={(evt) => {
+                setImage3(evt.target.files[0]);
+                setImage3Url(evt.target.value);
+              }}
+            />
 
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 3"
-            value={image3Url}
-            onChange={(evt) => {
-              setImage3(evt.target.files[0]);
-              setImage3Url(evt.target.value);
-            }}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 4"
+              value={image4Url}
+              onChange={(evt) => {
+                setImage4(evt.target.files[0]);
+                setImage4Url(evt.target.value);
+              }}
+            />
 
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 4"
-            value={image4Url}
-            onChange={(evt) => {
-              setImage4(evt.target.files[0]);
-              setImage4Url(evt.target.value);
-            }}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 5"
+              value={image5Url}
+              onChange={(evt) => {
+                setImage5(evt.target.files[0]);
+                setImage5Url(evt.target.value);
+              }}
+            />
 
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 5"
-            value={image5Url}
-            onChange={(evt) => {
-              setImage5(evt.target.files[0]);
-              setImage5Url(evt.target.value);
-            }}
-          />
-
-          <InputContent
-            type="file"
-            classNameInput="create-portfolio__input"
-            labelName="Foto 6"
-            value={image6Url}
-            onChange={(evt) => {
-              setImage6(evt.target.files[0]);
-              setImage6Url(evt.target.value);
-            }}
-          />
+            <InputContent
+              type="file"
+              classNameInput="create-portfolio__input"
+              labelName="Foto 6"
+              value={image6Url}
+              onChange={(evt) => {
+                setImage6(evt.target.files[0]);
+                setImage6Url(evt.target.value);
+              }}
+            />
+          </div>
         </div>
 
         <button type="submit" className="create-portfolio__btn">
           Crear
         </button>
-      </form>
 
-      {creationResponse && (
-        <div>
-          <p>El portafolio ha sido creado con éxito.</p>
-        </div>
-      )}
+        {creationResponse && (
+          <div className="create-portfolio__response">
+            <p className="create-portfolio__message">
+              El portafolio ha sido creado con éxito.
+            </p>
+          </div>
+        )}
+      </form>
     </section>
   );
 }

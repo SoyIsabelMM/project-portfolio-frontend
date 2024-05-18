@@ -23,12 +23,12 @@ function Gallery() {
   };
 
   const imagesSizes = [
-    { w: 200, h: 350 },
-    { w: 300, h: 150 },
-    { w: 400, h: 200 },
-    { w: 300, h: 150 },
+    { w: 280, h: 380 },
+    { w: 320, h: 200 },
+    { w: 380, h: 280 },
+    { w: 300, h: 160 },
     { w: 200, h: 340 },
-    { w: 150, h: 150 },
+    { w: 150, h: 260 },
     { w: 200, h: 250 },
     { w: 300, h: 200 },
     { w: 400, h: 300 },
@@ -37,20 +37,20 @@ function Gallery() {
     { w: 150, h: 150 },
   ];
 
-  const dummyImages = [
-    'https://picsum.photos/2000/2500',
-    'https://picsum.photos/3000/2000',
-    'https://picsum.photos/4000/3000',
-    'https://picsum.photos/3000/1500',
-    'https://picsum.photos/2000/2165',
-    'https://picsum.photos/1500/1500',
-    'https://picsum.photos/2000/2500',
-    'https://picsum.photos/3000/2000',
-    'https://picsum.photos/4000/3000',
-    'https://picsum.photos/3000/1500',
-    'https://picsum.photos/2000/2165',
-    'https://picsum.photos/1500/1500',
-  ];
+  // const dummyImages = [
+  //   'https://picsum.photos/2000/2500',
+  //   'https://picsum.photos/3000/2000',
+  //   'https://picsum.photos/4000/3000',
+  //   'https://picsum.photos/3000/1500',
+  //   'https://picsum.photos/2000/2165',
+  //   'https://picsum.photos/1500/1500',
+  //   'https://picsum.photos/2000/2500',
+  //   'https://picsum.photos/3000/2000',
+  //   'https://picsum.photos/4000/3000',
+  //   'https://picsum.photos/3000/1500',
+  //   'https://picsum.photos/2000/2165',
+  //   'https://picsum.photos/1500/1500',
+  // ];
 
   const imgAction = (action) => {
     let i = data.i;
@@ -129,16 +129,6 @@ function Gallery() {
                 columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
               >
                 <Masonry gutter="15px">
-                  {/* {dummyImages.map((image, i) => (
-                    <img
-                      key={i}
-                      src={image}
-                      className="gallery__image"
-                      alt={`image_${i}`}
-                      onClick={() => viewImage(image, i)}
-                    />
-                  ))} */}
-
                   {images
                     .sort((a, b) => {
                       return a.index - b.index;

@@ -6,7 +6,6 @@ function ReviewContect({
   type,
   id,
   placeholder,
-  required,
   value,
   onChange,
   className,
@@ -20,7 +19,6 @@ function ReviewContect({
       id={id}
       onChange={onChange}
       placeholder={placeholder}
-      required={required}
     />
   );
 }
