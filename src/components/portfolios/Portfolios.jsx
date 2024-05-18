@@ -13,7 +13,6 @@ function Portfolios() {
   const { currentUser } = useContext(CurrentUserContext);
 
   const _userId = userId ? userId : currentUser._id;
-  console.log(currentUser._id);
 
   const [limit, setLimit] = useState(3);
   const [portfolios, setPortfolios] = useState([]);

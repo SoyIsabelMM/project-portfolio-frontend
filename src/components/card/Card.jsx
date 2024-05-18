@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import emptyState from '../../images/empty-state.png';
 
 function Card({
@@ -21,8 +21,6 @@ function Card({
   const handleCardLike = () => {
     onCardLike();
   };
-
-  const likeIcon = islike ? farHeart : farHeart;
 
   const toggleLike = () => {
     setIsLike(!islike);
@@ -56,7 +54,7 @@ function Card({
             )}
             <FontAwesomeIcon
               className={`card__like ${islike ? 'card__like_active' : ''}`}
-              icon={likeIcon}
+              icon={faHeart}
               onClick={toggleLike}
             />
           </div>
