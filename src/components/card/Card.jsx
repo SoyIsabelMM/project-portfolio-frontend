@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import './Card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { faEllipsisVertical, faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import emptyState from '../../images/empty-state.png';
-import './Card.css';
 
 function Card({
   id,
@@ -15,12 +13,10 @@ function Card({
   description,
   title,
   className,
-  userName,
   onCardLike,
   onClick,
 }) {
   const [islike, setIsLike] = useState(false);
-  const [showShare, setShowShare] = useState(false);
 
   const handleCardLike = () => {
     onCardLike();
@@ -33,35 +29,11 @@ function Card({
     handleCardLike();
   };
 
-  const toggleShare = () => {
-    setShowShare(!showShare);
-  };
-
-  const menu = (
-    <FontAwesomeIcon
-      className="card__menu"
-      onClick={toggleShare}
-      icon={faEllipsisVertical}
-    />
-  );
-
   return (
     <div className={className} key={id}>
       <img className="card__image" src={image || emptyState} alt={alt} />
 
       <div className="card__container">
-        <div className="card__content-menu">
-          <h2 className="card__name">{userName}</h2>
-          {menu}
-          <div
-            className={`card__btn-share ${
-              showShare ? '' : 'card__btn-share_close'
-            }`}
-          >
-            <p className="card__share-title">Compartir</p>
-          </div>
-        </div>
-
         <h3 onClick={onClick} className="card__title">
           {title}
         </h3>

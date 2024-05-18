@@ -110,6 +110,55 @@ export const fetchPortfolios = async (userId) => {
     }
   } catch (err) {
     console.error('Error', err);
+  }
+};
+
+export const createPortfolio = async (title, description, token) => {
+  const url = `${baseUrl}/portfolios/`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title,
+        description,
+      }),
+    });
+
+    return response.json();
+  } catch (err) {
+    console.error('Error create portfolio:', err);
+  }
+};
+
+export const uploadPortfolioImage = async (
+  formData,
+  portfolioId,
+  index,
+  token
+) => {
+  const url = `${baseUrl}/portfolios/${portfolioId}/images/${index}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Error uploading portfolio image', index);
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error('Error uploading portfolio image:', index, err);
     throw err;
   }
 };

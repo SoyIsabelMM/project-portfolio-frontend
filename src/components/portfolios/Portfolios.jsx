@@ -1,10 +1,11 @@
-import { useEffect, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { fetchPortfolios } from '../../utils/userApi';
 import './portfolios.css';
 import Card from '../card/Card';
+import { fetchPortfolios } from '../../utils/userApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Portfolios() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function Portfolios() {
     };
 
     fetchData();
-  }, []);
+  }, [_userId]);
 
   return (
     <section className="portfolios">
