@@ -17,10 +17,6 @@ function Portfolios() {
   const [limit, setLimit] = useState(3);
   const [portfolios, setPortfolios] = useState([]);
 
-  const handleGallery = () => {
-    navigate('/gallery');
-  };
-
   const handleCreatePortfolio = () => {
     navigate('/create-portfolio');
   };
@@ -28,6 +24,7 @@ function Portfolios() {
   const renderPortfolios = portfolios.map((portfolio) => (
     <Card
       key={portfolio._id}
+      userId={portfolio.userId}
       id={portfolio._id}
       userName={'_'}
       image={portfolio.images[0]?.imageUrl}
@@ -35,8 +32,8 @@ function Portfolios() {
       className="card"
       title={portfolio.title}
       description={portfolio.description}
-      numberLike={0}
-      onClick={handleGallery}
+      likes={0}
+      views={portfolio.views}
     />
   ));
 

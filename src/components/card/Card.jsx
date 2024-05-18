@@ -1,21 +1,25 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import './Card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import emptyState from '../../images/empty-state.png';
 
 function Card({
+  userId,
   id,
   likes,
+  views,
   image,
   alt,
   description,
   title,
   className,
   onCardLike,
-  onClick,
 }) {
+  const navigate = useNavigate();
   const [islike, setIsLike] = useState(false);
 
   const handleCardLike = () => {
@@ -32,7 +36,10 @@ function Card({
       <img className="card__image" src={image || emptyState} alt={alt} />
 
       <div className="card__container">
-        <h3 onClick={onClick} className="card__title">
+        <h3
+          onClick={() => navigate(`/gallery/${userId}/${id}`)}
+          className="card__title"
+        >
           {title}
         </h3>
         <p className="card__description">{description}</p>
@@ -41,7 +48,7 @@ function Card({
           <div className="card__list-content">
             <ul className="card__list">
               <li className="card__item">
-                <span>0</span> vistas
+                <span>{views || 0}</span> vistas
               </li>
             </ul>
           </div>
@@ -65,8 +72,10 @@ function Card({
 }
 
 Card.propTypes = {
+  userId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  likes: PropTypes.string,
+  likes: PropTypes.number,
+  views: PropTypes.number,
   image: PropTypes.string,
   alt: PropTypes.string,
   description: PropTypes.string.isRequired,
@@ -74,7 +83,6 @@ Card.propTypes = {
   className: PropTypes.string,
   userName: PropTypes.string,
   onCardLike: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 export default Card;

@@ -42,7 +42,7 @@ function App() {
 
             <Route path="/contact" element={<Contact />} />
             <Route path="/edit-info" element={<FormInfo />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:userId/:portfolioId" element={<Gallery />} />
             <Route path="/create-portfolio" element={<CreatePortfolio />} />
 
             <Route path="/" element={<LandingPage />} />
