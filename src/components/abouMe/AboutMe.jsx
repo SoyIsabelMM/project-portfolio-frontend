@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { getPhotos } from '../../utils/pexelData';
 import Typewriter from 'typewriter-effect';
-import { formatText } from '../../utils/constant';
+import { formatText, defaultBanner } from '../../utils/constant';
 import './AboutMe.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -28,7 +28,7 @@ function AboutMe({ alt }) {
     <section className="about-me">
       <div className="about-me__banner-container">
         <img
-          src={currentUser.banner}
+          src={currentUser.banner || defaultBanner}
           alt={currentUser.resume}
           className="about-me__banner"
         />
