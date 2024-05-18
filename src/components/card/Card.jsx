@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import emptyState from '../../images/empty-state.png';
 
 function Card({
   id,
@@ -17,13 +18,11 @@ function Card({
 }) {
   const [islike, setIsLike] = useState(false);
 
-  const currentUser = useContext(CurrentUserContext);
-
   const handleCardLike = () => {
     onCardLike();
   };
 
-  const likeIcon = islike ? faHeart : farHeart;
+  const likeIcon = islike ? farHeart : farHeart;
 
   const toggleLike = () => {
     setIsLike(!islike);
@@ -32,7 +31,7 @@ function Card({
 
   return (
     <div className={className} key={id}>
-      <img className="card__image" src={image} alt={alt} />
+      <img className="card__image" src={image || emptyState} alt={alt} />
 
       <div className="card__container">
         <h3 onClick={onClick} className="card__title">
@@ -66,5 +65,18 @@ function Card({
     </div>
   );
 }
+
+Card.propTypes = {
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.string,
+  image: PropTypes.string,
+  alt: PropTypes.string,
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  userName: PropTypes.string,
+  onCardLike: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Card;

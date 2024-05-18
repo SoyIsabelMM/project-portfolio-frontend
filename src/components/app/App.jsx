@@ -37,6 +37,7 @@ function App() {
 
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/portfolios" element={<Portfolios />} />
+            <Route path="/portfolios/:userId" element={<Portfolios />} />
             <Route path="/about-me" element={<AboutMe />} />
 
             <Route path="/contact" element={<Contact />} />
