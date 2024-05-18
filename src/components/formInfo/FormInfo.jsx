@@ -4,6 +4,7 @@ import Textarea from '../textarea/Textarea';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './FormInfo.css';
 import { updateUser, updateUserImage } from '../../utils/userApi';
+import { useNavigate } from 'react-router-dom';
 
 function FormInfo() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -38,6 +39,8 @@ function FormInfo() {
 
   const [happyPlacesImage, setHappyPlacesImage] = useState(null);
   const [happyPlacesImageUrl, setHappyPlacesImageUrl] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
@@ -185,6 +188,7 @@ function FormInfo() {
       await Promise.all(imagesUploads);
       await updateUser(updateUserData, currentUser.token);
       setCurrentUser(updateUserData);
+      navigate(`/profile/${currentUser._id}`);
     } catch (err) {
       console.error('Error al guardar la información del usuario:', err);
     }

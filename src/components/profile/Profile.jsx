@@ -3,6 +3,7 @@ import Typewriter from 'typewriter-effect';
 import { useParams, Link } from 'react-router-dom';
 import { fetchProfile } from '../../utils/userApi';
 import { defaultBanner } from '../../utils/constant';
+import { formatText } from '../../utils/constant';
 
 import './Profile.css';
 import Preloader from '../preloader/Preloader';
@@ -11,10 +12,6 @@ function Profile() {
   const { userId } = useParams();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const formatText = (text) => {
-    return text?.split('').join(' ').toUpperCase() || '';
-  };
 
   useEffect(() => {
     const fetchData = async () => {

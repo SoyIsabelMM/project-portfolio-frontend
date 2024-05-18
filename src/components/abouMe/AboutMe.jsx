@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getPhotos } from '../../utils/pexelData';
 import Typewriter from 'typewriter-effect';
+import { formatText } from '../../utils/constant';
 import './AboutMe.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function AboutMe({ alt }) {
   const [images, setImages] = useState([]);
   const [limit, setLimit] = useState(6);
-  const [historyLimit, setHistoryLimit] = useState(4);
+  const { currentUser } = useContext(CurrentUserContext);
 
-  const paragraph = (
-    <p className="about-me__phrases">
-      De tres cosas estaba absolutamente segura. Primera, Edward era un vampiro.
-      La segunda, había una parte de él y no sabía si era la parte dominante,
-      sedienta por mi sangre. Y la tercera estaba incondicionalmente e
-      irrevocablemente enamorada de él
-    </p>
-  );
+  const userName = `${formatText(currentUser.firstName)} * ${formatText(
+    currentUser.lastName
+  )}`;
 
   useEffect(() => {
     getPhotos()
@@ -27,43 +24,15 @@ function AboutMe({ alt }) {
       });
   }, []);
 
-  const renderImageElements = () => {
-    return images.slice(0, historyLimit).map((image, index) => {
-      if (index % 2 === 0) {
-        return (
-          <React.Fragment key={image.id}>
-            <img
-              className="about-me__phrases-image"
-              src={image.src.medium}
-              alt={image.photographer}
-            />
-            {paragraph}
-          </React.Fragment>
-        );
-      } else {
-        return (
-          <React.Fragment key={image.id}>
-            {paragraph}
-            <img
-              className="about-me__phrases-image"
-              src={image.src.medium}
-              alt={image.photographer}
-            />
-          </React.Fragment>
-        );
-      }
-    });
-  };
-
   return (
     <section className="about-me">
       <div className="about-me__banner-container">
         <img
-          src="https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg"
-          alt="paisaje"
+          src={currentUser.banner}
+          alt={currentUser.resume}
           className="about-me__banner"
         />
-        <h2 className="about-me__title">R A C H E L M I L A N O</h2>
+        <h2 className="about-me__title">{userName}</h2>
       </div>
 
       <div className="about-me__render-images">
@@ -101,7 +70,35 @@ function AboutMe({ alt }) {
         </div>
       </div>
 
-      <div className="about-me__container-phrases">{renderImageElements()}</div>
+      <div className="about-me__container-phrases">
+        <img
+          className="about-me__phrases-image"
+          src={currentUser.avatar}
+          alt={currentUser.about}
+        />
+        <p className="about-me__phrases">{currentUser.about}</p>
+
+        <p className="about-me__phrases">{currentUser.hobbies}</p>
+        <img
+          className="about-me__phrases-image"
+          src={currentUser.hobbiesImage}
+          alt={currentUser.hobbies}
+        />
+
+        <img
+          className="about-me__phrases-image"
+          src={currentUser.activitiesImage}
+          alt={currentUser.activities}
+        />
+        <p className="about-me__phrases">{currentUser.activities}</p>
+
+        <p className="about-me__phrases">{currentUser.happyPlaces}</p>
+        <img
+          className="about-me__phrases-image"
+          src={currentUser.happyPlacesImage}
+          alt={currentUser.happyPlaces}
+        />
+      </div>
     </section>
   );
 }
