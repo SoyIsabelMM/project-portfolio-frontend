@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./portfolios.css";
-import data from "../../utils/data.json";
-import Card from "../card/Card";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './portfolios.css';
+import data from '../../utils/data.json';
+import Card from '../card/Card';
+import { useNavigate } from 'react-router-dom';
 
 function Portfolios() {
   const [limit, setLimit] = useState(3);
@@ -10,11 +10,11 @@ function Portfolios() {
   const navigate = useNavigate();
 
   const handleGallery = () => {
-    navigate("/gallery");
+    navigate('/gallery');
   };
 
   const handleCreatePortfolio = () => {
-    navigate("/create-portfolio");
+    navigate('/create-portfolio');
   };
 
   const renderPortfolios = data
@@ -22,7 +22,6 @@ function Portfolios() {
     .map((data) => (
       <Card
         key={data.id}
-        userName={data.userName}
         image={data.image}
         alt={data.alt}
         className="card"

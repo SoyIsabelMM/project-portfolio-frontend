@@ -1,81 +1,32 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 550px;
+  width: 300px;
+  height: 450px;
   border: solid 1px #85847c;
   border-radius: 20px;
 }
 
 .card__container {
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  align-items: center;
+  margin: 5% auto;
+  padding: 10px;
 }
 
 .card__image {
   border-bottom: solid 1px #85847c;
-  width: 350px;
-  height: 290px;
+  width: 300px;
+  height: 220px;
   border-radius: 20px 20px 0 0;
-}
-
-.card__content-menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  position: relative;
-}
-
-.card__name {
-  font-size: 13px;
-  font-weight: 200;
-}
-
-.card__menu {
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
-}
-
-.card__menu:hover {
-  opacity: 50%;
-}
-
-.card__btn-share {
-  width: 100px;
-  height: 35px;
-  border-radius: 10px;
-  background-color: black;
-  position: absolute;
-  left: 190px;
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
-}
-
-.card__btn-share:hover {
-  background-color: #85847c;
-}
-
-.card__btn-share_close {
-  display: none;
-}
-
-.card__share-title {
-  font-size: 14px;
-  font-weight: 400;
-  text-align: center;
-  color: white;
-  margin: 0;
-  padding: 10px;
 }
 
 .card__title {
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.5rem;
+  line-height: 1rem;
   transition: all 0.15s ease-in-out;
   cursor: pointer;
   margin: 0;
@@ -86,22 +37,26 @@
 }
 
 .card__description {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 200;
   margin-bottom: 0;
+  width: 80%;
+  text-align: justify;
 }
 
 .card__divider {
   border: 0;
-  height: 1px;
+  height: 2px;
+  width: 100%;
   background-color: #ccc;
-  margin: 20px 0;
+  margin: 20px 0 10px;
 }
 
 .card__emotion {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 
 .card__list {
@@ -150,32 +105,17 @@
 @media (max-width: 750px) {
   .card {
     width: 250px;
-    height: auto;
+    height: 400px;
   }
 
   .card__image {
     width: 250px;
-    height: 190px;
+    height: 170px;
     border-radius: 20px 20px 0 0;
   }
 
   .card__container {
     width: 200px;
-  }
-
-  .card__name {
-    font-size: 10px;
-  }
-
-  .card__btn-share {
-    width: 80px;
-    height: 25px;
-    left: 100px;
-  }
-
-  .card__share-title {
-    font-size: 12px;
-    padding: 5px;
   }
 
   .card__title {
@@ -188,7 +128,7 @@
 
   .card__divider {
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   .card__emotion {
@@ -221,21 +161,6 @@
   .card__container {
     width: 200px;
     justify-content: space-evenly;
-  }
-
-  .card__name {
-    font-size: 8px;
-  }
-
-  .card__btn-share {
-    width: 70px;
-    height: 25px;
-    left: 110px;
-  }
-
-  .card__share-title {
-    font-size: 11px;
-    padding: 7px;
   }
 
   .card__title {
