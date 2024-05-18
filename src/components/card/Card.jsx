@@ -22,7 +22,7 @@ function Card({
     onCardLike();
   };
 
-  const likeIcon = islike ? faHeart : farHeart;
+  const likeIcon = islike ? farHeart : farHeart;
 
   const toggleLike = () => {
     setIsLike(!islike);
