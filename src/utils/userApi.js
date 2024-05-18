@@ -45,6 +45,49 @@ export const fetchProfiles = async (search) => {
   }
 };
 
+export const getPortfolio = async (userId, portfolioId) => {
+  const url = `${baseUrl}/portfolios/${userId}/portfolio/${portfolioId}`;
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener las imágenes del portafolio');
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error('Error al obtener las imágenes del portafolio:', err);
+    throw err;
+  }
+};
+
+export const addViewToPortfolio = async (portfolioId) => {
+  const url = `${baseUrl}/portfolios/${portfolioId}/view`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al sumar vista al portafolio');
+    }
+
+    await response.json();
+  } catch (err) {
+    console.error('Error al sumar vista al portafolio', err);
+    throw err;
+  }
+};
+
 export const updateUser = async (userData, token) => {
   const url = `${baseUrl}/users`;
 
