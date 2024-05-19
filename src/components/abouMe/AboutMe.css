@@ -24,6 +24,9 @@
 }
 
 .about-me__title {
+  background-color: black;
+  border-radius: 20px;
+  padding: 20px;
   position: absolute;
   top: 45%;
   left: 20%;
@@ -118,23 +121,24 @@
 }
 
 .about-me__container-phrases {
-  width: 90%;
+  width: 70%;
   margin: 8% 0;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
 }
 
 .about-me__phrases {
   font-size: 18px;
   font-weight: 300;
   line-height: 1.5rem;
-  width: 40%;
+  width: 30%;
   text-align: justify;
   padding: 20px;
   margin: 0;
+  text-wrap: wrap;
 }
 
 .about-me__phrases-image {

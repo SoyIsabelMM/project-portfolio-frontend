@@ -21,7 +21,7 @@ import CreatePortfolio from '../createPortfolio/CreatePortfolio';
 
 function App() {
   const location = useLocation();
-  const shouldRenderFooter = location.pathname !== '/contact';
+  const shouldRenderFooter = location.pathname.startsWith('/contact/:userId');
 
   return (
     <>
@@ -37,11 +37,12 @@ function App() {
 
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/portfolios" element={<Portfolios />} />
-            <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/portfolios/:userId" element={<Portfolios />} />
+            <Route path="/about-me/:userId" element={<AboutMe />} />
 
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact/:userId" element={<Contact />} />
             <Route path="/edit-info" element={<FormInfo />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:userId/:portfolioId" element={<Gallery />} />
             <Route path="/create-portfolio" element={<CreatePortfolio />} />
 
             <Route path="/" element={<LandingPage />} />

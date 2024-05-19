@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 .gallery__modal {
@@ -68,9 +69,12 @@
 }
 
 .gallery__container {
-  width: 890px;
+  width: 100%;
   color: black;
   margin-bottom: 4%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .gallery__paragraph {
@@ -91,14 +95,15 @@
 }
 
 .gallery__content-image {
-  margin-top: 20px;
-  padding: 0 50px;
+  padding: 20px;
+  width: 90%;
 }
 
 .gallery__image {
   display: block;
   width: 100%;
   cursor: pointer;
+  object-fit: cover;
 }
 
 @media (max-width: 750px) {

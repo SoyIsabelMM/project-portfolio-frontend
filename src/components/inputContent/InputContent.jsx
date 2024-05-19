@@ -21,6 +21,7 @@ function InputContent({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          maxLength={200}
         />
       </label>
     </>

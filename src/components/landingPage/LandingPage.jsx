@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import './LandingPage.css';
 import { fetchProfiles } from '../../utils/userApi';
@@ -10,8 +9,6 @@ function LandingPage() {
   const [search, setSearch] = useState('');
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  console.log('hola');
 
   const fetchData = async (search) => {
     try {

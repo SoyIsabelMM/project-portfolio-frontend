@@ -9,7 +9,7 @@ function NavBar() {
   const isLoggedIn = currentUser !== null;
   const hasSelectedProfile = isLoggedIn && currentUser._id;
 
-  const [isOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -49,20 +49,6 @@ function NavBar() {
           </li>
         )}
 
-        {isLoggedIn && hasSelectedProfile && (
-          <li className="nav-bar__options">
-            <NavLink className="nav-bar__ref" to="/about-me">
-              Sobre mí
-            </NavLink>
-          </li>
-        )}
-        {isLoggedIn && hasSelectedProfile && (
-          <li className="nav-bar__options">
-            <NavLink className="nav-bar__ref" to="/contact">
-              Contacto
-            </NavLink>
-          </li>
-        )}
         {isLoggedIn && (
           <li className="nav-bar__options">
             <NavLink className="nav-bar__ref" to="/edit-info">

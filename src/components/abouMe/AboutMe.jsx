@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getPhotos } from '../../utils/pexelData';
+import { fetchProfile } from '../../utils/userApi';
 import Typewriter from 'typewriter-effect';
+import { formatText, defaultBanner } from '../../utils/constant';
 import './AboutMe.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useParams } from 'react-router-dom';
 
-function AboutMe({ alt }) {
+function AboutMe() {
+  const { userId } = useParams();
   const [images, setImages] = useState([]);
   const [limit, setLimit] = useState(6);
-  const [historyLimit, setHistoryLimit] = useState(4);
+  const { currentUser } = useContext(CurrentUserContext);
 
-  const paragraph = (
-    <p className="about-me__phrases">
-      De tres cosas estaba absolutamente segura. Primera, Edward era un vampiro.
-      La segunda, había una parte de él y no sabía si era la parte dominante,
-      sedienta por mi sangre. Y la tercera estaba incondicionalmente e
-      irrevocablemente enamorada de él
-    </p>
-  );
+  const [about, setAbout] = useState(null);
+
+  const userName = `${formatText(currentUser.firstName)} * ${formatText(
+    currentUser.lastName
+  )}`;
 
   useEffect(() => {
     getPhotos()
@@ -25,45 +27,29 @@ function AboutMe({ alt }) {
       .catch((err) => {
         console.error('Error fetching popular photos:', err);
       });
-  }, []);
 
-  const renderImageElements = () => {
-    return images.slice(0, historyLimit).map((image, index) => {
-      if (index % 2 === 0) {
-        return (
-          <React.Fragment key={image.id}>
-            <img
-              className="about-me__phrases-image"
-              src={image.src.medium}
-              alt={image.photographer}
-            />
-            {paragraph}
-          </React.Fragment>
-        );
-      } else {
-        return (
-          <React.Fragment key={image.id}>
-            {paragraph}
-            <img
-              className="about-me__phrases-image"
-              src={image.src.medium}
-              alt={image.photographer}
-            />
-          </React.Fragment>
-        );
+    const fetchData = async () => {
+      try {
+        const aboutData = await fetchProfile(userId);
+
+        setAbout(aboutData);
+      } catch (err) {
+        console.error('Error fetching about data:', err);
       }
-    });
-  };
+    };
+
+    fetchData();
+  }, [userId]);
 
   return (
     <section className="about-me">
       <div className="about-me__banner-container">
         <img
-          src="https://img.freepik.com/fotos-premium/mujer-sonriendo-felizmente-playa_816336-123.jpg"
-          alt="paisaje"
+          src={about?.banner || defaultBanner}
+          alt={about?.resume}
           className="about-me__banner"
         />
-        <h2 className="about-me__title">R A C H E L M I L A N O</h2>
+        <h2 className="about-me__title">{userName}</h2>
       </div>
 
       <div className="about-me__render-images">
@@ -101,7 +87,35 @@ function AboutMe({ alt }) {
         </div>
       </div>
 
-      <div className="about-me__container-phrases">{renderImageElements()}</div>
+      <div className="about-me__container-phrases">
+        <img
+          className="about-me__phrases-image"
+          src={about?.avatar}
+          alt={about?.about}
+        />
+        <p className="about-me__phrases">{about?.about}</p>
+
+        <p className="about-me__phrases">{about?.hobbies}</p>
+        <img
+          className="about-me__phrases-image"
+          src={about?.hobbiesImage}
+          alt={about?.hobbies}
+        />
+
+        <img
+          className="about-me__phrases-image"
+          src={about?.activitiesImage}
+          alt={about?.activities}
+        />
+        <p className="about-me__phrases">{about?.activities}</p>
+
+        <p className="about-me__phrases">{about?.happyPlaces}</p>
+        <img
+          className="about-me__phrases-image"
+          src={about?.happyPlacesImage}
+          alt={about?.happyPlaces}
+        />
+      </div>
     </section>
   );
 }
