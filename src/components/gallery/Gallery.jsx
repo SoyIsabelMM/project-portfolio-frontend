@@ -37,21 +37,6 @@ function Gallery() {
     { w: 150, h: 150 },
   ];
 
-  // const dummyImages = [
-  //   'https://picsum.photos/2000/2500',
-  //   'https://picsum.photos/3000/2000',
-  //   'https://picsum.photos/4000/3000',
-  //   'https://picsum.photos/3000/1500',
-  //   'https://picsum.photos/2000/2165',
-  //   'https://picsum.photos/1500/1500',
-  //   'https://picsum.photos/2000/2500',
-  //   'https://picsum.photos/3000/2000',
-  //   'https://picsum.photos/4000/3000',
-  //   'https://picsum.photos/3000/1500',
-  //   'https://picsum.photos/2000/2165',
-  //   'https://picsum.photos/1500/1500',
-  // ];
-
   const imgAction = (action) => {
     let i = data.i;
     if (action === 'next-img' && i < images.length - 1) {
@@ -91,6 +76,43 @@ function Gallery() {
     fetchData();
   }, []);
 
+  const renderImages = () => {
+    if (images.length === 0) {
+      const defaultImages = [
+        'https://picsum.photos/2000/2500',
+        'https://picsum.photos/3000/2000',
+        'https://picsum.photos/4000/3000',
+        'https://picsum.photos/3000/1500',
+        'https://picsum.photos/2000/2165',
+        'https://picsum.photos/1500/1500',
+      ];
+      return defaultImages.map((imageUrl, index) => (
+        <img
+          key={index}
+          src={imageUrl}
+          className="gallery__image"
+          alt={`default_image_${index}`}
+        />
+      ));
+    } else {
+      return images
+        .sort((a, b) => {
+          return a.index - b.index;
+        })
+        .map((image, i) => (
+          <img
+            key={i}
+            src={image.imageUrl}
+            className="gallery__image"
+            alt={`image_${i}`}
+            onClick={() => viewImage(image.imageUrl, i)}
+            width={imagesSizes[i].w}
+            height={imagesSizes[i].h}
+          />
+        ));
+    }
+  };
+
   return (
     <>
       {open && (
@@ -128,26 +150,12 @@ function Gallery() {
               <ResponsiveMasonry
                 columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
               >
-                <Masonry gutter="15px">
-                  {images
-                    .sort((a, b) => {
-                      return a.index - b.index;
-                    })
-                    .map((image, i) => (
-                      <img
-                        key={i}
-                        src={image.imageUrl}
-                        className="gallery__image"
-                        alt={`image_${i}`}
-                        onClick={() => viewImage(image.imageUrl, i)}
-                        width={imagesSizes[i].w}
-                        height={imagesSizes[i].h}
-                      />
-                    ))}
-                </Masonry>
+                <Masonry gutter="15px">{renderImages()}</Masonry>
               </ResponsiveMasonry>
             </div>
           )}
+
+          <button className="gallery__btn"> Editar Portafolio</button>
         </div>
       </section>
     </>
