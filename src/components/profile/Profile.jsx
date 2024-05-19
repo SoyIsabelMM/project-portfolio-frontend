@@ -82,16 +82,21 @@ function Profile() {
               <Link to={`/portfolios/${userId}`}>
                 <button className="profile__btn">
                   {' '}
-                  <p className="profile__btn-link profile__btn-link_size">
-                    Ver mis portafolios
-                  </p>{' '}
+                  <p className="profile__btn-link ">Ver mis portafolios</p>{' '}
                 </button>
               </Link>
 
               <Link to={`/contact/${userId}`}>
-                <button className="profile__btn  profile__btn_width">
+                <button className="profile__btn  ">
                   {' '}
                   <p className="profile__btn-link">Contacto</p>{' '}
+                </button>
+              </Link>
+
+              <Link to={`/about-me/${userId}`}>
+                <button className="profile__btn  ">
+                  {' '}
+                  <p className="profile__btn-link">Sobre mí</p>{' '}
                 </button>
               </Link>
             </div>
