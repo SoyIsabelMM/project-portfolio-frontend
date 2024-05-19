@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
-import './FormContact.css';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function FormContact() {
+import './FormContact.css';
+import { sendContactEmail } from '../../utils/userApi';
+
+function FormContact({ userId }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [formContactMessage, setFormContactMessage] = useState(
+    '¡Gracias por enviar tu mensaje!'
+  );
   const [subtmitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
+    setSubmitted(false);
+
     console.log('datos del formulario', {
+      userId,
       firstName,
       lastName,
       email,
       message,
     });
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setMessage('');
-    setSubmitted(true);
+
+    try {
+      await sendContactEmail({ userId, firstName, lastName, email, message });
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setMessage('');
+      setFormContactMessage('¡Gracias por enviar tu mensaje!');
+      setSubmitted(true);
+    } catch (error) {
+      setFormContactMessage('¡No se ha podido enviar tu mensaje!');
+      setSubmitted(true);
+    }
   };
 
   const onChangeFirstName = (evt) => {
@@ -88,14 +105,16 @@ function FormContact() {
         <div className="form-contact__content-btn">
           <button className="form-contact__contact-btn">Enviar</button>
           {subtmitted && (
-            <span className="form-contact__message">
-              ¡Gracias por enviar tu mensaje!
-            </span>
+            <span className="form-contact__message">{formContactMessage}</span>
           )}
         </div>
       </form>
     </div>
   );
 }
+
+FormContact.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 export default FormContact;
