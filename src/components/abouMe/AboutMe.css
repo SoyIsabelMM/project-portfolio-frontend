@@ -121,7 +121,7 @@
 }
 
 .about-me__container-phrases {
-  width: 90%;
+  width: 70%;
   margin: 8% 0;
   display: flex;
   flex-flow: row wrap;
