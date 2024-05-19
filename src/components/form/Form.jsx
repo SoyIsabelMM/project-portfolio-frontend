@@ -55,6 +55,7 @@ function Form({ action, title, children }) {
           minLength={3}
           maxLength={40}
           value={email}
+          autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
