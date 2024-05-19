@@ -205,3 +205,32 @@ export const uploadPortfolioImage = async (
     throw err;
   }
 };
+
+export const sendContactEmail = async ({
+  userId,
+  firstName,
+  lastName,
+  email,
+  message,
+}) => {
+  const url = `${baseUrl}/users/${userId}/contact`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName, email, message }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Error sending email');
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error('Error sending email', err);
+    throw err;
+  }
+};

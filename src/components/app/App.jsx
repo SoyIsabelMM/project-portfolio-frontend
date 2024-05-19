@@ -40,7 +40,7 @@ function App() {
             <Route path="/portfolios/:userId" element={<Portfolios />} />
             <Route path="/about-me" element={<AboutMe />} />
 
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact/:userId" element={<Contact />} />
             <Route path="/edit-info" element={<FormInfo />} />
             <Route path="/gallery/:userId/:portfolioId" element={<Gallery />} />
             <Route path="/create-portfolio" element={<CreatePortfolio />} />

@@ -1,28 +1,46 @@
-import React, { useContext } from 'react';
-import './Contact.css';
-import FormContact from '../formContact/FormContact';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faInstagram,
   faLinkedinIn,
   faFacebookF,
 } from '@fortawesome/free-brands-svg-icons';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import './Contact.css';
+import FormContact from '../formContact/FormContact';
+
 import { Link } from 'react-router-dom';
+import { fetchProfile } from '../../utils/userApi';
 
 function Contact() {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { userId } = useParams();
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const profileData = await fetchProfile(userId);
+
+        setProfile(profileData);
+      } catch (err) {
+        console.error('Error fetching profile data:', err);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
 
   return (
     <section className="contact">
       <div className="contact__no-parallax contact_position">
         <h2 className="contact__text contact__text_margin">Contacto</h2>
-        <FormContact />
+        <FormContact userId={userId} />
       </div>
 
       <div
         className="contact__parallax contact__parallax_bg contact_position "
-        style={{ '--url': `url(${currentUser.banner})` }}
+        style={{ '--url': `url(${profile?.banner})` }}
       >
         <h3 className="contact__text contact__text_size">
           Conoceme más en mis redes sociales
@@ -35,7 +53,7 @@ function Contact() {
         </h3>
         <div className="contact__social-container">
           <div className="contact__social-networks">
-            <Link to={currentUser.instagram}>
+            <Link to={profile?.instagram}>
               <FontAwesomeIcon
                 className="contact__social-icon"
                 icon={faInstagram}
@@ -43,7 +61,7 @@ function Contact() {
             </Link>
           </div>
           <div className="contact__social-networks">
-            <Link to={currentUser.linkedin}>
+            <Link to={profile?.linkedin}>
               <FontAwesomeIcon
                 className="contact__social-icon"
                 icon={faLinkedinIn}
@@ -51,7 +69,7 @@ function Contact() {
             </Link>
           </div>
           <div className="contact__social-networks">
-            <Link to={currentUser.facebook}>
+            <Link to={profile?.facebook}>
               <FontAwesomeIcon
                 className="contact__social-icon"
                 icon={faFacebookF}
