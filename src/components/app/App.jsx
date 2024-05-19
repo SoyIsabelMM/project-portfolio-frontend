@@ -44,6 +44,10 @@ function App() {
             <Route path="/edit-info" element={<FormInfo />} />
             <Route path="/gallery/:userId/:portfolioId" element={<Gallery />} />
             <Route path="/create-portfolio" element={<CreatePortfolio />} />
+            <Route
+              path="/create-portfolio/:portfolioId"
+              element={<CreatePortfolio />}
+            />
 
             <Route path="/" element={<LandingPage />} />
           </Routes>
