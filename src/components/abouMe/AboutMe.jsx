@@ -1,68 +1,67 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { getPhotos } from '../../utils/pexelData';
+import { fetchProfile } from '../../utils/userApi';
 import Typewriter from 'typewriter-effect';
 import { formatText, defaultBanner } from '../../utils/constant';
 import './AboutMe.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { fetchPortfolios } from '../../utils/userApi';
 import { useParams } from 'react-router-dom';
 
 function AboutMe() {
   const { userId } = useParams();
-  const [imagesMini, setImagesMini] = useState([]);
+  const [images, setImages] = useState([]);
   const [limit, setLimit] = useState(6);
   const { currentUser } = useContext(CurrentUserContext);
 
-  const _userId = userId ? userId : currentUser._id;
+  const [about, setAbout] = useState(null);
 
   const userName = `${formatText(currentUser.firstName)} * ${formatText(
     currentUser.lastName
   )}`;
 
-  // useEffect(() => {
-  //   getPhotos()
-  //     .then((data) => {
-  //       setImages(data);
-  //     })
-  //     .catch((err) => {
-  //       console.error('Error fetching popular photos:', err);
-  //     });
-  // }, []);
-
   useEffect(() => {
+    getPhotos()
+      .then((data) => {
+        setImages(data);
+      })
+      .catch((err) => {
+        console.error('Error fetching popular photos:', err);
+      });
+
     const fetchData = async () => {
       try {
-        const imagesPortfolio = await fetchPortfolios(_userId);
-        setImagesMini(imagesPortfolio);
+        const aboutData = await fetchProfile(userId);
+
+        setAbout(aboutData);
       } catch (err) {
-        console.error('Error fetching images', err);
+        console.error('Error fetching about data:', err);
       }
     };
 
     fetchData();
-  }, [_userId]);
+  }, [userId]);
 
   return (
     <section className="about-me">
       <div className="about-me__banner-container">
         <img
-          src={currentUser.banner || defaultBanner}
-          alt={currentUser.resume}
+          src={about?.banner || defaultBanner}
+          alt={about?.resume}
           className="about-me__banner"
         />
         <h2 className="about-me__title">{userName}</h2>
       </div>
 
       <div className="about-me__render-images">
-        {imagesMini.slice(0, limit).map((image) => (
-          <div key={image._id} className="about-me__wrapper">
+        {images.slice(0, limit).map((images) => (
+          <div key={images.id} className="about-me__wrapper">
             <img
               className="about-me__image"
-              src={image.images[0]?.imageUrl}
-              alt={image.title}
+              src={images.src.medium}
+              alt={images.photographer}
             />
             <div className="about-me__overlay">
-              <p className="about-me__paragraph">{image.title}</p>
+              <p className="about-me__paragraph">{images.photographer}</p>
             </div>
           </div>
         ))}
@@ -91,30 +90,30 @@ function AboutMe() {
       <div className="about-me__container-phrases">
         <img
           className="about-me__phrases-image"
-          src={currentUser.avatar}
-          alt={currentUser.about}
+          src={about?.avatar}
+          alt={about?.about}
         />
-        <p className="about-me__phrases">{currentUser.about}</p>
+        <p className="about-me__phrases">{about?.about}</p>
 
-        <p className="about-me__phrases">{currentUser.hobbies}</p>
+        <p className="about-me__phrases">{about?.hobbies}</p>
         <img
           className="about-me__phrases-image"
-          src={currentUser.hobbiesImage}
-          alt={currentUser.hobbies}
+          src={about?.hobbiesImage}
+          alt={about?.hobbies}
         />
 
         <img
           className="about-me__phrases-image"
-          src={currentUser.activitiesImage}
-          alt={currentUser.activities}
+          src={about?.activitiesImage}
+          alt={about?.activities}
         />
-        <p className="about-me__phrases">{currentUser.activities}</p>
+        <p className="about-me__phrases">{about?.activities}</p>
 
-        <p className="about-me__phrases">{currentUser.happyPlaces}</p>
+        <p className="about-me__phrases">{about?.happyPlaces}</p>
         <img
           className="about-me__phrases-image"
-          src={currentUser.happyPlacesImage}
-          alt={currentUser.happyPlaces}
+          src={about?.happyPlacesImage}
+          alt={about?.happyPlaces}
         />
       </div>
     </section>
