@@ -4,25 +4,43 @@ import Typewriter from 'typewriter-effect';
 import { formatText, defaultBanner } from '../../utils/constant';
 import './AboutMe.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { fetchPortfolios } from '../../utils/userApi';
+import { useParams } from 'react-router-dom';
 
-function AboutMe({ alt }) {
-  const [images, setImages] = useState([]);
+function AboutMe() {
+  const { userId } = useParams();
+  const [imagesMini, setImagesMini] = useState([]);
   const [limit, setLimit] = useState(6);
   const { currentUser } = useContext(CurrentUserContext);
+
+  const _userId = userId ? userId : currentUser._id;
 
   const userName = `${formatText(currentUser.firstName)} * ${formatText(
     currentUser.lastName
   )}`;
 
+  // useEffect(() => {
+  //   getPhotos()
+  //     .then((data) => {
+  //       setImages(data);
+  //     })
+  //     .catch((err) => {
+  //       console.error('Error fetching popular photos:', err);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    getPhotos()
-      .then((data) => {
-        setImages(data);
-      })
-      .catch((err) => {
-        console.error('Error fetching popular photos:', err);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const imagesPortfolio = await fetchPortfolios(_userId);
+        setImagesMini(imagesPortfolio);
+      } catch (err) {
+        console.error('Error fetching images', err);
+      }
+    };
+
+    fetchData();
+  }, [_userId]);
 
   return (
     <section className="about-me">
@@ -36,15 +54,15 @@ function AboutMe({ alt }) {
       </div>
 
       <div className="about-me__render-images">
-        {images.slice(0, limit).map((images) => (
-          <div key={images.id} className="about-me__wrapper">
+        {imagesMini.slice(0, limit).map((image) => (
+          <div key={image._id} className="about-me__wrapper">
             <img
               className="about-me__image"
-              src={images.src.medium}
-              alt={images.photographer}
+              src={image.images[0]?.imageUrl}
+              alt={image.title}
             />
             <div className="about-me__overlay">
-              <p className="about-me__paragraph">{images.photographer}</p>
+              <p className="about-me__paragraph">{image.title}</p>
             </div>
           </div>
         ))}

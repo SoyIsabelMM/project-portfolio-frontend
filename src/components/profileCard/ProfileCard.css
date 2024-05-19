@@ -41,6 +41,11 @@
 .profile-card__list-item {
   font-size: 13px;
   text-align: center;
+  width: 100%;
+  height: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-card__btn {
@@ -74,13 +79,6 @@
 
   .profile-card__image {
     width: 250px;
-  }
-
-  .profile-card__container {
-    width: 60%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: wrap;
   }
 
   .profile-card__title {
