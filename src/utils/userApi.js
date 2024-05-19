@@ -178,6 +178,33 @@ export const createPortfolio = async (title, description, token) => {
   }
 };
 
+export const updatePortfolio = async (
+  title,
+  description,
+  porfolioId,
+  token
+) => {
+  const url = `${baseUrl}/portfolios/${porfolioId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title,
+        description,
+      }),
+    });
+
+    return response.json();
+  } catch (err) {
+    console.error('Error create portfolio:', err);
+  }
+};
+
 export const uploadPortfolioImage = async (
   formData,
   portfolioId,

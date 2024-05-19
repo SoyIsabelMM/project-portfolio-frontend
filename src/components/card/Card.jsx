@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -14,18 +15,20 @@ function Card({
   description,
   title,
   className,
+  onClick,
 }) {
   const navigate = useNavigate();
+
+  const handleOnClick = () => {
+    navigate(`/gallery/${userId}/${id}`);
+  };
 
   return (
     <div className={className} key={id}>
       <img className="card__image" src={image || emptyState} alt={alt} />
 
       <div className="card__container">
-        <h3
-          onClick={() => navigate(`/gallery/${userId}/${id}`)}
-          className="card__title"
-        >
+        <h3 onClick={handleOnClick} className="card__title">
           {title}
         </h3>
         <p className="card__description">{description}</p>

@@ -82,7 +82,7 @@ function Profile() {
               <Link to={`/portfolios/${userId}`}>
                 <button className="profile__btn">
                   {' '}
-                  <p className="profile__btn-link ">Ver mis portafolios</p>{' '}
+                  <p className="profile__btn-link ">Ver portafolios</p>{' '}
                 </button>
               </Link>
 

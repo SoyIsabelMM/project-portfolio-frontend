@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './portfolios.css';
 import Card from '../card/Card';
+import CardDefault from '../cardDefault/CardDefault';
 import { fetchPortfolios } from '../../utils/userApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Preloader from '../preloader/Preloader';
@@ -18,6 +19,7 @@ function Portfolios() {
   const [limit, setLimit] = useState(3);
   const [portfolios, setPortfolios] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isOwner, setIsOwner] = useState(false);
 
   const handleCreatePortfolio = () => {
     navigate('/create-portfolio');
@@ -48,6 +50,11 @@ function Portfolios() {
         setLoading(true);
         const portfolios = await fetchPortfolios(_userId);
 
+        const owner = portfolios.some(
+          (portfolio) => portfolio.userId === currentUser._id
+        );
+        setIsOwner(owner);
+
         setPortfolios(portfolios);
       } catch (err) {
         console.error('Error fetching portfolios', err);
@@ -66,16 +73,29 @@ function Portfolios() {
       {loading ? (
         <Preloader />
       ) : (
-        <div className="portfolios__content-portfolio">{renderPortfolios}</div>
+        <>
+          {portfolios.length === 0 ? (
+            <div className="portfolios__content-portfolio">
+              {' '}
+              <CardDefault />{' '}
+            </div>
+          ) : (
+            <div className="portfolios__content-portfolio">
+              {renderPortfolios}
+            </div>
+          )}
+        </>
       )}
 
       <div className="portfolios__container-btn">
         <button className="portfolios__btn" onClick={handleSeeMore}>
           Ver más portafolios
         </button>
-        <button className="portfolios__btn" onClick={handleCreatePortfolio}>
-          Crear Portafolio
-        </button>
+        {isOwner && (
+          <button className="portfolios__btn" onClick={handleCreatePortfolio}>
+            Crear Portafolio
+          </button>
+        )}
       </div>
     </section>
   );
