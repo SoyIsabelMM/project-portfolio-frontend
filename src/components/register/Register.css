@@ -1,5 +1,5 @@
 .register {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +16,11 @@
 .register__link {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 350px) {
+  .register_paragraph {
+    font-size: 13px;
+    text-align: center;
+  }
 }

@@ -106,27 +106,6 @@
   object-fit: cover;
 }
 
-.gallery__btn {
-  margin-top: 50px;
-  width: 200px;
-  border: none;
-  background-color: black;
-  color: white;
-  border-radius: 20px;
-  height: 60px;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-  transition: color 0.2s ease-in-out, 0.2s ease-in-out;
-}
-
-.gallery__btn:hover {
-  border: solid 2px black;
-  color: black;
-  background-color: white;
-  font-size: 20px;
-}
-
 @media (max-width: 750px) {
   .gallery__modal-box {
     height: 70%;
@@ -161,16 +140,6 @@
   .gallery__paragraph {
     font-size: 0.9rem;
   }
-
-  .gallery__btn {
-    width: 150px;
-    height: 50px;
-    font-size: 15px;
-  }
-
-  .gallery__btn:hover {
-    font-size: 17px;
-  }
 }
 
 @media (max-width: 350px) {
@@ -201,15 +170,5 @@
   .gallery__paragraph {
     width: 80%;
     font-size: 0.8rem;
-  }
-
-  .gallery__btn {
-    width: 120px;
-    height: 45px;
-    font-size: 12px;
-  }
-
-  .gallery__btn:hover {
-    font-size: 13px;
   }
 }

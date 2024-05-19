@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -39,12 +39,16 @@ function Gallery() {
 
   const imgAction = (action) => {
     let i = data.i;
-    if (action === 'next-img' && i < images.length - 1) {
-      setData({ img: images[i + 1], i: i + 1 });
+
+    if (action === 'next-img') {
+      i = Math.min(i + 1, images.length - 1);
     }
-    if (action === 'previous-img' && i > 0) {
-      setData({ img: images[i - 1], i: i - 1 });
+    if (action === 'previous-img') {
+      i = Math.max(i - 1, 0);
     }
+    const nextImageUrl = images[i] ? images[i].imageUrl : '';
+
+    setData({ img: nextImageUrl, i });
   };
 
   const closeImage = (evt) => {
@@ -59,7 +63,19 @@ function Gallery() {
       try {
         const portfolio = await getPortfolio(userId, portfolioId);
         setPortfolio(portfolio);
-        setImages(portfolio.images);
+
+        if (portfolio.images?.length) {
+          setImages(portfolio.images);
+        } else {
+          setImages([
+            { imageUrl: 'https://picsum.photos/2000/2500', index: 1 },
+            { imageUrl: 'https://picsum.photos/3000/2000', index: 2 },
+            { imageUrl: 'https://picsum.photos/4000/3000', index: 3 },
+            { imageUrl: 'https://picsum.photos/3000/1500', index: 4 },
+            { imageUrl: 'https://picsum.photos/2000/2165', index: 5 },
+            { imageUrl: 'https://picsum.photos/1500/1500', index: 6 },
+          ]);
+        }
         await addViewToPortfolio(portfolioId);
       } catch (err) {
         console.error('Error al obtener las imágenes del portafolio:', err);
@@ -77,40 +93,21 @@ function Gallery() {
   }, []);
 
   const renderImages = () => {
-    if (images.length === 0) {
-      const defaultImages = [
-        'https://picsum.photos/2000/2500',
-        'https://picsum.photos/3000/2000',
-        'https://picsum.photos/4000/3000',
-        'https://picsum.photos/3000/1500',
-        'https://picsum.photos/2000/2165',
-        'https://picsum.photos/1500/1500',
-      ];
-      return defaultImages.map((imageUrl, index) => (
+    return images
+      .sort((a, b) => {
+        return a.index - b.index;
+      })
+      .map((image, i) => (
         <img
-          key={index}
-          src={imageUrl}
+          key={i}
+          src={image.imageUrl}
           className="gallery__image"
-          alt={`default_image_${index}`}
+          alt={`image_${i}`}
+          onClick={() => viewImage(image.imageUrl, i)}
+          width={imagesSizes[i].w}
+          height={imagesSizes[i].h}
         />
       ));
-    } else {
-      return images
-        .sort((a, b) => {
-          return a.index - b.index;
-        })
-        .map((image, i) => (
-          <img
-            key={i}
-            src={image.imageUrl}
-            className="gallery__image"
-            alt={`image_${i}`}
-            onClick={() => viewImage(image.imageUrl, i)}
-            width={imagesSizes[i].w}
-            height={imagesSizes[i].h}
-          />
-        ));
-    }
   };
 
   return (
@@ -154,8 +151,6 @@ function Gallery() {
               </ResponsiveMasonry>
             </div>
           )}
-
-          <button className="gallery__btn"> Editar Portafolio</button>
         </div>
       </section>
     </>
