@@ -39,7 +39,6 @@ function CreatePortfolio() {
         description,
         currentUser.token
       );
-      console.log('Te cree un lindo portafolio', response._i);
 
       await handleImagesUpload(response._id);
       setCreationResponse(response);

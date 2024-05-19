@@ -21,7 +21,7 @@ import CreatePortfolio from '../createPortfolio/CreatePortfolio';
 
 function App() {
   const location = useLocation();
-  const shouldRenderFooter = location.pathname.startsWith('/contact/:userId');
+  const shouldRenderFooter = !location.pathname.includes('/contact/');
 
   return (
     <>

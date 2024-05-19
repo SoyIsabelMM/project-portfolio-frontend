@@ -55,7 +55,7 @@
   display: flex;
   width: 80%;
   margin: 10% 0;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -111,10 +111,11 @@
 
   .profile__content-btn {
     width: 70%;
+    flex-direction: column;
   }
 
   .profile__btn {
-    margin: 25% 0;
+    margin: 10% 0;
     width: 160px;
     height: 45px;
   }
@@ -134,10 +135,6 @@
   .profile__content-btn {
     width: 70%;
     flex-direction: column;
-  }
-
-  .profile__btn {
-    margin: 10% 0;
   }
 }
 
