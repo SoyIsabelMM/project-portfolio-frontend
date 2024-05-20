@@ -160,7 +160,7 @@ function Gallery() {
             </div>
           )}
 
-          {currentUser._id === userId && (
+          {currentUser?._id === userId && (
             <button className="portfolios__btn" onClick={handleEditPortfolio}>
               Editar portafolio
             </button>

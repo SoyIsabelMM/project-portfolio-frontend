@@ -50,10 +50,12 @@ function Portfolios() {
         setLoading(true);
         const portfolios = await fetchPortfolios(_userId);
 
-        const owner = portfolios.some(
-          (portfolio) => portfolio.userId === currentUser._id
-        );
-        setIsOwner(owner);
+        if (currentUser && currentUser._id) {
+          const owner = portfolios.some(
+            (portfolio) => portfolio.userId === currentUser._id
+          );
+          setIsOwner(owner);
+        }
 
         setPortfolios(portfolios);
       } catch (err) {
@@ -64,7 +66,7 @@ function Portfolios() {
     };
 
     fetchData();
-  }, [_userId]);
+  }, [_userId, currentUser]);
 
   return (
     <section className="portfolios">
