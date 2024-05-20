@@ -1,13 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Textarea from '../textarea/Textarea';
 import InputContent from '../inputContent/InputContent';
-import { createPortfolio, uploadPortfolioImage } from '../../utils/userApi';
+import {
+  createPortfolio,
+  uploadPortfolioImage,
+  getPortfolio,
+  updatePortfolio,
+} from '../../utils/userApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './CreatePortfolio.css';
 
 function CreatePortfolio() {
+  const { portfolioId: _portfolioId } = useParams();
+
   const { currentUser } = useContext(CurrentUserContext);
+
+  const [portfolioId, setPortfolioId] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [creationResponse, setCreationResponse] = useState(null);
@@ -34,13 +44,16 @@ function CreatePortfolio() {
     evt.preventDefault();
 
     try {
-      const response = await createPortfolio(
-        title,
-        description,
-        currentUser.token
-      );
+      const response = portfolioId
+        ? await updatePortfolio(
+            title,
+            description,
+            portfolioId,
+            currentUser.token
+          )
+        : await createPortfolio(title, description, currentUser.token);
 
-      await handleImagesUpload(response._id);
+      await handleImagesUpload(portfolioId);
       setCreationResponse(response);
     } catch (err) {
       console.error('Error al crear el portafolio:', err);
@@ -77,9 +90,27 @@ function CreatePortfolio() {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const portfolio = await getPortfolio(currentUser._id, _portfolioId);
+        if (portfolio) {
+          setPortfolioId(_portfolioId);
+          setTitle(portfolio.title);
+          setDescription(portfolio.description);
+        }
+      } catch (err) {
+        console.error('Error al obtener las imágenes del portafolio:', err);
+      }
+    };
+    if (_portfolioId) fetchData();
+  }, [_portfolioId]);
+
   return (
     <section className="create-portfolio">
-      <h2 className="create-portfolio__title">Crear Portafolio</h2>
+      <h2 className="create-portfolio__title">
+        {portfolioId ? 'Editar Portafolio' : 'Crear Portafolio'}
+      </h2>
       <form className="create-portfolio__form" onSubmit={handleCreatePortfolio}>
         <div className="create-portfololio__content">
           <h3 className="create-portfolio__subtitle">
@@ -173,14 +204,20 @@ function CreatePortfolio() {
         </div>
 
         <button type="submit" className="create-portfolio__btn">
-          Crear
+          {portfolioId ? 'Editar' : 'Crear'}
         </button>
 
         {creationResponse && (
           <div className="create-portfolio__response">
-            <p className="create-portfolio__message">
-              El portafolio ha sido creado con éxito.
-            </p>
+            {portfolioId ? (
+              <p className="create-portfolio__message">
+                El portafolio ha sido editado con éxito.
+              </p>
+            ) : (
+              <p className="create-portfolio__message">
+                El portafolio ha sido creado con éxito.
+              </p>
+            )}
           </div>
         )}
       </form>

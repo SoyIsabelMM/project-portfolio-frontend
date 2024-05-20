@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -7,15 +7,23 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Preloader from '../preloader/Preloader';
 import './Gallery.css';
 import { getPortfolio, addViewToPortfolio } from '../../utils/userApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Gallery() {
+  const navigate = useNavigate();
   const { userId, portfolioId } = useParams();
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   const [data, setData] = useState({ img: ' ', i: 0 });
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
   const [open, setOpen] = useState(false);
   const [portfolio, setPortfolio] = useState({});
+
+  const handleEditPortfolio = () => {
+    navigate(`/create-portfolio/${portfolioId}`);
+  };
 
   const viewImage = (img, i) => {
     setData({ img, i });
@@ -150,6 +158,12 @@ function Gallery() {
                 <Masonry gutter="15px">{renderImages()}</Masonry>
               </ResponsiveMasonry>
             </div>
+          )}
+
+          {currentUser._id === userId && (
+            <button className="portfolios__btn" onClick={handleEditPortfolio}>
+              Editar portafolio
+            </button>
           )}
         </div>
       </section>
