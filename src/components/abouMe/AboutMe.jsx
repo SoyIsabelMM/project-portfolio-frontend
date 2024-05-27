@@ -15,8 +15,8 @@ function AboutMe() {
 
   const [about, setAbout] = useState(null);
 
-  const userName = `${formatText(currentUser.firstName)} * ${formatText(
-    currentUser.lastName
+  const userName = `${formatText(currentUser?.firstName)} * ${formatText(
+    currentUser?.lastName
   )}`;
 
   useEffect(() => {
